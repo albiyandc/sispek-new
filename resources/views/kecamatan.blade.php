@@ -2,7 +2,7 @@
 
 @section('content')
 <!-- Background Abu-abu Muda persis gambar -->
-<div class="bg-[#f8f9fc] min-h-screen pb-16 pt-8">
+<div class="bg-[#f8f9fc] min-h-screen pb-16 pt-8" x-data="{ search: '', limit: 4, total: {{ count($layanans) }} }">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 fade-in-up">
         
         <!-- Breadcrumb -->
@@ -33,13 +33,12 @@
             <div class="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none">
                 <svg class="w-6 h-6 text-gray-400 group-hover:text-blue-500 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
             </div>
-            <input type="text" placeholder="Cari jenis layanan (contoh: Kartu Keluarga, IMB...)" class="w-full border-none rounded-2xl py-5 pl-14 pr-6 bg-white shadow-sm text-gray-700 font-medium focus:outline-none focus:ring-4 focus:ring-blue-100 transition-all text-lg">
+            <input type="text" x-model="search" placeholder="Cari jenis layanan (contoh: Kartu Keluarga, KTP-el, IUMK...)" class="w-full border-none rounded-2xl py-5 pl-14 pr-6 bg-white shadow-sm text-gray-700 font-medium focus:outline-none focus:ring-4 focus:ring-blue-100 transition-all text-lg">
         </div>
 
         <!-- Daftar Layanan (Iterasi dengan array warna untuk Icon) -->
         <div class="space-y-4">
             @php
-                // Array warna persis gambar (Biru muda, Kuning muda, Hijau muda, Merah muda)
                 $colors = [
                     ['bg' => 'bg-blue-50', 'text' => 'text-blue-600'],
                     ['bg' => 'bg-amber-50', 'text' => 'text-amber-600'],
@@ -53,7 +52,12 @@
                     $color = $colors[$index % count($colors)];
                 @endphp
                 
-                <a href="{{ route('layanan.detail', ['id' => $layanan->id_layanan, 'kecamatan' => $nama_kecamatan]) }}" class="block bg-white rounded-2xl p-6 flex justify-between items-center hover:shadow-md hover:-translate-y-1 transition-all duration-300 group border border-transparent hover:border-blue-100">
+                <a href="{{ route('layanan.detail', ['id' => $layanan->id_layanan, 'kecamatan' => $nama_kecamatan]) }}" 
+                   x-show="search === '' ? {{ $index }} < limit : ('{{ strtolower($layanan->nama_layanan . ' ' . $layanan->produk_pelayanan) }}').includes(search.toLowerCase())"
+                   x-transition:enter="transition ease-out duration-300"
+                   x-transition:enter-start="opacity-0 transform translate-y-2"
+                   x-transition:enter-end="opacity-100 transform translate-y-0"
+                   class="block bg-white rounded-2xl p-6 flex justify-between items-center hover:shadow-md hover:-translate-y-1 transition-all duration-300 group border border-transparent hover:border-blue-100">
                     <div class="flex items-start gap-6">
                         <!-- Icon Box Berwarna -->
                         <div class="{{ $color['bg'] }} {{ $color['text'] }} w-14 h-14 rounded-xl flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
@@ -75,11 +79,13 @@
             @endforeach
         </div>
 
-        <!-- Tombol Tampilkan Lebih Banyak -->
-        <div class="mt-10 flex justify-center">
-            <button class="bg-[#eef2ff] hover:bg-blue-100 text-blue-700 font-semibold py-3 px-8 rounded-full transition flex items-center gap-2">
-                Tampilkan Lebih Banyak 
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+        <!-- Tombol Tampilkan Lebih Banyak / Lebih Sedikit -->
+        <div class="mt-10 flex justify-center" x-show="search === ''">
+            <button @click="limit = (limit >= total ? 4 : total)" class="bg-[#eef2ff] hover:bg-blue-100 text-blue-700 font-semibold py-3 px-8 rounded-full transition flex items-center gap-2 shadow-sm hover:shadow">
+                <span x-text="limit >= total ? 'Tampilkan Lebih Sedikit' : 'Tampilkan Lebih Banyak'">Tampilkan Lebih Banyak</span> 
+                <svg class="w-4 h-4 transition-transform duration-300" :class="{ 'rotate-180': limit >= total }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
             </button>
         </div>
         

@@ -38,5 +38,61 @@ class LayananPublikSeeder extends Seeder
             'pengaduan_pelayanan' => "(0265) 123456 - Ext. 102\npengaduan.cihideung@tasikmalaya.go.id\nWhatsApp: 081312226045",
             'status_layanan' => 'aktif'
         ]);
+
+        LayananPublik::create([
+            'nama_layanan' => 'Surat Keterangan Pindah Penduduk (SKPWNI)',
+            'deskripsi' => 'Layanan pengurusan surat keterangan kepindahan warga antar domisili/kecamatan/kota.',
+            'persyaratan' => "Kartu Keluarga (KK) asli.\nKTP-el asli pemohon.\nFormulir permohonan pindah yang diisi lengkap.",
+            'sistem_mekanisme_prosedur' => "Verifikasi Berkas|Pemeriksaan berkas dan data kepindahan.\nEntry Data|Input data surat pindah pada aplikasi SIAK.\nPenerbitan SKPWNI|Penerbitan dokumen Surat Keterangan Pindah.",
+            'waktu_penyelesaian' => '1–2 Hari Kerja',
+            'biaya_tarif' => 'Gratis (Rp. 0)',
+            'produk_pelayanan' => 'Surat Keterangan Pindah (SKPWNI)',
+            'jumlah_pelaksana' => '2 Orang Petugas Loket',
+            'penanggung_jawab' => 'Kasi Pem & Pelayanan Publik',
+            'pengaduan_pelayanan' => "(0265) 123456 - Ext. 102\npengaduan.cihideung@tasikmalaya.go.id\nWhatsApp: 081312226045",
+            'status_layanan' => 'aktif'
+        ]);
+
+        LayananPublik::create([
+            'nama_layanan' => 'Surat Keterangan Tidak Mampu (SKTM)',
+            'deskripsi' => 'Layanan penerbitan surat keterangan tidak mampu untuk keperluan pendidikan, kesehatan, atau bantuan sosial.',
+            'persyaratan' => "Surat Pengantar RT/RW setempat.\nFotokopi Kartu Keluarga (KK) dan KTP-el.\nSurat Pernyataan Tidak Mampu bermaterai.",
+            'sistem_mekanisme_prosedur' => "Pengajuan Berkas|Penyerahan kelengkapan berkas di loket.\nVerifikasi Lapangan|Verifikasi status tidak mampu oleh petugas.\nPenandatanganan & Legalisasi|Pengesahan surat oleh Camat/Kasi.",
+            'waktu_penyelesaian' => '1 Hari Kerja',
+            'biaya_tarif' => 'Gratis (Rp. 0)',
+            'produk_pelayanan' => 'Surat Keterangan Tidak Mampu (SKTM)',
+            'jumlah_pelaksana' => '2 Orang Petugas Loket',
+            'penanggung_jawab' => 'Kasi Kesejahteraan Rakyat',
+            'pengaduan_pelayanan' => "(0265) 123456 - Ext. 102\npengaduan.cihideung@tasikmalaya.go.id\nWhatsApp: 081312226045",
+            'status_layanan' => 'aktif'
+        ]);
+
+        LayananPublik::create([
+            'nama_layanan' => 'Rekomendasi Izin Usaha Mikro dan Kecil (IUMK)',
+            'deskripsi' => 'Layanan penerbitan rekomendasi izin usaha skala mikro dan kecil bagi pelaku usaha setempat.',
+            'persyaratan' => "Surat Pengantar RT/RW lokasi usaha.\nFotokopi KTP-el dan KK.\nFoto lokasi tempat usaha (ukuran 4x6 2 lembar).",
+            'sistem_mekanisme_prosedur' => "Pengajuan Berkas|Penyerahan berkas permohonan rekomendasi.\nTinjauan Berkas|Pemeriksaan kesesuaian lokasi dan jenis usaha.\nPenerbitan Rekomendasi|Penandatanganan dokumen rekomendasi IUMK.",
+            'waktu_penyelesaian' => '2 Hari Kerja',
+            'biaya_tarif' => 'Gratis (Rp. 0)',
+            'produk_pelayanan' => 'Dokumen Rekomendasi IUMK',
+            'jumlah_pelaksana' => '2 Orang Petugas Loket',
+            'penanggung_jawab' => 'Kasi Ekonomi dan Pembangunan',
+            'pengaduan_pelayanan' => "(0265) 123456 - Ext. 102\npengaduan.cihideung@tasikmalaya.go.id\nWhatsApp: 081312226045",
+            'status_layanan' => 'aktif'
+        ]);
+
+        LayananPublik::create([
+            'nama_layanan' => 'Legalisasi Dokumen Kependudukan',
+            'deskripsi' => 'Layanan pengesahan/legalisasi salinan dokumen kependudukan seperti KK, Akta Kelahiran, dan SKTM.',
+            'persyaratan' => "Dokumen asli yang akan dilegalisasi.\nFotokopi dokumen maksimal 5 lembar per permohonan.",
+            'sistem_mekanisme_prosedur' => "Pemeriksaan Dokumen|Pencocokan dokumen fotokopi dengan dokumen asli.\nPembubuhan Stempel & Tanda Tangan|Penandatanganan oleh pejabat berwenang.",
+            'waktu_penyelesaian' => '15–30 Menit',
+            'biaya_tarif' => 'Gratis (Rp. 0)',
+            'produk_pelayanan' => 'Dokumen Legalisasi Cap Stempel Basah/Digital',
+            'jumlah_pelaksana' => '2 Orang Petugas Loket',
+            'penanggung_jawab' => 'Kasi Pem & Pelayanan Publik',
+            'pengaduan_pelayanan' => "(0265) 123456 - Ext. 102\npengaduan.cihideung@tasikmalaya.go.id\nWhatsApp: 081312226045",
+            'status_layanan' => 'aktif'
+        ]);
     }
 }
