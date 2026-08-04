@@ -26,11 +26,12 @@ class FrontController extends Controller
         return view('kecamatan', compact('nama_kecamatan', 'layanans'));
     }
 
-    public function detailLayanan($id)
+    public function detailLayanan(Request $request, $id)
     {
-        // Mengambil detail layanan spesifik berdasarkan ID[cite: 1]
+        // Mengambil detail layanan spesifik berdasarkan ID
         $layanan = LayananPublik::findOrFail($id);
+        $nama_kecamatan = $request->query('kecamatan', 'Cihideung');
         
-        return view('detail_layanan', compact('layanan'));
+        return view('detail_layanan', compact('layanan', 'nama_kecamatan'));
     }
 }

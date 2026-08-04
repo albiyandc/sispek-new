@@ -1,0 +1,32 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    public function up(): void
+    {
+        Schema::create('layanan_publik', function (Blueprint $table) {
+            $table->id('id_layanan');
+            $table->string('nama_layanan');
+            $table->text('deskripsi')->nullable();
+            $table->text('persyaratan')->nullable();
+            $table->text('sistem_mekanisme_prosedur')->nullable();
+            $table->string('waktu_penyelesaian')->nullable();
+            $table->string('biaya_tarif')->nullable();
+            $table->string('produk_pelayanan')->nullable();
+            $table->string('jumlah_pelaksana')->nullable();
+            $table->string('penanggung_jawab')->nullable();
+            $table->text('pengaduan_pelayanan')->nullable();
+            $table->string('status_layanan')->default('aktif');
+            $table->timestamps();
+        });
+    }
+
+    public function down(): void
+    {
+        Schema::dropIfExists('layanan_publik');
+    }
+};

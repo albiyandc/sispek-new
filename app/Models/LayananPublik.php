@@ -15,11 +15,14 @@ class LayananPublik extends Model
 
     protected $fillable = [
         'nama_layanan',
+        'deskripsi',
         'persyaratan',
         'sistem_mekanisme_prosedur',
         'waktu_penyelesaian',
         'biaya_tarif',
         'produk_pelayanan',
+        'jumlah_pelaksana',
+        'penanggung_jawab',
         'pengaduan_pelayanan',
         'status_layanan'
     ];

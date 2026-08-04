@@ -53,7 +53,7 @@
                     $color = $colors[$index % count($colors)];
                 @endphp
                 
-                <a href="{{ route('layanan.detail', $layanan->id_layanan) }}" class="block bg-white rounded-2xl p-6 flex justify-between items-center hover:shadow-md hover:-translate-y-1 transition-all duration-300 group border border-transparent hover:border-blue-100">
+                <a href="{{ route('layanan.detail', ['id' => $layanan->id_layanan, 'kecamatan' => $nama_kecamatan]) }}" class="block bg-white rounded-2xl p-6 flex justify-between items-center hover:shadow-md hover:-translate-y-1 transition-all duration-300 group border border-transparent hover:border-blue-100">
                     <div class="flex items-start gap-6">
                         <!-- Icon Box Berwarna -->
                         <div class="{{ $color['bg'] }} {{ $color['text'] }} w-14 h-14 rounded-xl flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
