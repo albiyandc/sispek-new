@@ -15,22 +15,35 @@ class FrontController extends Controller
     private function getDummyServices()
     {
         return [
-            ['id' => 1, 'kecamatan' => 'Kecamatan Cihideung', 'kategori' => 'UMUM', 'kategori_slug' => 'umum', 'judul' => 'Pelayanan Surat Keterangan Domisili', 'deskripsi' => 'Pengajuan dokumen keterangan tempat tinggal untuk keperluan administrasi perbankan dan pekerjaan.', 'icon' => 'location_city', 'bg_color' => 'bg-blue-50', 'text_color' => 'text-blue-800'],
-            ['id' => 2, 'kecamatan' => 'Kecamatan Cipedes', 'kategori' => 'PAJAK', 'kategori_slug' => 'pajak', 'judul' => 'Pendaftaran Objek Pajak Baru', 'deskripsi' => 'Pendaftaran SPPT PBB-P2 untuk bangunan atau tanah baru yang belum terdata di basis data pajak.', 'icon' => 'payments', 'bg_color' => 'bg-green-50', 'text_color' => 'text-green-800'],
-            ['id' => 3, 'kecamatan' => 'Kecamatan Tawang', 'kategori' => 'KEPENDUDUKAN', 'kategori_slug' => 'kependudukan', 'judul' => 'Surat Pengantar KTP-el', 'deskripsi' => 'Pengurusan surat pengantar untuk perekaman atau pencetakan ulang KTP elektronik bagi warga baru 17 tahun.', 'icon' => 'badge', 'bg_color' => 'bg-yellow-50', 'text_color' => 'text-yellow-800'],
-            ['id' => 4, 'kecamatan' => 'Kecamatan Indihiang', 'kategori' => 'PERIZINAN', 'kategori_slug' => 'perizinan', 'judul' => 'Izin Usaha Mikro Kecil (IUMK)', 'deskripsi' => 'Legalitas usaha bagi pelaku UMKM di wilayah Indihiang untuk mempermudah akses permodalan KUR.', 'icon' => 'storefront', 'bg_color' => 'bg-blue-50', 'text_color' => 'text-blue-800'],
-            ['id' => 5, 'kecamatan' => 'Kecamatan Kawalu', 'kategori' => 'KEPENDUDUKAN', 'kategori_slug' => 'kependudukan', 'judul' => 'Perubahan Data Kartu Keluarga', 'deskripsi' => 'Penambahan anggota keluarga baru atau pembaharuan status pendidikan di dokumen KK.', 'icon' => 'family_restroom', 'bg_color' => 'bg-green-50', 'text_color' => 'text-green-800'],
-            ['id' => 6, 'kecamatan' => 'Kecamatan Cibeureum', 'kategori' => 'SOSIAL', 'kategori_slug' => 'sosial', 'judul' => 'Surat Keterangan Tidak Mampu (SKTM)', 'deskripsi' => 'Penerbitan surat keterangan untuk persyaratan beasiswa pendidikan atau keringanan biaya kesehatan.', 'icon' => 'volunteer_activism', 'bg_color' => 'bg-yellow-50', 'text_color' => 'text-yellow-800'],
-            ['id' => 7, 'kecamatan' => 'Kecamatan Mangkubumi', 'kategori' => 'TANAH', 'kategori_slug' => 'tanah', 'judul' => 'Rekomendasi Pemecahan Sertifikat', 'deskripsi' => 'Surat rekomendasi dari kecamatan untuk proses pemecahan sertifikat tanah di kantor BPN.', 'icon' => 'real_estate_agent', 'bg_color' => 'bg-blue-50', 'text_color' => 'text-blue-800'],
-            ['id' => 8, 'kecamatan' => 'Kecamatan Purbaratu', 'kategori' => 'ARSIP', 'kategori_slug' => 'arsip', 'judul' => 'Legalisir Dokumen Administrasi', 'deskripsi' => 'Pengesahan salinan dokumen kependudukan atau surat keterangan lainnya dengan cap resmi kecamatan.', 'icon' => 'history_edu', 'bg_color' => 'bg-green-50', 'text_color' => 'text-green-800'],
-            ['id' => 9, 'kecamatan' => 'Kecamatan Bungursari', 'kategori' => 'UMUM', 'kategori_slug' => 'umum', 'judul' => 'Surat Izin Keramaian Lingkungan', 'deskripsi' => 'Pengajuan izin pelaksanaan acara sosial kemasyarakatan di lingkungan pemukiman warga.', 'icon' => 'work', 'bg_color' => 'bg-yellow-50', 'text_color' => 'text-yellow-800'],
-            ['id' => 10, 'kecamatan' => 'Kecamatan Tamansari', 'kategori' => 'KEPENDUDUKAN', 'kategori_slug' => 'kependudukan', 'judul' => 'Pelayanan Akta Kelahiran', 'deskripsi' => 'Pengurusan rekomendasi pencatatan kelahiran baru untuk penerbitan kutipan Akta Kelahiran.', 'icon' => 'child_care', 'bg_color' => 'bg-blue-50', 'text_color' => 'text-blue-800'],
-            ['id' => 11, 'kecamatan' => 'Kecamatan Cihideung', 'kategori' => 'UMUM', 'kategori_slug' => 'umum', 'judul' => 'Surat Pengantar Nikah', 'deskripsi' => 'Pengurusan surat pengantar nikah (N1-N4) sebagai syarat pendaftaran di KUA.', 'icon' => 'favorite', 'bg_color' => 'bg-green-50', 'text_color' => 'text-green-800'],
-            ['id' => 12, 'kecamatan' => 'Kecamatan Cipedes', 'kategori' => 'KESEHATAN', 'kategori_slug' => 'kesehatan', 'judul' => 'Surat Keterangan Sehat', 'deskripsi' => 'Penerbitan surat keterangan sehat dari puskesmas tingkat kecamatan.', 'icon' => 'health_and_safety', 'bg_color' => 'bg-blue-50', 'text_color' => 'text-blue-800'],
-            ['id' => 13, 'kecamatan' => 'Kecamatan Tawang', 'kategori' => 'PENDIDIKAN', 'kategori_slug' => 'pendidikan', 'judul' => 'Rekomendasi Mutasi Siswa', 'deskripsi' => 'Surat rekomendasi dari kecamatan untuk perpindahan siswa antar sekolah.', 'icon' => 'school', 'bg_color' => 'bg-yellow-50', 'text_color' => 'text-yellow-800'],
-            ['id' => 14, 'kecamatan' => 'Kecamatan Kawalu', 'kategori' => 'USAHA', 'kategori_slug' => 'usaha', 'judul' => 'Surat Keterangan Usaha (SKU)', 'deskripsi' => 'Bukti legalitas keberadaan tempat usaha atau wirausaha di wilayah setempat.', 'icon' => 'business', 'bg_color' => 'bg-blue-50', 'text_color' => 'text-blue-800'],
-            ['id' => 15, 'kecamatan' => 'Kecamatan Mangkubumi', 'kategori' => 'LINGKUNGAN', 'kategori_slug' => 'lingkungan', 'judul' => 'Izin Penebangan Pohon', 'deskripsi' => 'Pengajuan izin untuk penebangan pohon yang berisiko mengganggu fasilitas umum.', 'icon' => 'park', 'bg_color' => 'bg-green-50', 'text_color' => 'text-green-800'],
+            ['id' => 1, 'kecamatan' => 'Kecamatan Cihideung', 'kategori' => 'UMUM', 'kategori_slug' => 'umum', 'judul' => 'Pelayanan Surat Keterangan Domisili', 'deskripsi' => 'Pengajuan dokumen keterangan tempat tinggal untuk keperluan administrasi perbankan dan pekerjaan.', 'icon' => 'location_city', 'bg_color' => 'bg-blue-50', 'text_color' => 'text-blue-800', 'base_clicks' => 145],
+            ['id' => 2, 'kecamatan' => 'Kecamatan Cipedes', 'kategori' => 'PAJAK', 'kategori_slug' => 'pajak', 'judul' => 'Pendaftaran Objek Pajak Baru', 'deskripsi' => 'Pendaftaran SPPT PBB-P2 untuk bangunan atau tanah baru yang belum terdata di basis data pajak.', 'icon' => 'payments', 'bg_color' => 'bg-green-50', 'text_color' => 'text-green-800', 'base_clicks' => 98],
+            ['id' => 3, 'kecamatan' => 'Kecamatan Tawang', 'kategori' => 'KEPENDUDUKAN', 'kategori_slug' => 'kependudukan', 'judul' => 'Surat Pengantar KTP-el', 'deskripsi' => 'Pengurusan surat pengantar untuk perekaman atau pencetakan ulang KTP elektronik bagi warga baru 17 tahun.', 'icon' => 'badge', 'bg_color' => 'bg-yellow-50', 'text_color' => 'text-yellow-800', 'base_clicks' => 230],
+            ['id' => 4, 'kecamatan' => 'Kecamatan Indihiang', 'kategori' => 'PERIZINAN', 'kategori_slug' => 'perizinan', 'judul' => 'Izin Usaha Mikro Kecil (IUMK)', 'deskripsi' => 'Legalitas usaha bagi pelaku UMKM di wilayah Indihiang untuk mempermudah akses permodalan KUR.', 'icon' => 'storefront', 'bg_color' => 'bg-blue-50', 'text_color' => 'text-blue-800', 'base_clicks' => 175],
+            ['id' => 5, 'kecamatan' => 'Kecamatan Kawalu', 'kategori' => 'KEPENDUDUKAN', 'kategori_slug' => 'kependudukan', 'judul' => 'Perubahan Data Kartu Keluarga', 'deskripsi' => 'Penambahan anggota keluarga baru atau pembaharuan status pendidikan di dokumen KK.', 'icon' => 'family_restroom', 'bg_color' => 'bg-green-50', 'text_color' => 'text-green-800', 'base_clicks' => 190],
+            ['id' => 6, 'kecamatan' => 'Kecamatan Cibeureum', 'kategori' => 'SOSIAL', 'kategori_slug' => 'sosial', 'judul' => 'Surat Keterangan Tidak Mampu (SKTM)', 'deskripsi' => 'Penerbitan surat keterangan untuk persyaratan beasiswa pendidikan atau keringanan biaya kesehatan.', 'icon' => 'volunteer_activism', 'bg_color' => 'bg-yellow-50', 'text_color' => 'text-yellow-800', 'base_clicks' => 310],
+            ['id' => 7, 'kecamatan' => 'Kecamatan Mangkubumi', 'kategori' => 'TANAH', 'kategori_slug' => 'tanah', 'judul' => 'Rekomendasi Pemecahan Sertifikat', 'deskripsi' => 'Surat rekomendasi dari kecamatan untuk proses pemecahan sertifikat tanah di kantor BPN.', 'icon' => 'real_estate_agent', 'bg_color' => 'bg-blue-50', 'text_color' => 'text-blue-800', 'base_clicks' => 85],
+            ['id' => 8, 'kecamatan' => 'Kecamatan Purbaratu', 'kategori' => 'ARSIP', 'kategori_slug' => 'arsip', 'judul' => 'Legalisir Dokumen Administrasi', 'deskripsi' => 'Pengesahan salinan dokumen kependudukan atau surat keterangan lainnya dengan cap resmi kecamatan.', 'icon' => 'history_edu', 'bg_color' => 'bg-green-50', 'text_color' => 'text-green-800', 'base_clicks' => 120],
+            ['id' => 9, 'kecamatan' => 'Kecamatan Bungursari', 'kategori' => 'UMUM', 'kategori_slug' => 'umum', 'judul' => 'Surat Izin Keramaian Lingkungan', 'deskripsi' => 'Pengajuan izin pelaksanaan acara sosial kemasyarakatan di lingkungan pemukiman warga.', 'icon' => 'work', 'bg_color' => 'bg-yellow-50', 'text_color' => 'text-yellow-800', 'base_clicks' => 60],
+            ['id' => 10, 'kecamatan' => 'Kecamatan Tamansari', 'kategori' => 'KEPENDUDUKAN', 'kategori_slug' => 'kependudukan', 'judul' => 'Pelayanan Akta Kelahiran', 'deskripsi' => 'Pengurusan rekomendasi pencatatan kelahiran baru untuk penerbitan kutipan Akta Kelahiran.', 'icon' => 'child_care', 'bg_color' => 'bg-blue-50', 'text_color' => 'text-blue-800', 'base_clicks' => 210],
+            ['id' => 11, 'kecamatan' => 'Kecamatan Cihideung', 'kategori' => 'UMUM', 'kategori_slug' => 'umum', 'judul' => 'Surat Pengantar Nikah', 'deskripsi' => 'Pengurusan surat pengantar nikah (N1-N4) sebagai syarat pendaftaran di KUA.', 'icon' => 'favorite', 'bg_color' => 'bg-green-50', 'text_color' => 'text-green-800', 'base_clicks' => 160],
+            ['id' => 12, 'kecamatan' => 'Kecamatan Cipedes', 'kategori' => 'KESEHATAN', 'kategori_slug' => 'kesehatan', 'judul' => 'Surat Keterangan Sehat', 'deskripsi' => 'Penerbitan surat keterangan sehat dari puskesmas tingkat kecamatan.', 'icon' => 'health_and_safety', 'bg_color' => 'bg-blue-50', 'text_color' => 'text-blue-800', 'base_clicks' => 115],
+            ['id' => 13, 'kecamatan' => 'Kecamatan Tawang', 'kategori' => 'PENDIDIKAN', 'kategori_slug' => 'pendidikan', 'judul' => 'Rekomendasi Mutasi Siswa', 'deskripsi' => 'Surat rekomendasi dari kecamatan untuk perpindahan siswa antar sekolah.', 'icon' => 'school', 'bg_color' => 'bg-yellow-50', 'text_color' => 'text-yellow-800', 'base_clicks' => 45],
+            ['id' => 14, 'kecamatan' => 'Kecamatan Kawalu', 'kategori' => 'USAHA', 'kategori_slug' => 'usaha', 'judul' => 'Surat Keterangan Usaha (SKU)', 'deskripsi' => 'Bukti legalitas keberadaan tempat usaha atau wirausaha di wilayah setempat.', 'icon' => 'business', 'bg_color' => 'bg-blue-50', 'text_color' => 'text-blue-800', 'base_clicks' => 130],
+            ['id' => 15, 'kecamatan' => 'Kecamatan Mangkubumi', 'kategori' => 'LINGKUNGAN', 'kategori_slug' => 'lingkungan', 'judul' => 'Izin Penebangan Pohon', 'deskripsi' => 'Pengajuan izin untuk penebangan pohon yang berisiko mengganggu fasilitas umum.', 'icon' => 'park', 'bg_color' => 'bg-green-50', 'text_color' => 'text-green-800', 'base_clicks' => 35],
         ];
+    }
+
+    private function recordClick($id)
+    {
+        try {
+            LayananPublik::where('id_layanan', $id)->increment('jumlah_klik');
+        } catch (\Throwable $e) {}
+
+        Cache::increment("service_clicks_{$id}");
+
+        $clicks = session()->get('service_clicks', []);
+        $clicks[$id] = ($clicks[$id] ?? 0) + 1;
+        session()->put('service_clicks', $clicks);
     }
 
     private function getGlobalClicks()
@@ -116,7 +129,8 @@ class FrontController extends Controller
         
         foreach ($services as &$service) {
             $id = $service['id'];
-            $service['clicks'] = ($dbClicks[$id] ?? 0) + ($sessionClicks[$id] ?? 0) + Cache::get("service_clicks_{$id}", 0);
+            $baseClicks = $service['base_clicks'] ?? 0;
+            $service['clicks'] = $baseClicks + ($dbClicks[$id] ?? 0) + ($sessionClicks[$id] ?? 0) + Cache::get("service_clicks_{$id}", 0);
         }
 
         usort($services, function($a, $b) {
@@ -180,7 +194,8 @@ class FrontController extends Controller
 
         foreach ($services as &$service) {
             $id = $service['id'];
-            $service['clicks'] = ($dbClicks[$id] ?? 0) + ($sessionClicks[$id] ?? 0) + Cache::get("service_clicks_{$id}", 0);
+            $baseClicks = $service['base_clicks'] ?? 0;
+            $service['clicks'] = $baseClicks + ($dbClicks[$id] ?? 0) + ($sessionClicks[$id] ?? 0) + Cache::get("service_clicks_{$id}", 0);
         }
 
         usort($services, function($a, $b) {
@@ -211,6 +226,8 @@ class FrontController extends Controller
 
     public function detailLayanan($id)
     {
+        $this->recordClick($id);
+
         $dummyServices = $this->getDummyServices();
         $dummy = collect($dummyServices)->firstWhere('id', (int)$id);
 
@@ -264,32 +281,16 @@ class FrontController extends Controller
 
     public function trackKategori($id, $kategori)
     {
-        try {
-            LayananPublik::where('id_layanan', $id)->increment('jumlah_klik');
-        } catch (\Throwable $e) {}
-
-        Cache::increment("service_clicks_{$id}");
-
-        $clicks = session()->get('service_clicks', []);
-        $clicks[$id] = ($clicks[$id] ?? 0) + 1;
-        session()->put('service_clicks', $clicks);
-
-        // Redirect ke pilihan kecamatan berdasarkan nama layanan / kategori
+        $this->recordClick($id);
         return redirect()->route('kategori.show', ['kategori' => $kategori, 'service_id' => $id]);
     }
 
     public function trackClickApi($id)
     {
-        try {
-            LayananPublik::where('id_layanan', $id)->increment('jumlah_klik');
-        } catch (\Throwable $e) {}
-
-        $newClicks = Cache::increment("service_clicks_{$id}");
-
-        $clicks = session()->get('service_clicks', []);
-        $clicks[$id] = ($clicks[$id] ?? 0) + 1;
-        session()->put('service_clicks', $clicks);
+        $this->recordClick($id);
+        $newClicks = Cache::get("service_clicks_{$id}", 0);
 
         return response()->json(['success' => true, 'clicks' => $newClicks]);
     }
+}
 }
