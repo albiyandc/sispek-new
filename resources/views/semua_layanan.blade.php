@@ -12,7 +12,7 @@
         </div>
 
         <!-- Header Banner (Mobile Edge-to-Edge) -->
-        <div class="bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 text-white rounded-none sm:rounded-3xl -mx-4 -mt-20 pt-16 px-5 pb-6 sm:mx-0 sm:mt-0 sm:p-12 mb-10 shadow-xl relative overflow-hidden">
+        <div class="bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 text-white rounded-none sm:rounded-3xl -mx-4 -mt-28 pt-28 px-6 pb-8 sm:mx-0 sm:mt-0 sm:p-12 mb-10 shadow-xl relative overflow-hidden">
             <div class="absolute top-0 right-0 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
             <div class="relative z-10 max-w-3xl">
                 @if(isset($query) && $query != '')
@@ -39,13 +39,13 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                 @foreach($services as $service)
                 <a href="{{ route('kategori.track', ['id' => $service['id'], 'kategori' => $service['kategori_slug']]) }}" class="group bg-white p-6 sm:p-7 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:shadow-blue-500/5 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between">
-                    <div class="flex items-start gap-4 sm:gap-5 mb-4">
+                    <div class="flex items-center gap-4 sm:gap-5 mb-4">
                         <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl {{ $service['bg_color'] }} flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform shadow-sm">
                             <span class="material-symbols-outlined {{ $service['text_color'] }} text-2xl" style="font-variation-settings: 'FILL' 1;">{{ $service['icon'] }}</span>
                         </div>
                         <div class="flex-1 min-w-0">
                             <div class="flex items-center justify-between gap-2 mb-1.5">
-                                <span class="text-[10px] font-extrabold text-blue-700 bg-blue-50 px-2.5 py-0.5 rounded-full uppercase tracking-wider truncate">{{ $service['kecamatan'] }}</span>
+                                <span class="text-[10px] font-extrabold text-blue-700 bg-blue-50 px-2.5 py-0.5 rounded-full uppercase tracking-wider truncate">{{ str_replace(['Kecamatan ', 'kecamatan ', 'KECAMATAN '], '', $service['kecamatan']) }}</span>
                                 <span class="text-[10px] font-bold text-slate-400 bg-slate-100 px-2 py-0.5 rounded-full">{{ $service['kategori'] }}</span>
                             </div>
                             <h3 class="text-sm sm:text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors line-clamp-1 mb-1">{{ $service['judul'] }}</h3>
