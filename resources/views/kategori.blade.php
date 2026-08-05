@@ -15,7 +15,7 @@
 
         <!-- Header -->
         <div class="mb-8 sm:mb-12 text-center sm:text-left">
-            <h2 class="text-xl sm:text-3xl font-bold text-gray-900 mb-2 sm:mb-3">Kecamatan dengan Layanan: <span class="text-[#1e3a8a]">{{ $namaLayanan }}</span></h2>
+            <h2 class="text-xl sm:text-3xl font-bold text-gray-900 mb-2 sm:mb-3">Kecamatan dengan Layanan <span class="text-[#1e3a8a]">{{ $namaLayanan }}</span></h2>
             <p class="text-[11px] sm:text-base text-gray-500 max-w-3xl mx-auto sm:mx-0">Pilih kecamatan di bawah ini untuk melihat detail layanan {{ strtolower($namaLayanan) }} yang tersedia.</p>
         </div>
         
