@@ -38,7 +38,7 @@
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
             
             <!-- Left Column: Search & Service Cards (2 Cols) -->
-            <div class="lg:col-span-2 space-y-6">
+            <div class="lg:col-span-2 space-y-6 order-2 lg:order-1">
                 
                 <!-- Maklumat Pelayanan Card -->
                 <div class="bg-white rounded-3xl p-6 sm:p-8 relative overflow-hidden border border-slate-100 shadow-sm">
@@ -123,7 +123,7 @@
             </div>
 
             <!-- Right Sidebar Column (1 Col) -->
-            <div class="space-y-6">
+            <div class="space-y-6 order-1 lg:order-2">
                 
                 <!-- Indeks Kepuasan Masyarakat (IKM) Card -->
                 <div class="bg-gradient-to-br from-blue-50/90 to-indigo-50/60 rounded-3xl p-6 border border-blue-100/60 shadow-sm space-y-4">
