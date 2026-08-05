@@ -37,7 +37,7 @@
                 
                 <!-- Logo Brand -->
                 <div class="flex items-center gap-3 cursor-pointer shrink-0 group py-1" onclick="window.location.href='{{ route('home') }}'">
-                    <img src="{{ asset('images/logo_sispek_tasikmalaya.png') }}" alt="SISPEK Tasikmalaya" class="h-9 sm:h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-105">
+                    <img src="{{ asset('images/logo_sispek_tasikmalaya.png') }}" alt="SISPEK Tasikmalaya" class="h-7 sm:h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-105">
                 </div>
 
                 <!-- Search Bar (Desktop) -->
@@ -115,10 +115,10 @@
                     </div>
                 </div>
 
-                <!-- Mobile Hamburger Menu Button -->
+                <!-- Mobile Hamburger Menu Button (Clean Icon Without Background Box) -->
                 <button @click="openNav = !openNav" 
-                        class="md:hidden focus:outline-none p-2 rounded-full transition-colors shrink-0" 
-                        :class="!isScrolled ? 'text-white bg-white/10 hover:bg-white/20' : 'text-slate-600 bg-slate-100/70 hover:bg-blue-50'" aria-label="Menu">
+                        class="md:hidden focus:outline-none p-1.5 transition-colors shrink-0" 
+                        :class="!isScrolled ? 'text-white hover:text-blue-300' : 'text-slate-700 hover:text-blue-600'" aria-label="Menu">
                     <span class="material-symbols-outlined text-2xl" x-text="openNav ? 'close' : 'menu'">menu</span>
                 </button>
             </div>
