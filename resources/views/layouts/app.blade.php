@@ -123,8 +123,8 @@
                 </button>
             </div>
 
-            <!-- Mobile Menu Dropdown Card -->
-            <div x-show="openNav" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-4 scale-95" x-transition:enter-end="opacity-100 translate-y-0 scale-100" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0 scale-100" x-transition:leave-end="opacity-0 -translate-y-4 scale-95" class="md:hidden bg-white/95 backdrop-blur-2xl border border-slate-100 rounded-3xl mt-3 p-4 shadow-2xl text-slate-800" style="display: none;">
+            <!-- Mobile Menu Dropdown Card (Floating Absolute) -->
+            <div x-show="openNav" @click.away="openNav = false" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-4 scale-95" x-transition:enter-end="opacity-100 translate-y-0 scale-100" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0 scale-100" x-transition:leave-end="opacity-0 -translate-y-4 scale-95" class="md:hidden absolute top-full left-0 right-0 mt-2 mx-2 bg-white/95 backdrop-blur-2xl border border-slate-100 rounded-3xl p-4 shadow-2xl text-slate-800 z-50" style="display: none;">
                 <form action="{{ route('layanan.semua') }}" method="GET" class="mb-3">
                     <div class="relative w-full">
                         <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
