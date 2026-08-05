@@ -8,5 +8,6 @@ Route::get('/semua-layanan', [FrontController::class, 'semuaLayanan'])->name('la
 Route::get('/track-kategori/{id}/{kategori}', [FrontController::class, 'trackKategori'])->name('kategori.track');
 Route::post('/api/track-click/{id}', [FrontController::class, 'trackClickApi'])->name('api.track-click');
 Route::get('/kategori/{kategori}', [FrontController::class, 'kategori'])->name('kategori.show');
+Route::get('/sektor/{slug}', [FrontController::class, 'sektor'])->name('sektor.show');
 Route::get('/kecamatan/{nama_kecamatan}', [FrontController::class, 'kecamatan'])->name('kecamatan.show');
 Route::get('/layanan/{id}', [FrontController::class, 'detailLayanan'])->name('layanan.detail');

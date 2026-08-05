@@ -39,6 +39,66 @@ class FrontController extends Controller
         return $dbClicks;
     }
 
+    private function getSektors()
+    {
+        return [
+            [
+                'slug' => 'administrasi-kependudukan',
+                'nama' => 'Administrasi Kependudukan',
+                'deskripsi' => 'Pengurusan KTP, Kartu Keluarga, Akta Kelahiran, dan dokumen kependudukan resmi warga.',
+                'icon' => 'badge',
+                'bg_color' => 'bg-blue-50',
+                'text_color' => 'text-blue-600',
+                'service_ids' => [3, 5, 10, 11]
+            ],
+            [
+                'slug' => 'perizinan-usaha',
+                'nama' => 'Perizinan & Usaha',
+                'deskripsi' => 'Legalitas tempat usaha, izin UMKM, dan pengajuan surat izin kegiatan masyarakat.',
+                'icon' => 'storefront',
+                'bg_color' => 'bg-[#eef2fb]',
+                'text_color' => 'text-[#0b53c8]',
+                'service_ids' => [4, 9, 14]
+            ],
+            [
+                'slug' => 'pajak-retribusi',
+                'nama' => 'Pajak & Retribusi',
+                'deskripsi' => 'Pendaftaran SPPT PBB-P2 baru, pengurusan pajak daerah, dan administrasi retribusi.',
+                'icon' => 'payments',
+                'bg_color' => 'bg-emerald-50',
+                'text_color' => 'text-emerald-600',
+                'service_ids' => [2, 8]
+            ],
+            [
+                'slug' => 'sosial-kesehatan',
+                'nama' => 'Sosial & Kesehatan',
+                'deskripsi' => 'Surat Keterangan Tidak Mampu (SKTM), jaminan kesehatan, dan layanan sosial warga.',
+                'icon' => 'volunteer_activism',
+                'bg_color' => 'bg-rose-50',
+                'text_color' => 'text-rose-600',
+                'service_ids' => [6, 12]
+            ],
+            [
+                'slug' => 'pertanahan-lingkungan',
+                'nama' => 'Pertanahan & Lingkungan',
+                'deskripsi' => 'Rekomendasi pemecahan sertifikat tanah, izin lingkungan, dan domisili usaha.',
+                'icon' => 'real_estate_agent',
+                'bg_color' => 'bg-amber-50',
+                'text_color' => 'text-amber-600',
+                'service_ids' => [1, 7, 15]
+            ],
+            [
+                'slug' => 'pendidikan-lainnya',
+                'nama' => 'Pendidikan & Rekomendasi',
+                'deskripsi' => 'Rekomendasi mutasi siswa, pengesahan dokumen pendidikan, dan pelayanan umum.',
+                'icon' => 'school',
+                'bg_color' => 'bg-indigo-50',
+                'text_color' => 'text-indigo-600',
+                'service_ids' => [13]
+            ],
+        ];
+    }
+
     public function index()
     {
         $kecamatans = [
@@ -59,7 +119,24 @@ class FrontController extends Controller
             return $b['clicks'] <=> $a['clicks'];
         });
         
-        return view('home', compact('kecamatans', 'services'));
+        $sektors = $this->getSektors();
+
+        return view('home', compact('kecamatans', 'services', 'sektors'));
+    }
+
+    public function sektor($slug)
+    {
+        $sektors = $this->getSektors();
+        $sektor = collect($sektors)->firstWhere('slug', $slug);
+
+        if (!$sektor) {
+            abort(404);
+        }
+
+        $allDummy = $this->getDummyServices();
+        $services = collect($allDummy)->whereIn('id', $sektor['service_ids'])->values()->all();
+
+        return view('sektor', compact('sektor', 'services'));
     }
 
     public function semuaLayanan(Request $request)
@@ -99,11 +176,15 @@ class FrontController extends Controller
         }
 
         $dummyServices = $this->getDummyServices();
-        $dummy = collect($dummyServices)->first(function ($s) use ($nama_kecamatan) {
-            return str_contains(strtolower($s['kecamatan']), strtolower($nama_kecamatan));
-        }) ?? $dummyServices[0];
+        $layanans = collect($dummyServices)->map(function ($s) {
+            return (object)[
+                'id_layanan' => $s['id'],
+                'nama_layanan' => $s['judul'],
+                'produk_pelayanan' => $s['deskripsi']
+            ];
+        });
 
-        return redirect()->route('layanan.detail', ['id' => $dummy['id']]);
+        return view('kecamatan', compact('nama_kecamatan', 'layanans'));
     }
 
     public function detailLayanan($id)
