@@ -1,0 +1,165 @@
+{
+  "status": "success",
+  "message": "Data Pelayanan Publik Berhasil Diambil",
+  "total_kecamatan": 2,
+  "data": [
+    {
+      "kecamatan": {
+        "id": "327806",
+        "nama_kecamatan": "Kecamatan Cibeureum",
+        "subdomain": "kecamatan-cibeureum",
+        "maklumat_pelayanan": {
+          "isi": "Dengan ini kami berjanji akan memberikan pelayanan prima sesuai dengan Standar Pelayanan yang ditetapkan, dan apabila kami tidak menepati janji ini, kami siap menerima sanksi sesuai Peraturan Perundang-undangan yang berlaku.",
+          "penandatangan": "Camat Cibeureum (H. Rahman, S.Sos, M.Si)"
+        },
+        "ikm": {
+          "nilai": "88.35",
+          "kategori": "A (SANGAT BAIK)",
+          "tahun": "2025",
+          "responden": "103 Orang",
+          "periode": "Triwulan III dan Triwulan IV s.d. Bulan Oktober 2025 (Semester 2)"
+        },
+        "profil_penyelenggara": {
+          "jam_kerja": "Senin – Kamis: 08.00 – 16.00 WIB | Jumat: 08.00 – 16.30 WIB",
+          "jumlah_pelaksana": "4 (empat) orang petugas loket pelayanan",
+          "penanggung_jawab": "Kasi Tata Pemerintahan dan Pelayanan Publik",
+          "kualifikasi_pelaksana": "• Pendidikan minimum SMA/Sederajat\n• Mampu mengoperasikan komputer\n• Mempunyai kemampuan berkomunikasi yang baik",
+          "alamat": "Jl. KH. Khoer Affandi No. 160, Tasikmalaya (Kode Pos 46196)",
+          "telepon": "081312226045",
+          "email": "kecamatan.cibeureum@tasikmalayakota.go.id"
+        },
+        "mekanisme_pengaduan_global": "• Pengaduan Ringan: Ditanggapi dan diselesaikan langsung oleh petugas loket atau via WhatsApp.\n• Pengaduan Sedang/Berat: Dikoordinasikan dengan Kepala Seksi / Camat dengan batas waktu penyelesaian maksimal 1 (satu) minggu."
+      },
+      "daftar_layanan": [
+        {
+          "simat_layanan_id": 1,
+          "nama_layanan": "Registrasi Surat Keterangan Pindah Penduduk WNI Antar Kecamatan Dalam Satu Daerah",
+          "slug": "registrasi-surat-keterangan-pindah-penduduk-wni-antar-kecamatan-dalam-satu-daerah",
+          "standar_pelayanan": {
+            "waktu_penyelesaian": "15 – 30 menit (jika persyaratan lengkap dan pejabat ada di tempat)",
+            "biaya_tarif": "Gratis",
+            "produk_pelayanan": "Surat Keterangan Pindah Penduduk WNI Antar Kecamatan dalam Satu Daerah yang telah diregister dan ditandatangani",
+            "jumlah_pelaksana_teknis": "4 orang pelaksana teknis",
+            "penanggung_jawab_teknis": "Kasi Tata Pemerintahan dan Pelayanan Publik",
+            "kualifikasi_pelaksana": "• Pendidikan minimum SMA/Sederajat\n• Mampu mengoperasikan komputer\n• Mempunyai kemampuan berkomunikasi yang baik",
+            "pengaduan_langsung": "Melalui petugas di loket pelayanan Kantor Kec. Cibeureum",
+            "mekanisme_pengaduan_tindak_lanjut": "• Pengaduan Ringan: Ditanggapi dan diselesaikan langsung oleh petugas loket atau via WhatsApp.\n• Pengaduan Sedang/Berat: Dikoordinasikan dengan Kepala Seksi / Camat dengan batas waktu penyelesaian maksimal 1 (satu) minggu.",
+            "persyaratan": [
+              {
+                "urutan": 1,
+                "isi": "Surat Keterangan Pindah Penduduk Antar Kecamatan yang telah ditandatangani pejabat Kelurahan."
+              },
+              {
+                "urutan": 2,
+                "isi": "Formulir Permohonan Pindah yang telah diisi."
+              },
+              {
+                "urutan": 3,
+                "isi": "Fotocopy KTP dan KK pemohon (masing-masing 1 lembar)."
+              }
+            ],
+            "prosedur": [
+              {
+                "urutan": 1,
+                "isi": "Pemohon datang ke loket pelayanan dengan membawa berkas persyaratan."
+              },
+              {
+                "urutan": 2,
+                "isi": "Pemohon menyerahkan berkas kepada petugas."
+              },
+              {
+                "urutan": 3,
+                "isi": "Pemohon menunggu berkas diverifikasi dan diproses."
+              },
+              {
+                "urutan": 4,
+                "isi": "Pemohon menerima Surat Keterangan Pindah yang telah diregister dan ditandatangani."
+              }
+            ],
+            "pengaduan_channels": [
+              {
+                "jenis": "whatsapp",
+                "nilai": "081312226045"
+              },
+              {
+                "jenis": "kotak_pengaduan",
+                "nilai": "Ruang pelayanan Kantor Kec. Cibeureum (Jl. KH. Khoer Affandi No. 160)"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kecamatan": {
+        "id": "327801",
+        "nama_kecamatan": "Kecamatan Cihideung",
+        "subdomain": "kecamatan-cihideung",
+        "maklumat_pelayanan": {
+          "isi": null,
+          "penandatangan": null
+        },
+        "ikm": {
+          "nilai": null,
+          "kategori": null,
+          "tahun": null,
+          "responden": null,
+          "periode": null
+        },
+        "profil_penyelenggara": {
+          "jam_kerja": null,
+          "jumlah_pelaksana": null,
+          "penanggung_jawab": null,
+          "kualifikasi_pelaksana": null,
+          "alamat": "Jl. Cihideung No. 12, Tasikmalaya",
+          "telepon": "(0265) 331234",
+          "email": "kecamatan.cihideung@tasikmalayakota.go.id"
+        },
+        "mekanisme_pengaduan_global": null
+      },
+      "daftar_layanan": [
+        {
+          "simat_layanan_id": 2,
+          "nama_layanan": "Pengurusan Surat Keterangan Usaha (SKU)",
+          "slug": "pengurusan-surat-keterangan-usaha-sku",
+          "standar_pelayanan": {
+            "waktu_penyelesaian": "1 Hari Kerja",
+            "biaya_tarif": "Gratis",
+            "produk_pelayanan": "Surat Keterangan Usaha (SKU)",
+            "jumlah_pelaksana_teknis": null,
+            "penanggung_jawab_teknis": null,
+            "kualifikasi_pelaksana": null,
+            "pengaduan_langsung": "Loket Pelayanan Kantor Kecamatan Cihideung",
+            "mekanisme_pengaduan_tindak_lanjut": null,
+            "persyaratan": [
+              {
+                "urutan": 1,
+                "isi": "Surat Pengantar dari Kelurahan setempat."
+              },
+              {
+                "urutan": 2,
+                "isi": "Fotocopy KTP dan KK."
+              }
+            ],
+            "prosedur": [
+              {
+                "urutan": 1,
+                "isi": "Pemohon menyerahkan berkas ke petugas."
+              },
+              {
+                "urutan": 2,
+                "isi": "Petugas memproses dokumen SKU."
+              }
+            ],
+            "pengaduan_channels": [
+              {
+                "jenis": "email",
+                "nilai": "pengaduan.cihideung@tasikmalayakota.go.id"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
