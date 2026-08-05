@@ -21,7 +21,7 @@
             <div class="relative z-10">
                 <div class="max-w-3xl">
                     <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-400/10 border border-blue-400/20 text-blue-300 text-[11px] font-bold uppercase tracking-wider mb-3">
-                        {{ $layanan->nama_kecamatan ?? 'Kecamatan Cihideung' }}
+                        Pemerintah Kecamatan {{ str_replace('Kecamatan ', '', $layanan->nama_kecamatan ?? 'Cihideung') }}
                     </div>
                     <h1 class="text-2xl sm:text-4xl font-extrabold text-white mb-3 tracking-tight leading-tight">
                         {{ $layanan->nama_layanan ?? 'Pembuatan Kartu Keluarga (KK)' }}
