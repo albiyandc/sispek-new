@@ -16,7 +16,6 @@
             <div class="absolute top-0 right-0 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
             <div class="relative z-10 max-w-3xl">
                 <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-400/10 border border-blue-400/20 text-blue-300 text-[11px] font-bold uppercase tracking-wider mb-4">
-                    <span class="material-symbols-outlined text-sm">list_alt</span>
                     Katalog Pelayanan
                 </div>
                 @if(isset($query) && $query != '')
