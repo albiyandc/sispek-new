@@ -1,24 +1,27 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="bg-[#F8FAFC] min-h-screen pb-20 pt-8">
+<div class="bg-[#F8FAFC] min-h-screen pb-20 pt-0 sm:pt-4">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 fade-in-up">
         
-        <!-- Breadcrumb -->
-        <div class="text-xs text-slate-400 mb-6 flex items-center gap-1.5 font-medium overflow-x-auto whitespace-nowrap pb-1">
+        <!-- Breadcrumb (Hidden on Mobile) -->
+        <div class="hidden md:flex text-xs text-slate-400 mb-6 items-center gap-1.5 font-medium overflow-x-auto whitespace-nowrap pb-1">
             <a href="{{ route('home') }}" class="hover:text-blue-600 transition-colors">Beranda</a> 
             <span>&rsaquo;</span> 
             <a href="{{ route('layanan.semua') }}" class="hover:text-blue-600 transition-colors">Pelayanan Publik</a> 
             <span>&rsaquo;</span> 
             @if(isset($layanan->nama_kecamatan))
-                <a href="{{ route('kecamatan.show', $layanan->nama_kecamatan) }}" class="hover:text-blue-600 transition-colors">Kecamatan {{ $layanan->nama_kecamatan }}</a> 
+                @php
+                    $fmtKec = str_starts_with(strtolower(trim($layanan->nama_kecamatan)), 'kecamatan') ? $layanan->nama_kecamatan : 'Kecamatan ' . $layanan->nama_kecamatan;
+                @endphp
+                <a href="{{ route('kecamatan.show', $layanan->nama_kecamatan) }}" class="hover:text-blue-600 transition-colors">{{ $fmtKec }}</a> 
                 <span>&rsaquo;</span> 
             @endif
             <span class="font-bold text-slate-800">{{ $layanan->nama_layanan ?? 'Detail Layanan' }}</span>
         </div>
 
         <!-- Header Hero Banner Full Width -->
-        <div class="bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 text-white rounded-3xl p-8 sm:p-12 mb-8 shadow-xl relative overflow-hidden">
+        <div class="bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 text-white rounded-b-3xl sm:rounded-3xl p-6 sm:p-10 lg:p-12 mb-8 shadow-xl relative overflow-hidden -mt-16 pt-20 sm:-mt-20 sm:pt-24 lg:-mt-24 lg:pt-28">
             <div class="absolute top-0 right-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
             <div class="relative z-10">
                 <div class="max-w-3xl">
