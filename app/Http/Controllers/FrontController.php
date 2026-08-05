@@ -125,7 +125,7 @@ class FrontController extends Controller
         return view('detail_layanan', compact('layanan'));
     }
 
-    public function kategori($kategori)
+    public function kategori(Request $request, $kategori)
     {
         $mappingKategori = [
             'umum' => ['Cihideung', 'Bungursari'],
@@ -139,9 +139,20 @@ class FrontController extends Controller
 
         $kategoriLower = strtolower($kategori);
         $kecamatans = $mappingKategori[$kategoriLower] ?? [];
-        $namaKategori = strtoupper($kategori);
+        
+        $namaLayanan = null;
+        $serviceId = $request->input('service_id');
+        if ($serviceId) {
+            $dummyServices = $this->getDummyServices();
+            $dummy = collect($dummyServices)->firstWhere('id', (int)$serviceId);
+            if ($dummy) {
+                $namaLayanan = $dummy['judul'];
+            }
+        }
 
-        return view('kategori', compact('kecamatans', 'namaKategori'));
+        $namaLayanan = $namaLayanan ?? strtoupper($kategori);
+
+        return view('kategori', compact('kecamatans', 'namaLayanan'));
     }
 
     public function trackKategori($id, $kategori)
@@ -156,8 +167,8 @@ class FrontController extends Controller
         $clicks[$id] = ($clicks[$id] ?? 0) + 1;
         session()->put('service_clicks', $clicks);
 
-        // Redirect ke pilihan kecamatan berdasarkan kategori
-        return redirect()->route('kategori.show', ['kategori' => $kategori]);
+        // Redirect ke pilihan kecamatan berdasarkan nama layanan / kategori
+        return redirect()->route('kategori.show', ['kategori' => $kategori, 'service_id' => $id]);
     }
 
     public function trackClickApi($id)

@@ -8,15 +8,15 @@
         <div class="text-[10px] sm:text-xs text-gray-500 mb-6 flex items-center gap-2 font-medium">
             <a href="{{ route('home') }}" class="hover:text-blue-600 transition">Beranda</a> 
             <span>&rsaquo;</span> 
-            <a href="{{ route('home') }}#daftar-layanan" class="hover:text-blue-600 transition">Kategori Layanan</a> 
+            <a href="{{ route('home') }}#daftar-layanan" class="hover:text-blue-600 transition">Pilihan Daerah</a> 
             <span>&rsaquo;</span> 
-            <span class="font-bold text-gray-800">{{ $namaKategori }}</span>
+            <span class="font-bold text-gray-800">{{ $namaLayanan }}</span>
         </div>
 
         <!-- Header -->
         <div class="mb-8 sm:mb-12 text-center sm:text-left">
-            <h2 class="text-xl sm:text-3xl font-bold text-gray-900 mb-2 sm:mb-3">Kecamatan dengan Layanan Kategori: <span class="text-[#1e3a8a]">{{ $namaKategori }}</span></h2>
-            <p class="text-[11px] sm:text-base text-gray-500 max-w-3xl mx-auto sm:mx-0">Pilih kecamatan di bawah ini untuk melihat detail layanan {{ strtolower($namaKategori) }} yang tersedia.</p>
+            <h2 class="text-xl sm:text-3xl font-bold text-gray-900 mb-2 sm:mb-3">Kecamatan dengan Layanan: <span class="text-[#1e3a8a]">{{ $namaLayanan }}</span></h2>
+            <p class="text-[11px] sm:text-base text-gray-500 max-w-3xl mx-auto sm:mx-0">Pilih kecamatan di bawah ini untuk melihat detail layanan {{ strtolower($namaLayanan) }} yang tersedia.</p>
         </div>
         
         @if(count($kecamatans) > 0)
@@ -44,7 +44,7 @@
                     <span class="material-symbols-outlined text-3xl sm:text-4xl">search_off</span>
                 </div>
                 <h3 class="text-lg sm:text-xl font-bold text-gray-800 mb-2">Tidak Ada Data</h3>
-                <p class="text-xs sm:text-sm text-gray-500">Belum ada data kecamatan untuk kategori {{ $namaKategori }}.</p>
+                <p class="text-xs sm:text-sm text-gray-500">Belum ada data kecamatan untuk {{ $namaLayanan }}.</p>
                 <a href="{{ route('home') }}" class="inline-block mt-6 px-6 py-2 bg-[#1e3a8a] text-white rounded-full text-xs sm:text-sm font-medium hover:bg-blue-800 transition-colors">Kembali ke Beranda</a>
             </div>
         @endif
