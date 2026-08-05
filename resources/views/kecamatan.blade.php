@@ -16,16 +16,11 @@
         <!-- Banner Blue Ambient Full Width -->
         <div class="bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 text-white rounded-3xl p-8 sm:p-10 mb-8 shadow-xl relative overflow-hidden">
             <div class="absolute top-0 right-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
-            <div class="relative z-10">
-                <div class="max-w-3xl">
-                    <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-400/10 border border-blue-400/20 text-blue-300 text-[11px] font-bold uppercase tracking-wider mb-3">
-                        Pemerintah Kecamatan {{ $nama_kecamatan }}
-                    </div>
-                    <h1 class="text-2xl sm:text-4xl font-extrabold mb-3 tracking-tight">Pelayanan Publik Kecamatan {{ $nama_kecamatan }}</h1>
-                    <p class="text-slate-300 max-w-2xl text-xs sm:text-sm leading-relaxed">
-                        Pusat standar informasi pelayanan publik digital dan perizinan resmi warga Kecamatan {{ $nama_kecamatan }}, Kota Tasikmalaya.
-                    </p>
-                </div>
+            <div class="relative z-10 max-w-3xl">
+                <h1 class="text-2xl sm:text-4xl font-extrabold mb-3 tracking-tight">Pelayanan Publik Kecamatan {{ $nama_kecamatan }}</h1>
+                <p class="text-slate-300 max-w-2xl text-xs sm:text-sm leading-relaxed">
+                    Pusat standar informasi pelayanan publik digital dan perizinan resmi warga Kecamatan {{ $nama_kecamatan }}, Kota Tasikmalaya.
+                </p>
             </div>
         </div>
 
