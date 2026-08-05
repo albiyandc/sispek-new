@@ -91,15 +91,23 @@ class FrontController extends Controller
         return view('semua_layanan', compact('services', 'query'));
     }
 
-    public function kecamatan($nama_kecamatan)
+    public function kecamatan(Request $request, $nama_kecamatan)
     {
-        $dummyServices = $this->getDummyServices();
-        $dummy = collect($dummyServices)->first(function ($s) use ($nama_kecamatan) {
-            return str_contains(strtolower($s['kecamatan']), strtolower($nama_kecamatan));
-        }) ?? $dummyServices[0];
+        $serviceId = $request->input('service_id');
+        if ($serviceId) {
+            return redirect()->route('layanan.detail', ['id' => $serviceId]);
+        }
 
-        // Langsung redirect ke detail_layanan (persyaratan)
-        return redirect()->route('layanan.detail', ['id' => $dummy['id']]);
+        $dummyServices = $this->getDummyServices();
+        $layanans = collect($dummyServices)->map(function ($s) {
+            return (object)[
+                'id_layanan' => $s['id'],
+                'nama_layanan' => $s['judul'],
+                'produk_pelayanan' => $s['deskripsi']
+            ];
+        });
+
+        return view('kecamatan', compact('nama_kecamatan', 'layanans'));
     }
 
     public function detailLayanan($id)
@@ -152,7 +160,7 @@ class FrontController extends Controller
 
         $namaLayanan = $namaLayanan ?? strtoupper($kategori);
 
-        return view('kategori', compact('kecamatans', 'namaLayanan'));
+        return view('kategori', compact('kecamatans', 'namaLayanan', 'serviceId'));
     }
 
     public function trackKategori($id, $kategori)

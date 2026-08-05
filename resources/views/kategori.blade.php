@@ -22,7 +22,7 @@
         @if(count($kecamatans) > 0)
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
                 @foreach($kecamatans as $kecamatan)
-                <a href="{{ route('kecamatan.show', $kecamatan) }}" class="group bg-white rounded-xl py-6 px-4 sm:p-8 text-center flex flex-col items-center justify-center border border-gray-100 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                <a href="{{ route('kecamatan.show', ['nama_kecamatan' => $kecamatan, 'service_id' => $serviceId ?? null]) }}" class="group bg-white rounded-xl py-6 px-4 sm:p-8 text-center flex flex-col items-center justify-center border border-gray-100 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
                     <!-- Icon -->
                     <div class="bg-blue-50 text-[#1e3a8a] w-12 h-12 sm:w-16 sm:h-16 rounded-full flex items-center justify-center mb-3 sm:mb-4 group-hover:bg-[#1e3a8a] group-hover:text-white transition-all duration-300">
                         <span class="material-symbols-outlined text-2xl sm:text-3xl">location_city</span>
