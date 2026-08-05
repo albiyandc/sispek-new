@@ -58,7 +58,10 @@
                     
                     <!-- Dropdown Kecamatan Grid 2-Kolom -->
                     <div x-data="{ openKecamatan: false }" class="relative" @click.away="openKecamatan = false" @mouseenter="openKecamatan = true" @mouseleave="openKecamatan = false">
-                        <button class="flex items-center gap-1.5 px-4 py-2 rounded-full hover:bg-slate-100 transition-all duration-200 text-slate-700 hover:text-blue-600 outline-none font-bold">
+                        @php
+                            $activeKecName = $nama_kecamatan ?? request()->route('nama_kecamatan') ?? ($layanan->nama_kecamatan ?? null);
+                        @endphp
+                        <button class="flex items-center gap-1.5 px-4 py-2 rounded-full transition-all duration-200 outline-none font-bold {{ request()->routeIs('kecamatan.*') || !empty($activeKecName) ? 'bg-[#003da5] text-white shadow-md shadow-blue-600/20' : 'hover:bg-slate-100 text-slate-700 hover:text-blue-600' }}">
                             <span>Kecamatan</span>
                             <span class="material-symbols-outlined text-lg transition-transform duration-200" :class="{ 'rotate-180 text-blue-600': openKecamatan }">expand_more</span>
                         </button>
@@ -72,8 +75,11 @@
                                     sort($menuKecamatans);
                                 @endphp
                                 @foreach($menuKecamatans as $kec)
-                                    <a href="{{ route('kecamatan.show', $kec) }}" class="flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-semibold text-slate-700 hover:bg-blue-50 hover:text-blue-700 transition-all group/item">
-                                        <span class="w-2 h-2 rounded-full bg-blue-500/30 group-hover/item:bg-blue-600 transition-colors"></span>
+                                    @php
+                                        $isCurKec = !empty($activeKecName) && strtolower(trim($activeKecName)) == strtolower(trim($kec));
+                                    @endphp
+                                    <a href="{{ route('kecamatan.show', $kec) }}" class="flex items-center gap-2 px-3 py-2 rounded-xl text-xs transition-all group/item {{ $isCurKec ? 'bg-blue-50 text-blue-600 font-extrabold shadow-sm' : 'font-semibold text-slate-700 hover:bg-blue-50 hover:text-blue-700' }}">
+                                        <span class="w-2 h-2 rounded-full transition-colors {{ $isCurKec ? 'bg-blue-600 shadow-sm' : 'bg-blue-500/30 group-hover/item:bg-blue-600' }}"></span>
                                         {{ $kec }}
                                     </a>
                                 @endforeach
@@ -111,9 +117,9 @@
                 <a href="{{ route('layanan.semua') }}" class="block px-4 py-3 rounded-2xl text-xs font-extrabold transition-all {{ request()->routeIs('layanan.semua') ? 'bg-[#003da5] text-white shadow-md shadow-blue-600/20' : 'text-slate-700 hover:bg-slate-50' }}">Semua Layanan</a>
                 
                 <div x-data="{ openKecamatanMobile: false }">
-                    <button @click="openKecamatanMobile = !openKecamatanMobile" class="w-full text-left flex justify-between items-center px-4 py-3 rounded-2xl text-xs font-extrabold text-slate-700 hover:bg-slate-50">
+                    <button @click="openKecamatanMobile = !openKecamatanMobile" class="w-full text-left flex justify-between items-center px-4 py-3 rounded-2xl text-xs font-extrabold transition-all {{ request()->routeIs('kecamatan.*') || !empty($activeKecName) ? 'bg-[#003da5] text-white shadow-md shadow-blue-600/20' : 'text-slate-700 hover:bg-slate-50' }}">
                         <span>Pilih Kecamatan</span>
-                        <span class="material-symbols-outlined text-base text-slate-400 transition-transform duration-200" :class="{ 'rotate-180 text-blue-600': openKecamatanMobile }">expand_more</span>
+                        <span class="material-symbols-outlined text-base transition-transform duration-200" :class="{ 'rotate-180': openKecamatanMobile }">expand_more</span>
                     </button>
                     <div x-show="openKecamatanMobile" class="pl-4 pr-2 py-2 grid grid-cols-2 gap-1 bg-slate-50 rounded-2xl mt-1" style="display: none;">
                         @php
@@ -121,7 +127,10 @@
                             sort($menuKecamatans);
                         @endphp
                         @foreach($menuKecamatans as $kec)
-                            <a href="{{ route('kecamatan.show', $kec) }}" class="block px-3 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:text-blue-700 hover:bg-blue-100/50 transition-colors">{{ $kec }}</a>
+                            @php
+                                $isCurKecMob = !empty($activeKecName) && strtolower(trim($activeKecName)) == strtolower(trim($kec));
+                            @endphp
+                            <a href="{{ route('kecamatan.show', $kec) }}" class="block px-3 py-2 rounded-xl text-xs transition-colors {{ $isCurKecMob ? 'font-extrabold text-blue-700 bg-blue-100/70' : 'font-semibold text-slate-600 hover:text-blue-700 hover:bg-blue-100/50' }}">{{ $kec }}</a>
                         @endforeach
                     </div>
                 </div>
