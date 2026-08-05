@@ -33,9 +33,13 @@
             <div class="absolute top-2 right-4 text-slate-100 text-8xl font-serif select-none pointer-events-none">”</div>
             <div class="relative z-10">
                 <div class="text-[10px] font-extrabold text-blue-600 tracking-widest uppercase mb-2">MAKLUMAT PELAYANAN</div>
-                <p class="text-slate-700 text-xs sm:text-sm italic font-medium leading-relaxed pr-8">
+                <p class="text-slate-700 text-xs sm:text-sm italic font-medium leading-relaxed mb-6 pr-8">
                     "Dengan ini, kami menyatakan sanggup menyelenggarakan pelayanan sesuai standar pelayanan yang telah ditetapkan dan apabila tidak menepati janji ini, kami siap menerima sanksi sesuai peraturan perundang-undangan yang berlaku."
                 </p>
+                <div>
+                    <div class="font-bold text-slate-900 text-xs sm:text-sm">Camat {{ $nama_kecamatan }}</div>
+                    <div class="text-[10px] text-slate-400">Pemerintah Kota Tasikmalaya</div>
+                </div>
             </div>
         </div>
 
