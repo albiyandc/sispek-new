@@ -164,20 +164,86 @@
 </div>
 
 <script>
-document.addEventListener('DOMContentLoaded', function () {
-    document.querySelectorAll('.service-card').forEach(function (card) {
-        card.addEventListener('click', function (e) {
+(function () {
+    const STORAGE_KEY = 'sispek_service_clicks';
+
+    // Load local click counts
+    function getLocalClicks() {
+        try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; } catch { return {}; }
+    }
+
+    function saveLocalClicks(clicks) {
+        try { localStorage.setItem(STORAGE_KEY, JSON.stringify(clicks)); } catch {}
+    }
+
+    function incrementLocalClick(id) {
+        const clicks = getLocalClicks();
+        clicks[id] = (clicks[id] || 0) + 1;
+        saveLocalClicks(clicks);
+        return clicks[id];
+    }
+
+    // On page load: merge server clicks + local clicks, then re-sort cards
+    function sortCards() {
+        const grid = document.getElementById('services-grid');
+        if (!grid) return;
+        const localClicks = getLocalClicks();
+        const cards = Array.from(grid.querySelectorAll('.service-card'));
+
+        cards.forEach(function (card) {
             const id = card.dataset.id;
-            if (!id) return;
-            // Fire-and-forget: track click then navigate
-            const dest = card.getAttribute('href');
-            e.preventDefault();
-            fetch(`/api/track-click/${id}`, { method: 'POST', headers: { 'X-Requested-With': 'XMLHttpRequest', 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.content ?? '' } })
-                .finally(function () {
-                    window.location.href = dest;
-                });
+            const serverClicks = parseInt(card.dataset.clicks || '0', 10);
+            const local = parseInt(localClicks[id] || '0', 10);
+            card.dataset.totalClicks = serverClicks + local;
         });
+
+        // Sort descending by total clicks
+        cards.sort(function (a, b) {
+            return parseInt(b.dataset.totalClicks, 10) - parseInt(a.dataset.totalClicks, 10);
+        });
+
+        // Re-append in new order (no flicker, just reorder)
+        cards.forEach(function (card) { grid.appendChild(card); });
+    }
+
+    // Attach click listeners
+    function attachTracking() {
+        document.querySelectorAll('.service-card').forEach(function (card) {
+            card.addEventListener('click', function (e) {
+                const id = card.dataset.id;
+                if (!id) return;
+                e.preventDefault();
+                const dest = card.getAttribute('href');
+
+                // Increment local immediately
+                incrementLocalClick(id);
+
+                // Fire server tracking (fire-and-forget)
+                fetch('/api/track-click/' + id, {
+                    method: 'POST',
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest',
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.content ?? ''
+                    }
+                }).catch(function(){});
+
+                // Navigate immediately without waiting
+                window.location.href = dest;
+            });
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        sortCards();
+        attachTracking();
     });
-});
+
+    // Also handle browser back/forward navigation (bfcache)
+    window.addEventListener('pageshow', function (e) {
+        if (e.persisted) {
+            sortCards();
+        }
+    });
+})();
 </script>
 @endsection
