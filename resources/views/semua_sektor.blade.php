@@ -1,57 +1,65 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="bg-[#fcfdfd] min-h-screen pb-16 pt-8">
+<div class="bg-[#F8FAFC] min-h-screen pb-20 pt-8">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 fade-in-up">
         
         <!-- Breadcrumb -->
-        <div class="text-[10px] sm:text-xs text-gray-500 mb-6 flex items-center gap-2 font-medium">
-            <a href="{{ route('home') }}" class="hover:text-blue-600 transition">Beranda</a> 
+        <div class="text-xs text-slate-400 mb-6 flex items-center gap-2 font-medium">
+            <a href="{{ route('home') }}" class="hover:text-blue-600 transition-colors">Beranda</a> 
             <span>&rsaquo;</span> 
-            <span class="font-bold text-gray-800">Semua Sektor Pelayanan</span>
+            <span class="text-slate-700 font-bold">Semua Sektor Pelayanan</span>
         </div>
 
-        <!-- Header -->
-        <div class="mb-8 sm:mb-12 text-center sm:text-left">
-            <h2 class="text-xl sm:text-3xl font-bold text-gray-900 mb-2 sm:mb-3">Sektor Pelayanan Publik</h2>
-            <p class="text-[11px] sm:text-base text-gray-500 max-w-3xl mx-auto sm:mx-0">Semua sektor bidang pelayanan publik yang tersedia di Kota Tasikmalaya.</p>
+        <!-- Header Banner -->
+        <div class="bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 text-white rounded-3xl p-8 sm:p-12 mb-10 shadow-xl relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="relative z-10 max-w-3xl">
+                <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-400/10 border border-blue-400/20 text-blue-300 text-[11px] font-bold uppercase tracking-wider mb-4">
+                    <span class="material-symbols-outlined text-sm">grid_view</span>
+                    Kategori Sektor
+                </div>
+                <h1 class="text-2xl sm:text-4xl font-extrabold text-white mb-3">Sektor Pelayanan Publik</h1>
+                <p class="text-xs sm:text-base text-slate-300 leading-relaxed">Seluruh sektor kategorial pelayanan publik resmi Kota Tasikmalaya.</p>
+            </div>
         </div>
 
         <!-- Search Bar -->
         <form action="{{ route('sektor.semua') }}" method="GET" class="mb-8 max-w-2xl">
-            <div class="relative">
-                <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-gray-400">
-                    <span class="material-symbols-outlined text-lg">search</span>
+            <div class="relative w-full">
+                <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-400">
+                    <span class="material-symbols-outlined text-xl">search</span>
                 </div>
-                <input type="text" name="q" value="{{ $query ?? '' }}" placeholder="Cari sektor pelayanan..." class="w-full bg-white border border-gray-200 rounded-2xl py-3.5 pl-11 pr-4 text-xs sm:text-sm text-gray-700 placeholder-gray-400 focus:ring-2 focus:ring-blue-200 outline-none shadow-sm">
+                <input type="text" name="q" value="{{ $query ?? '' }}" placeholder="Cari sektor pelayanan..." class="w-full bg-white border border-slate-200/80 rounded-2xl py-3.5 pl-11 pr-4 text-xs sm:text-sm text-slate-800 placeholder-slate-400 focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 outline-none shadow-sm transition-all">
             </div>
         </form>
         
         @if(count($sektors) > 0)
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
                 @foreach($sektors as $sektor)
-                <a href="{{ route('sektor.show', $sektor['slug']) }}" class="group bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex items-start gap-5">
-                    <div class="w-14 h-14 rounded-xl {{ $sektor['bg_color'] }} flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
-                        <span class="material-symbols-outlined {{ $sektor['text_color'] }} text-2xl" style="font-variation-settings: 'FILL' 1;">{{ $sektor['icon'] }}</span>
+                <a href="{{ route('sektor.show', $sektor['slug']) }}" class="group bg-white p-6 sm:p-7 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:shadow-indigo-500/5 hover:-translate-y-1.5 transition-all duration-300 flex items-start gap-5 relative overflow-hidden">
+                    <div class="w-14 h-14 rounded-2xl {{ $sektor['bg_color'] }} flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform shadow-sm">
+                        <span class="material-symbols-outlined {{ $sektor['text_color'] }} text-3xl" style="font-variation-settings: 'FILL' 1;">{{ $sektor['icon'] }}</span>
                     </div>
-                    <div class="flex-1">
-                        <h4 class="text-base sm:text-lg font-bold text-gray-900 mb-1 group-hover:text-[#1e3a8a] transition-colors">{{ $sektor['nama'] }}</h4>
-                        <p class="text-xs text-gray-500 line-clamp-2 mb-3 leading-relaxed">{{ $sektor['deskripsi'] }}</p>
-                        <div class="text-[#1e3a8a] text-xs font-semibold flex items-center gap-1 group-hover:gap-2 transition-all">
-                            Lihat Layanan <span class="material-symbols-outlined text-xs">arrow_forward</span>
+                    <div class="flex-1 min-w-0">
+                        <h3 class="text-base sm:text-lg font-bold text-slate-900 mb-1.5 group-hover:text-blue-600 transition-colors line-clamp-1">{{ $sektor['nama'] }}</h3>
+                        <p class="text-xs text-slate-500 line-clamp-2 leading-relaxed mb-4">{{ $sektor['deskripsi'] }}</p>
+                        <div class="text-blue-600 text-xs font-bold flex items-center gap-1 group-hover:gap-2 transition-all">
+                            <span>Jelajahi Sektor</span>
+                            <span class="material-symbols-outlined text-sm">chevron_right</span>
                         </div>
                     </div>
                 </a>
                 @endforeach
             </div>
         @else
-            <div class="bg-white rounded-2xl p-8 sm:p-16 text-center border border-gray-100 shadow-sm">
-                <div class="bg-blue-50 text-blue-300 w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+            <div class="bg-white rounded-3xl p-12 sm:p-20 text-center border border-slate-100 shadow-sm">
+                <div class="bg-blue-50 text-blue-400 w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center mx-auto mb-4">
                     <span class="material-symbols-outlined text-3xl sm:text-4xl">search_off</span>
                 </div>
-                <h3 class="text-lg sm:text-xl font-bold text-gray-800 mb-2">Sektor Tidak Ditemukan</h3>
-                <p class="text-xs sm:text-sm text-gray-500">Tidak ada sektor pelayanan yang cocok dengan pencarian "{{ $query }}".</p>
-                <a href="{{ route('sektor.semua') }}" class="inline-block mt-6 px-6 py-2 bg-[#1e3a8a] text-white rounded-full text-xs sm:text-sm font-medium hover:bg-blue-800 transition-colors">Tampilkan Semua Sektor</a>
+                <h3 class="text-lg sm:text-xl font-bold text-slate-800 mb-2">Sektor Tidak Ditemukan</h3>
+                <p class="text-xs sm:text-sm text-slate-500">Tidak ada sektor pelayanan yang cocok dengan pencarian "{{ $query }}".</p>
+                <a href="{{ route('sektor.semua') }}" class="inline-block mt-6 px-6 py-2.5 bg-blue-600 text-white rounded-full text-xs sm:text-sm font-bold hover:bg-blue-700 transition-colors shadow-md">Tampilkan Semua Sektor</a>
             </div>
         @endif
 

@@ -1,106 +1,108 @@
 @extends('layouts.app')
 
 @section('content')
-<!-- Background Abu-abu Muda persis gambar -->
-<div class="bg-[#fcfdfd] min-h-screen pb-16 pt-6">
+<div class="bg-[#F8FAFC] min-h-screen pb-20 pt-8">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 fade-in-up">
         
         <!-- Breadcrumb -->
-        <div class="text-[10px] sm:text-xs text-gray-500 mb-6 flex items-center gap-1.5 font-medium overflow-x-auto whitespace-nowrap pb-1">
-            <a href="{{ route('home') }}" class="hover:text-blue-600 transition">Beranda</a> 
+        <div class="text-xs text-slate-400 mb-6 flex items-center gap-1.5 font-medium overflow-x-auto whitespace-nowrap pb-1">
+            <a href="{{ route('home') }}" class="hover:text-blue-600 transition-colors">Beranda</a> 
             <span>&rsaquo;</span> 
-            <a href="#" class="hover:text-blue-600 transition">Pelayanan Publik</a> 
+            <span>Pelayanan Publik</span> 
             <span>&rsaquo;</span> 
-            <span class="font-bold text-gray-800">Kecamatan {{ $nama_kecamatan }}</span>
+            <span class="font-bold text-slate-800">Kecamatan {{ $nama_kecamatan }}</span>
         </div>
 
-        <!-- Banner Biru -->
-        <div class="bg-[#0b53c8] text-white rounded-2xl p-8 lg:p-10 mb-6 shadow-sm relative overflow-hidden">
+        <!-- Banner Blue Ambient -->
+        <div class="bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 text-white rounded-3xl p-8 sm:p-10 mb-8 shadow-xl relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
             <div class="relative z-10">
-                <h1 class="text-xl sm:text-2xl lg:text-3xl font-extrabold mb-2 tracking-tight">Layanan Publik Kecamatan {{ $nama_kecamatan }}</h1>
-                <p class="text-blue-100 max-w-2xl text-xs sm:text-sm leading-relaxed">
-                    Akses cepat layanan administrasi, perizinan, dan kependudukan resmi untuk seluruh warga Kecamatan {{ $nama_kecamatan }}, Kota Tasikmalaya.
+                <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-400/10 border border-blue-400/20 text-blue-300 text-[11px] font-bold uppercase tracking-wider mb-3">
+                    <span class="material-symbols-outlined text-sm">location_city</span>
+                    Pemerintah Kecamatan
+                </div>
+                <h1 class="text-2xl sm:text-4xl font-extrabold mb-3 tracking-tight">Pelayanan Publik Kecamatan {{ $nama_kecamatan }}</h1>
+                <p class="text-slate-300 max-w-2xl text-xs sm:text-sm leading-relaxed">
+                    Pusat standar informasi pelayanan publik digital dan perizinan resmi warga Kecamatan {{ $nama_kecamatan }}, Kota Tasikmalaya.
                 </p>
             </div>
         </div>
 
-        <!-- Maklumat Pelayanan Box -->
-        <div class="bg-[#f0f4fc] rounded-2xl p-6 sm:p-8 mb-6 relative overflow-hidden border-l-4 border-l-[#0b53c8]">
-            <div class="absolute top-2 right-4 text-gray-300 opacity-60 text-7xl font-serif select-none pointer-events-none">”</div>
-            <div class="relative z-10">
-                <div class="text-[10px] font-bold text-[#0b53c8] tracking-widest uppercase mb-3">MAKLUMAT PELAYANAN</div>
-                <p class="text-gray-800 text-xs sm:text-sm italic font-medium leading-relaxed mb-6 pr-8">
+        <!-- Maklumat Pelayanan Card -->
+        <div class="bg-white rounded-3xl p-6 sm:p-8 mb-6 relative overflow-hidden border border-slate-100 shadow-sm">
+            <div class="absolute top-0 left-0 w-2 h-full bg-blue-600"></div>
+            <div class="absolute top-2 right-4 text-slate-100 text-8xl font-serif select-none pointer-events-none">”</div>
+            <div class="relative z-10 pl-2">
+                <div class="text-[10px] font-extrabold text-blue-600 tracking-widest uppercase mb-2">MAKLUMAT PELAYANAN</div>
+                <p class="text-slate-700 text-xs sm:text-sm italic font-medium leading-relaxed mb-6 pr-8">
                     "Dengan ini, kami menyatakan sanggup menyelenggarakan pelayanan sesuai standar pelayanan yang telah ditetapkan dan apabila tidak menepati janji ini, kami siap menerima sanksi sesuai peraturan perundang-undangan yang berlaku."
                 </p>
                 <div class="flex items-center gap-3">
-                    <div class="w-8 h-8 rounded-full bg-[#0b53c8] text-white flex items-center justify-center font-bold text-xs shadow-sm">
+                    <div class="w-9 h-9 rounded-xl bg-blue-600 text-white flex items-center justify-center font-bold text-xs shadow-md">
                         {{ substr($nama_kecamatan, 0, 1) }}
                     </div>
                     <div>
-                        <div class="font-bold text-gray-900 text-xs">Camat {{ $nama_kecamatan }}</div>
-                        <div class="text-[10px] text-gray-500">Pemerintah Kota Tasikmalaya</div>
+                        <div class="font-bold text-slate-900 text-xs sm:text-sm">Camat {{ $nama_kecamatan }}</div>
+                        <div class="text-[10px] text-slate-400">Pemerintah Kota Tasikmalaya</div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Indeks Kepuasan Masyarakat (IKM) Box -->
-        <div class="bg-[#f0f4fc] rounded-2xl p-5 sm:p-6 mb-6 flex flex-col sm:flex-row justify-between items-center gap-4">
-            <div class="flex items-center gap-3 w-full sm:w-auto">
-                <div class="w-10 h-10 rounded-full bg-blue-100 text-[#0b53c8] flex items-center justify-center shrink-0">
-                    <span class="material-symbols-outlined text-xl">sentiment_satisfied</span>
+        <!-- Indeks Kepuasan Masyarakat (IKM) Card -->
+        <div class="bg-gradient-to-r from-blue-50/80 to-indigo-50/50 rounded-3xl p-5 sm:p-6 mb-6 flex flex-col sm:flex-row justify-between items-center gap-4 border border-blue-100/60 shadow-sm">
+            <div class="flex items-center gap-3.5 w-full sm:w-auto">
+                <div class="w-11 h-11 rounded-2xl bg-blue-600 text-white flex items-center justify-center shrink-0 shadow-md">
+                    <span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">sentiment_satisfied</span>
                 </div>
                 <div>
-                    <div class="font-bold text-gray-900 text-xs sm:text-sm">Indeks Kepuasan Masyarakat (IKM)</div>
-                    <div class="text-[10px] text-gray-500 mt-0.5">Berdasarkan penilaian masyarakat periode terakhir</div>
+                    <div class="font-bold text-slate-900 text-xs sm:text-sm">Indeks Kepuasan Masyarakat (IKM)</div>
+                    <div class="text-[11px] text-slate-500">Penilaian masyarakat terhadap mutu pelayanan</div>
                 </div>
             </div>
-            <div class="flex items-center gap-3 bg-white px-5 py-2.5 rounded-xl border border-gray-100 shadow-sm w-full sm:w-auto justify-around sm:justify-start">
-                <div class="text-center pr-3 border-r border-gray-100">
-                    <div class="text-lg font-extrabold text-[#0b53c8]">88.35</div>
-                    <div class="text-[9px] font-bold text-gray-400 uppercase tracking-wider">SKOR IKM</div>
+            <div class="flex items-center gap-4 bg-white px-5 py-2.5 rounded-2xl border border-slate-100 shadow-sm w-full sm:w-auto justify-around sm:justify-start">
+                <div class="text-center pr-4 border-r border-slate-100">
+                    <div class="text-xl font-extrabold text-blue-600">88.35</div>
+                    <div class="text-[9px] font-bold text-slate-400 uppercase tracking-widest">SKOR IKM</div>
                 </div>
                 <div class="text-center pl-1">
                     <div class="text-xs font-extrabold text-emerald-600">Kategori A</div>
-                    <div class="text-[9px] font-bold text-emerald-600 uppercase tracking-wider">SANGAT BAIK</div>
+                    <div class="text-[9px] font-bold text-emerald-600 uppercase tracking-widest">SANGAT BAIK</div>
                 </div>
             </div>
         </div>
 
-        <!-- Kontak & Jam Kerja Box -->
-        <div class="bg-white rounded-2xl p-6 sm:p-8 mb-6 border border-gray-100 shadow-sm">
-            <h3 class="font-bold text-gray-900 text-sm sm:text-base mb-4">Kontak & Jam Kerja</h3>
-            <div class="space-y-3 text-xs text-gray-600">
-                <div class="flex items-center gap-3">
-                    <div class="w-8 h-8 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center shrink-0">
-                        <span class="material-symbols-outlined text-base">location_on</span>
-                    </div>
-                    <span>Jl. Letnan Harun No.1, Kec. {{ $nama_kecamatan }}, Kota Tasikmalaya, Jawa Barat 46151</span>
+        <!-- Informasi Kontak Card -->
+        <div class="bg-white rounded-3xl p-6 sm:p-8 mb-8 border border-slate-100 shadow-sm">
+            <h3 class="font-bold text-slate-900 text-sm sm:text-base mb-4 flex items-center gap-2">
+                <span class="material-symbols-outlined text-blue-600 text-lg">info</span>
+                Informasi Kontak & Jam Pelayanan
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs text-slate-600">
+                <div class="flex items-start gap-3 p-3 rounded-2xl bg-slate-50">
+                    <span class="material-symbols-outlined text-blue-600 text-lg shrink-0 mt-0.5">location_on</span>
+                    <span>Jl. Letnan Harun No.1, Kec. {{ $nama_kecamatan }}, Tasikmalaya 46151</span>
                 </div>
-                <div class="flex items-center gap-3">
-                    <div class="w-8 h-8 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center shrink-0">
-                        <span class="material-symbols-outlined text-base">mail</span>
-                    </div>
-                    <span>kec.{{ strtolower(str_replace(' ', '', $nama_kecamatan)) }}@tasikmalayakota.go.id</span>
+                <div class="flex items-start gap-3 p-3 rounded-2xl bg-slate-50">
+                    <span class="material-symbols-outlined text-blue-600 text-lg shrink-0 mt-0.5">mail</span>
+                    <span class="break-all">kec.{{ strtolower(str_replace(' ', '', $nama_kecamatan)) }}@tasikmalayakota.go.id</span>
                 </div>
-                <div class="flex items-center gap-3">
-                    <div class="w-8 h-8 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center shrink-0">
-                        <span class="material-symbols-outlined text-base">schedule</span>
-                    </div>
-                    <span>Senin - Jumat: 08.00 - 16.00 WIB</span>
+                <div class="flex items-start gap-3 p-3 rounded-2xl bg-slate-50">
+                    <span class="material-symbols-outlined text-blue-600 text-lg shrink-0 mt-0.5">schedule</span>
+                    <span>Senin - Jumat: <br><strong class="text-slate-800">08.00 - 16.00 WIB</strong></span>
                 </div>
             </div>
         </div>
 
         <!-- Search Bar -->
         <div class="mb-6 relative">
-            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-gray-400">
-                <span class="material-symbols-outlined text-lg">search</span>
+            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-400">
+                <span class="material-symbols-outlined text-xl">search</span>
             </div>
-            <input id="search-service-input" type="text" placeholder="Cari jenis layanan (contoh: Kartu Keluarga, IMB...)" class="w-full bg-[#f0f4fc] border-none rounded-2xl py-3.5 pl-11 pr-4 text-xs sm:text-sm text-gray-700 placeholder-gray-400 focus:ring-2 focus:ring-blue-200 outline-none">
+            <input id="search-service-input" type="text" placeholder="Cari jenis pelayanan (contoh: Kartu Keluarga, SKU, Domisili...)" class="w-full bg-white border border-slate-200/80 rounded-2xl py-3.5 pl-11 pr-4 text-xs sm:text-sm text-slate-800 placeholder-slate-400 focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 outline-none shadow-sm transition-all">
         </div>
 
-        <!-- Daftar Layanan -->
+        <!-- Service List Grid -->
         <div id="service-list-container" class="space-y-3">
             @php
                 $icons = ['badge', 'family_restroom', 'location_city', 'home_work', 'storefront'];
@@ -123,19 +125,19 @@
                 <a href="{{ route('layanan.detail', $layanan->id_layanan) }}" 
                    data-title="{{ $layanan->nama_layanan }}" 
                    data-desc="{{ $layanan->produk_pelayanan }}" 
-                   class="service-item {{ $isExtra ? 'extra-service-item hidden' : '' }} group bg-white rounded-2xl p-4 sm:p-5 flex items-center justify-between border border-gray-100 shadow-sm hover:shadow-md transition-all duration-200">
+                   class="service-item {{ $isExtra ? 'extra-service-item hidden' : '' }} group bg-white rounded-2xl p-4 sm:p-5 flex items-center justify-between border border-slate-100 shadow-sm hover:shadow-lg hover:border-blue-200 hover:-translate-y-0.5 transition-all duration-200">
                     <div class="flex items-center gap-4">
-                        <div class="{{ $color['bg'] }} {{ $color['text'] }} w-11 h-11 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center shrink-0">
+                        <div class="{{ $color['bg'] }} {{ $color['text'] }} w-11 h-11 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
                             <span class="material-symbols-outlined text-xl sm:text-2xl" style="font-variation-settings: 'FILL' 1;">{{ $icon }}</span>
                         </div>
                         <div>
-                            <h3 class="font-bold text-xs sm:text-sm text-gray-900 group-hover:text-blue-700 transition-colors mb-0.5">{{ $layanan->nama_layanan }}</h3>
-                            <p class="text-gray-500 text-[11px] sm:text-xs line-clamp-1">{{ $layanan->produk_pelayanan }}</p>
+                            <h3 class="font-bold text-xs sm:text-sm text-slate-900 group-hover:text-blue-600 transition-colors mb-0.5">{{ $layanan->nama_layanan }}</h3>
+                            <p class="text-slate-500 text-[11px] sm:text-xs line-clamp-1 leading-relaxed">{{ $layanan->produk_pelayanan }}</p>
                         </div>
                     </div>
                     
-                    <div class="text-gray-400 group-hover:text-blue-600 transition-colors shrink-0 ml-3">
-                        <span class="material-symbols-outlined text-sm sm:text-base">chevron_right</span>
+                    <div class="text-slate-400 group-hover:text-blue-600 transition-colors shrink-0 ml-3">
+                        <span class="material-symbols-outlined text-base group-hover:translate-x-1 transition-transform">arrow_forward</span>
                     </div>
                 </a>
             @endforeach
@@ -144,8 +146,8 @@
         <!-- Tombol Tampilkan Lebih Banyak -->
         @if(count($layanans) > 10)
         <div class="mt-8 flex justify-center">
-            <button id="btn-show-more" class="bg-[#eef2ff] hover:bg-blue-100 text-[#0b53c8] font-semibold text-xs py-2.5 px-6 rounded-full transition flex items-center gap-1.5">
-                Tampilkan Lebih Banyak 
+            <button id="btn-show-more" class="bg-white border border-slate-200 hover:bg-blue-50 text-blue-700 font-bold text-xs py-3 px-8 rounded-full shadow-sm hover:shadow-md transition-all flex items-center gap-2">
+                <span>Tampilkan Lebih Banyak Layanan</span> 
                 <span class="material-symbols-outlined text-sm">expand_more</span>
             </button>
         </div>

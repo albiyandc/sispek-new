@@ -3,61 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SISPEK Tasikmalaya</title>
+    <title>SISPEK Tasikmalaya — Portal Standar Pelayanan Publik</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <style>
         body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #F8FAFC; overflow-x: hidden; }
-        .fade-in-up { animation: fadeInUp 0.8s ease-out forwards; opacity: 0; transform: translateY(20px); }
+        .fade-in-up { animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; transform: translateY(20px); }
         .delay-100 { animation-delay: 100ms; }
+        .delay-150 { animation-delay: 150ms; }
         .delay-200 { animation-delay: 200ms; }
         @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
     </style>
 </head>
-<body class="text-gray-800 antialiased flex flex-col min-h-screen">
+<body class="text-slate-800 antialiased flex flex-col min-h-screen selection:bg-blue-600 selection:text-white">
 
-    <!-- Navbar -->
-    <nav class="bg-white border-b sticky top-0 z-50 shadow-sm" x-data="{ openNav: false }">
-        <!-- Top Header Row -->
+    <!-- Modern Glassmorphism Navbar -->
+    <nav class="glass-nav border-b border-slate-200/80 sticky top-0 z-50 transition-all duration-300" x-data="{ openNav: false }">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20 gap-4 sm:gap-8">
+                
                 <!-- Logo -->
-                <div class="flex items-center gap-2 cursor-pointer shrink-0" onclick="window.location.href='{{ route('home') }}'">
-                    <img src="{{ asset('images/logo_sispek_tasikmalaya.png') }}" alt="SISPEK Tasikmalaya" class="h-10 sm:h-12 w-auto object-contain">
+                <div class="flex items-center gap-3 cursor-pointer shrink-0 group" onclick="window.location.href='{{ route('home') }}'">
+                    <img src="{{ asset('images/logo_sispek_tasikmalaya.png') }}" alt="SISPEK Tasikmalaya" class="h-10 sm:h-12 w-auto object-contain transition-transform group-hover:scale-105">
                 </div>
 
                 <!-- Search Bar (Desktop) -->
-                <form action="{{ route('layanan.semua') }}" method="GET" class="hidden md:flex flex-1 max-w-2xl pl-8">
-                    <div class="relative w-full">
-                        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                            <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                <form action="{{ route('layanan.semua') }}" method="GET" class="hidden md:flex flex-1 max-w-xl pl-6">
+                    <div class="relative w-full group">
+                        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-400 group-focus-within:text-blue-600 transition-colors">
+                            <span class="material-symbols-outlined text-xl">search</span>
                         </div>
-                        <input type="text" name="q" placeholder="Cari info pelayanan publik" class="w-full pl-12 pr-4 py-2.5 bg-[#f8fafc] border border-gray-100 rounded-full text-sm text-gray-700 focus:ring-2 focus:ring-blue-100 focus:border-blue-300 focus:bg-white transition-all shadow-inner">
+                        <input type="text" name="q" placeholder="Cari info pelayanan publik, izin, KTP..." class="w-full pl-11 pr-4 py-2.5 bg-slate-100/80 border border-slate-200/60 rounded-full text-xs sm:text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 focus:bg-white transition-all shadow-inner">
                     </div>
                 </form>
 
                 <!-- Right Menu (Desktop) -->
-                <div class="hidden md:flex items-center space-x-6 text-[13px] font-semibold text-gray-600 shrink-0">
-                    <a href="{{ route('home') }}" class="text-[#1e3a8a] hover:text-blue-800 transition">Beranda</a>
+                <div class="hidden md:flex items-center space-x-6 text-xs sm:text-sm font-semibold text-slate-700 shrink-0">
+                    <a href="{{ route('home') }}" class="hover:text-blue-600 transition-colors py-2">Beranda</a>
+                    <a href="{{ route('sektor.semua') }}" class="hover:text-blue-600 transition-colors py-2">Sektor</a>
                     
                     <!-- Dropdown Kecamatan -->
                     <div x-data="{ openKecamatan: false }" class="relative flex items-center" @click.away="openKecamatan = false" @mouseenter="openKecamatan = true" @mouseleave="openKecamatan = false">
-                        <button class="flex items-center gap-1 hover:text-[#1e3a8a] transition outline-none">
-                            Kecamatan
-                            <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        <button class="flex items-center gap-1.5 hover:text-blue-600 transition-colors py-2 outline-none">
+                            <span>Kecamatan</span>
+                            <span class="material-symbols-outlined text-base text-slate-400 group-hover:text-blue-600">expand_more</span>
                         </button>
-                        <div x-show="openKecamatan" x-transition.opacity class="absolute top-full right-0 mt-4 w-48 bg-white border border-gray-100 rounded-xl shadow-lg py-2 z-50" style="display: none;">
+                        <div x-show="openKecamatan" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 translate-y-2" class="absolute top-full right-0 mt-2 w-52 bg-white/95 backdrop-blur-lg border border-slate-100 rounded-2xl shadow-xl py-2 z-50" style="display: none;">
                             @php
                                 $menuKecamatans = ['Cihideung', 'Cipedes', 'Tawang', 'Indihiang', 'Kawalu', 'Cibeureum', 'Mangkubumi', 'Purbaratu', 'Bungursari', 'Tamansari'];
                                 sort($menuKecamatans);
                             @endphp
                             @foreach($menuKecamatans as $kec)
-                                <a href="{{ route('kecamatan.show', $kec) }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700 transition">{{ $kec }}</a>
+                                <a href="{{ route('kecamatan.show', $kec) }}" class="flex items-center gap-2 px-4 py-2 text-xs font-semibold text-slate-700 hover:bg-blue-50 hover:text-blue-700 transition-colors">
+                                    <span class="material-symbols-outlined text-sm text-blue-500">location_city</span>
+                                    {{ $kec }}
+                                </a>
                             @endforeach
                         </div>
                     </div>
@@ -65,45 +75,43 @@
 
                 <!-- Mobile Menu & Search Button -->
                 <div class="md:hidden flex items-center gap-2">
-                    <button @click="openNav = true; $nextTick(() => $refs.mobileSearchInput.focus())" class="text-gray-500 hover:text-gray-900 focus:outline-none p-2" aria-label="Cari">
-                        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                    <button @click="openNav = true; $nextTick(() => $refs.mobileSearchInput.focus())" class="text-slate-600 hover:text-blue-600 focus:outline-none p-2 rounded-xl hover:bg-slate-100 transition-colors" aria-label="Cari">
+                        <span class="material-symbols-outlined text-xl">search</span>
                     </button>
-                    <button @click="openNav = !openNav" class="text-gray-500 hover:text-gray-900 focus:outline-none p-2" aria-label="Menu">
-                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
+                    <button @click="openNav = !openNav" class="text-slate-600 hover:text-blue-600 focus:outline-none p-2 rounded-xl hover:bg-slate-100 transition-colors" aria-label="Menu">
+                        <span class="material-symbols-outlined text-2xl" x-text="openNav ? 'close' : 'menu'">menu</span>
                     </button>
                 </div>
             </div>
         </div>
 
-        <!-- Mobile Menu -->
-        <div x-show="openNav" class="md:hidden bg-white border-t border-gray-100" style="display: none;">
-            <div class="px-4 pt-2 pb-4 space-y-1">
-                <!-- Search in Mobile -->
-                <form action="{{ route('layanan.semua') }}" method="GET" class="mb-4 mt-2">
+        <!-- Mobile Menu Dropdown -->
+        <div x-show="openNav" x-transition class="md:hidden bg-white/95 backdrop-blur-lg border-t border-slate-100" style="display: none;">
+            <div class="px-4 pt-3 pb-6 space-y-3">
+                <form action="{{ route('layanan.semua') }}" method="GET" class="mb-3">
                     <div class="relative w-full">
-                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                            <svg class="h-4 w-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+                            <span class="material-symbols-outlined text-lg">search</span>
                         </div>
-                        <input x-ref="mobileSearchInput" type="text" name="q" placeholder="Cari info pelayanan publik..." class="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-[#1e3a8a] focus:bg-white outline-none">
+                        <input x-ref="mobileSearchInput" type="text" name="q" placeholder="Cari info pelayanan publik..." class="w-full pl-10 pr-4 py-2.5 bg-slate-100/80 border border-slate-200/80 rounded-xl text-xs text-slate-800 placeholder-slate-400 focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 focus:bg-white outline-none">
                     </div>
                 </form>
 
-                <a href="{{ route('home') }}" class="block px-3 py-2 rounded-md text-base font-medium text-blue-700 bg-blue-50">Beranda</a>
+                <a href="{{ route('home') }}" class="block px-3 py-2.5 rounded-xl text-xs font-bold text-blue-700 bg-blue-50/80">Beranda</a>
+                <a href="{{ route('sektor.semua') }}" class="block px-3 py-2.5 rounded-xl text-xs font-bold text-slate-700 hover:bg-slate-50">Sektor Pelayanan</a>
                 
                 <div x-data="{ openKecamatanMobile: false }">
-                    <button @click="openKecamatanMobile = !openKecamatanMobile" class="w-full text-left flex justify-between items-center px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-700 hover:bg-blue-50">
-                        Kecamatan
-                        <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    <button @click="openKecamatanMobile = !openKecamatanMobile" class="w-full text-left flex justify-between items-center px-3 py-2.5 rounded-xl text-xs font-bold text-slate-700 hover:bg-slate-50">
+                        <span>Pilih Kecamatan</span>
+                        <span class="material-symbols-outlined text-base text-slate-400" :class="{ 'rotate-180': openKecamatanMobile }">expand_more</span>
                     </button>
-                    <div x-show="openKecamatanMobile" class="pl-6 pr-3 py-1 space-y-1 bg-gray-50 rounded-md" style="display: none;">
+                    <div x-show="openKecamatanMobile" class="pl-4 pr-2 py-2 space-y-1 bg-slate-50 rounded-xl mt-1" style="display: none;">
                         @php
                             $menuKecamatans = ['Cihideung', 'Cipedes', 'Tawang', 'Indihiang', 'Kawalu', 'Cibeureum', 'Mangkubumi', 'Purbaratu', 'Bungursari', 'Tamansari'];
                             sort($menuKecamatans);
                         @endphp
                         @foreach($menuKecamatans as $kec)
-                            <a href="{{ route('kecamatan.show', $kec) }}" class="block px-3 py-2 rounded-md text-sm font-medium text-gray-600 hover:text-blue-700 hover:bg-blue-100">{{ $kec }}</a>
+                            <a href="{{ route('kecamatan.show', $kec) }}" class="block px-3 py-2 rounded-lg text-xs font-semibold text-slate-600 hover:text-blue-700 hover:bg-blue-100/50 transition-colors">{{ $kec }}</a>
                         @endforeach
                     </div>
                 </div>
@@ -112,71 +120,66 @@
     </nav>
 
     <!-- Main Content -->
-    <main class="flex-grow bg-[#f4f7fb]">
+    <main class="flex-grow">
         @yield('content')
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-white border-t mt-16 pt-16 pb-8">
+    <!-- Dark Midnight Footer -->
+    <footer class="bg-slate-900 text-slate-400 border-t border-slate-800 mt-20 pt-16 pb-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                
                 <!-- Branding -->
                 <div class="col-span-1 md:col-span-1">
-                    <div class="flex items-center gap-2 cursor-pointer mb-6" onclick="window.location.href='{{ route('home') }}'">
-                        <img src="{{ asset('images/logo_sispek_tasikmalaya.png') }}" alt="SISPEK Tasikmalaya" class="h-10 w-auto object-contain">
+                    <div class="flex items-center gap-2 cursor-pointer mb-5" onclick="window.location.href='{{ route('home') }}'">
+                        <img src="{{ asset('images/logo_sispek_tasikmalaya.png') }}" alt="SISPEK Tasikmalaya" class="h-10 w-auto object-contain brightness-200">
                     </div>
-                    <p class="text-gray-500 text-sm mb-6 leading-relaxed">
-                        SISPEK (Sistem Informasi Standar Pelayanan Elektronik) merupakan portal satu pintu resmi Kota Tasikmalaya untuk pengelolaan dan penyampaian informasi standar pelayanan publik secara digital, transparan, dan akuntabel bagi seluruh warga.
+                    <p class="text-slate-400 text-xs sm:text-sm mb-6 leading-relaxed">
+                        SISPEK (Sistem Informasi Standar Pelayanan Elektronik) portal satu pintu resmi Kota Tasikmalaya untuk pengelolaan & transparansi standar pelayanan publik digital bagi masyarakat.
                     </p>
-                    <div class="flex space-x-3">
-                        <a href="#" class="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center text-blue-800 hover:bg-blue-800 hover:text-white transition"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg></a>
-                        <a href="#" class="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center text-blue-800 hover:bg-blue-800 hover:text-white transition"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg></a>
-                    </div>
                 </div>
 
                 <!-- Tautan Cepat -->
                 <div>
-                    <h3 class="text-gray-900 font-bold mb-4 text-sm tracking-wide">Menu</h3>
-                    <ul class="space-y-3 text-sm text-gray-500">
-                        <li><a href="#" class="hover:text-blue-600 transition">Beranda</a></li>
-                        <li><a href="#" class="hover:text-blue-600 transition">Pelayanan Publik</a></li>
-                        <li><a href="#" class="hover:text-blue-600 transition">Sektor Strategis</a></li>
-                        <li><a href="#" class="hover:text-blue-600 transition">Profil Instansi</a></li>
-                        <li><a href="#" class="hover:text-blue-600 transition">Pusat Bantuan</a></li>
-                        <li><a href="#" class="hover:text-blue-600 transition">Kontak Kami</a></li>
+                    <h3 class="text-white font-bold mb-4 text-xs sm:text-sm tracking-wider uppercase">Menu Utama</h3>
+                    <ul class="space-y-2.5 text-xs sm:text-sm">
+                        <li><a href="{{ route('home') }}" class="hover:text-blue-400 transition-colors">Beranda</a></li>
+                        <li><a href="{{ route('sektor.semua') }}" class="hover:text-blue-400 transition-colors">Sektor Pelayanan</a></li>
+                        <li><a href="{{ route('layanan.semua') }}" class="hover:text-blue-400 transition-colors">Daftar Layanan</a></li>
+                        <li><a href="https://www.lapor.go.id" target="_blank" class="hover:text-blue-400 transition-colors">Pengaduan LAPOR!</a></li>
                     </ul>
                 </div>
 
-                <!-- Dinas Penyelenggara -->
+                <!-- Instansi Penyelenggara -->
                 <div class="col-span-1 md:col-span-2">
-                    <h3 class="text-gray-900 font-bold mb-4 text-sm tracking-wide">Dinas Penyelenggara</h3>
-                    <ul class="space-y-4 text-sm text-gray-500">
+                    <h3 class="text-white font-bold mb-4 text-xs sm:text-sm tracking-wider uppercase">Pemerintah Penyelenggara</h3>
+                    <ul class="space-y-3.5 text-xs sm:text-sm text-slate-400">
                         <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-[#1e3a8a] mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
-                            <span>Pemerintah Kota Tasikmalaya
+                            <span class="material-symbols-outlined text-blue-400 text-base mt-0.5">location_city</span>
+                            <span>Pemerintah Kota Tasikmalaya</span>
                         </li>
                         <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-[#1e3a8a] mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                            <span class="material-symbols-outlined text-blue-400 text-base mt-0.5">map</span>
                             <span>Jl. Ir. H. Juanda No.191, Sukamulya, Kec. Bungursari, Kota Tasikmalaya, Jawa Barat 46151</span>
                         </li>
                         <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-[#1e3a8a] mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                            <span class="material-symbols-outlined text-blue-400 text-base mt-0.5">call</span>
                             <span>(0265) 7523616</span>
                         </li>
                         <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-[#1e3a8a] mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                            <span>kominfo@ayakota.go.id
+                            <span class="material-symbols-outlined text-blue-400 text-base mt-0.5">mail</span>
+                            <span>kominfo@tasikmalayakota.go.id</span>
                         </li>
                     </ul>
                 </div>
             </div>
 
-            <div class="border-t border-gray-100 pt-8 flex flex-col md:flex-row justify-between items-center text-[10px] sm:text-xs text-gray-500">
-                <p>&copy; 2026 <span class="font-bold text-blue-900">SISPEK Tasikmalaya</span> - Pemerintah Kota Tasikmalaya.</p>
-                <div class="flex space-x-4 mt-4 md:mt-0">
-                    <a href="#" class="hover:text-blue-600">Kebijakan Privasi</a>
-                    <a href="#" class="hover:text-blue-600">Syarat & Ketentuan</a>
-                    <a href="#" class="hover:text-blue-600">Aksesibilitas</a>
+            <div class="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center text-[11px] text-slate-500 gap-4">
+                <p>&copy; 2026 <span class="font-bold text-slate-300">SISPEK Tasikmalaya</span> — Hak Cipta Dilindungi Undang-Undang.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="hover:text-blue-400 transition-colors">Kebijakan Privasi</a>
+                    <a href="#" class="hover:text-blue-400 transition-colors">Syarat & Ketentuan</a>
+                    <a href="#" class="hover:text-blue-400 transition-colors">Aksesibilitas</a>
                 </div>
             </div>
         </div>
