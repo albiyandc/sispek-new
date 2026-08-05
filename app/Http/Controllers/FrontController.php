@@ -143,6 +143,22 @@ class FrontController extends Controller
         return view('sektor', compact('sektor', 'services'));
     }
 
+    public function semuaSektor(Request $request)
+    {
+        $query = $request->input('q');
+        $sektors = $this->getSektors();
+
+        if ($query) {
+            $queryLower = strtolower($query);
+            $sektors = array_filter($sektors, function ($s) use ($queryLower) {
+                return str_contains(strtolower($s['nama']), $queryLower) ||
+                       str_contains(strtolower($s['deskripsi']), $queryLower);
+            });
+        }
+
+        return view('semua_sektor', compact('sektors', 'query'));
+    }
+
     public function semuaLayanan(Request $request)
     {
         $services = $this->getDummyServices();
