@@ -4,15 +4,8 @@
 <div class="bg-[#F8FAFC] min-h-screen pb-20 pt-8">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 fade-in-up">
         
-        <!-- Breadcrumb -->
-        <div class="text-xs text-slate-400 mb-6 flex items-center gap-2 font-medium">
-            <a href="{{ route('home') }}" class="hover:text-blue-600 transition-colors">Beranda</a> 
-            <span>&rsaquo;</span> 
-            <span class="text-slate-700 font-bold">Semua Sektor Pelayanan</span>
-        </div>
-
         <!-- Header Banner -->
-        <div class="bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 text-white rounded-3xl p-8 sm:p-12 mb-10 shadow-xl relative overflow-hidden">
+        <div class="bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 text-white -mx-4 sm:mx-0 -mt-8 sm:-mt-12 pt-20 sm:pt-24 rounded-none sm:rounded-3xl p-6 sm:p-12 mb-10 shadow-xl relative overflow-hidden">
             <div class="absolute top-0 right-0 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
             <div class="relative z-10 max-w-3xl">
                 <h1 class="text-2xl sm:text-4xl font-extrabold text-white mb-3">Sektor Pelayanan Publik</h1>
