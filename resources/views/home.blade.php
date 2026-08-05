@@ -4,48 +4,48 @@
 <div class="bg-white overflow-hidden rounded-b-[40px] shadow-sm">
     <!-- Hero Section -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-20 lg:py-24 fade-in-up">
-        <div class="flex flex-row justify-between items-center gap-4 sm:gap-12">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-6 sm:gap-12">
             
             <!-- Text Content -->
-            <div class="w-1/2">
-                <h1 class="text-xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight mb-3 sm:mb-6 tracking-tight">
-                    Selamat Datang di <br><span class="text-[#1e3a8a]">SISPEK</span> <span class="hidden sm:inline">Tasikmalaya!</span>
+            <div class="w-full md:w-1/2">
+                <h1 class="text-2xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight mb-3 sm:mb-6 tracking-tight">
+                    Selamat Datang di <br><span class="text-[#1e3a8a]">SISPEK</span> <span>Tasikmalaya!</span>
                 </h1>
                 
-                <p class="text-[10px] sm:text-lg text-gray-500 mb-6 sm:mb-8 max-w-lg leading-relaxed">
+                <p class="text-xs sm:text-lg text-gray-500 mb-6 sm:mb-8 max-w-lg leading-relaxed">
                     Sistem informasi standar pelayanan elektronik satu pintu untuk masyarakat Kota Tasikmalaya.
                 </p>
 
                 <!-- Search Bar Hero -->
                 <form action="{{ route('layanan.semua') }}" method="GET" class="bg-white p-2 rounded-xl sm:rounded-2xl shadow-lg border border-gray-100 flex items-center gap-2 mb-6 sm:mb-8">
-                    <div class="pl-2 sm:pl-4 text-[#1e3a8a]">
+                    <div class="pl-2 sm:pl-4 text-[#1e3a8a] shrink-0">
                         <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                     </div>
-                    <input type="text" name="q" placeholder="Pencarian Layanan, Berita dan Informasi" class="flex-1 bg-transparent border-0 focus:ring-0 text-xs sm:text-sm text-gray-700 placeholder-gray-400 py-2 sm:py-3 px-2 w-full outline-none">
-                    <button type="submit" class="bg-[#003da5] hover:bg-blue-800 text-white px-4 sm:px-8 py-2 sm:py-3 rounded-lg sm:rounded-xl text-xs sm:text-sm font-semibold transition shadow-md whitespace-nowrap">
-                        Cari Sekarang
+                    <input type="text" name="q" placeholder="Pencarian Layanan, Berita dan Informasi" class="flex-1 min-w-0 bg-transparent border-0 focus:ring-0 text-xs sm:text-sm text-gray-700 placeholder-gray-400 py-2 sm:py-3 px-2 outline-none">
+                    <button type="submit" class="bg-[#003da5] hover:bg-blue-800 text-white px-3 sm:px-8 py-2 sm:py-3 rounded-lg sm:rounded-xl text-xs sm:text-sm font-semibold transition shadow-md whitespace-nowrap shrink-0">
+                        Cari
                     </button>
                 </form>
 
                 <!-- Checkmarks -->
-                <div class="flex gap-2 sm:gap-6 text-[9px] sm:text-sm text-gray-700 font-medium flex-wrap">
-                    <div class="flex items-center gap-1 sm:gap-2">
-                        <svg class="w-3 h-3 sm:w-5 sm:h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg> 
+                <div class="flex gap-3 sm:gap-6 text-xs sm:text-sm text-gray-700 font-medium flex-wrap">
+                    <div class="flex items-center gap-1.5 sm:gap-2">
+                        <svg class="w-4 h-4 sm:w-5 sm:h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg> 
                         Terintegrasi
                     </div>
-                    <div class="flex items-center gap-1 sm:gap-2">
-                        <svg class="w-3 h-3 sm:w-5 sm:h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg> 
+                    <div class="flex items-center gap-1.5 sm:gap-2">
+                        <svg class="w-4 h-4 sm:w-5 sm:h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg> 
                         Transparan
                     </div>
-                    <div class="flex items-center gap-1 sm:gap-2">
-                        <svg class="w-3 h-3 sm:w-5 sm:h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg> 
+                    <div class="flex items-center gap-1.5 sm:gap-2">
+                        <svg class="w-4 h-4 sm:w-5 sm:h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg> 
                         Akuntabel
                     </div>
                 </div>
             </div>
 
             <!-- Image Content -->
-            <div class="w-1/2 flex justify-end">
+            <div class="w-full md:w-1/2 flex justify-center md:justify-end">
                 <img src="{{ asset('images/main-poster.png') }}"
                      alt="Main Poster"
                      class="w-full max-w-lg rounded-xl sm:rounded-2xl transform transition duration-500 hover:scale-105"
