@@ -12,12 +12,6 @@
             
             <!-- Text Content -->
             <div class="w-full md:w-1/2">
-                <!-- Badge Highlight -->
-                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/10 border border-blue-400/20 backdrop-blur-md text-blue-300 text-xs font-semibold mb-6">
-                    <span class="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
-                    Portal Resmi Layanan Publik Kota Tasikmalaya
-                </div>
-
                 <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold text-white leading-tight mb-4 sm:mb-6 tracking-tight">
                     Layanan Publik <br>
                     <span class="bg-gradient-to-r from-blue-400 via-indigo-300 to-sky-400 bg-clip-text text-transparent">Cepat, Transparan, & Terpadu.</span>
@@ -74,10 +68,6 @@
 <div id="daftar-layanan" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 sm:pt-24 pb-12 fade-in-up delay-100 scroll-mt-24">
     <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-12 gap-4">
         <div>
-            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/10 text-amber-600 text-[11px] font-bold uppercase tracking-wider mb-2">
-                <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">bolt</span>
-                Paling Sering Diakses
-            </div>
             <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Layanan Publik Populer</h2>
             <p class="text-xs sm:text-base text-slate-500 mt-1">Daftar layanan administrasi dan informasi publik yang paling sering diakses warga.</p>
         </div>
@@ -117,10 +107,6 @@
 <div id="sektor-layanan" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 fade-in-up delay-150 scroll-mt-24 border-t border-slate-200/60">
     <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-12 gap-4">
         <div>
-            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-500/10 text-blue-600 text-[11px] font-bold uppercase tracking-wider mb-2">
-                <span class="material-symbols-outlined text-sm">grid_view</span>
-                Kategori Sektor
-            </div>
             <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Sektor Pelayanan Publik</h2>
             <p class="text-xs sm:text-base text-slate-500 mt-1">Pilih sektor pelayanan untuk melihat daftar layanan dan daerah penyelenggaranya.</p>
         </div>

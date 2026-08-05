@@ -17,10 +17,6 @@
         <div class="bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 text-white rounded-3xl p-8 sm:p-12 mb-10 shadow-xl relative overflow-hidden">
             <div class="absolute top-0 right-0 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
             <div class="relative z-10 max-w-3xl">
-                <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-400/10 border border-blue-400/20 text-blue-300 text-[11px] font-bold uppercase tracking-wider mb-4">
-                    <span class="material-symbols-outlined text-sm">grid_view</span>
-                    Kategori Sektor
-                </div>
                 <h1 class="text-2xl sm:text-4xl font-extrabold text-white mb-3">Sektor <span class="bg-gradient-to-r from-blue-400 to-indigo-300 bg-clip-text text-transparent">{{ $sektor['nama'] }}</span></h1>
                 <p class="text-xs sm:text-base text-slate-300 leading-relaxed">{{ $sektor['deskripsi'] }}</p>
             </div>
