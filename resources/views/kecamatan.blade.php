@@ -1,11 +1,20 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="bg-[#F8FAFC] min-h-screen pb-20 pt-8">
+<div class="bg-[#F8FAFC] min-h-screen pb-20 pt-0 sm:pt-8">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 fade-in-up">
         
+        <!-- Breadcrumb (Hidden on Mobile) -->
+        <div class="hidden sm:flex text-xs text-slate-400 mb-6 items-center gap-1.5 font-medium overflow-x-auto whitespace-nowrap pb-1">
+            <a href="{{ route('home') }}" class="hover:text-blue-600 transition-colors">Beranda</a> 
+            <span>&rsaquo;</span> 
+            <a href="{{ route('layanan.semua') }}" class="hover:text-blue-600 transition-colors">Pelayanan Publik</a> 
+            <span>&rsaquo;</span> 
+            <span class="font-bold text-slate-800">Kecamatan {{ $nama_kecamatan }}</span>
+        </div>
+
         <!-- Banner Blue Ambient Full Width -->
-        <div class="bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 text-white -mx-4 sm:mx-0 -mt-8 sm:-mt-12 pt-20 sm:pt-24 rounded-none sm:rounded-3xl p-6 sm:p-10 mb-8 shadow-xl relative overflow-hidden">
+        <div class="bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 text-white rounded-none sm:rounded-3xl -mx-4 sm:mx-0 -mt-20 pt-24 sm:mt-0 sm:pt-10 p-6 sm:p-10 mb-8 shadow-xl relative overflow-hidden">
             <div class="absolute top-0 right-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
             <div class="relative z-10 max-w-3xl">
                 <h1 class="text-2xl sm:text-4xl font-extrabold mb-3 tracking-tight">Pelayanan Publik Kecamatan {{ $nama_kecamatan }}</h1>
