@@ -46,8 +46,7 @@
                 
                 <!-- 1. Persyaratan Layanan Card -->
                 <div class="bg-white rounded-3xl shadow-sm border border-slate-100 p-6 sm:p-8 relative overflow-hidden">
-                    <div class="absolute top-0 left-0 w-2 h-full bg-blue-600"></div>
-                    <div class="flex items-center justify-between mb-6 pl-2">
+                    <div class="flex items-center justify-between mb-6">
                         <div class="flex items-center gap-3">
                             <div class="w-10 h-10 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center shrink-0">
                                 <span class="material-symbols-outlined text-2xl">assignment_turned_in</span>
@@ -61,7 +60,7 @@
                     </div>
 
                     <!-- List Persyaratan -->
-                    <div class="space-y-3.5 pl-2">
+                    <div class="space-y-3.5">
                         @php
                             $persyaratanList = isset($layanan->persyaratan) ? explode("\n", $layanan->persyaratan) : [
                                 'Surat pengantar RT/RW setempat yang sudah ditandatangani.',
@@ -87,8 +86,7 @@
 
                 <!-- 2. Prosedur & Alur Pengajuan Card -->
                 <div class="bg-white rounded-3xl shadow-sm border border-slate-100 p-6 sm:p-8 relative overflow-hidden">
-                    <div class="absolute top-0 left-0 w-2 h-full bg-emerald-500"></div>
-                    <div class="flex items-center gap-3 mb-6 pl-2">
+                    <div class="flex items-center gap-3 mb-6">
                         <div class="w-10 h-10 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
                             <span class="material-symbols-outlined text-2xl">account_tree</span>
                         </div>
