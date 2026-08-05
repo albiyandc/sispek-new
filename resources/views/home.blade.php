@@ -89,13 +89,6 @@
             </a>
         @endforeach
     </div>
-
-    <!-- Tombol Tampilkan Lebih Banyak -->
-    <div class="mt-8 sm:mt-12 flex justify-center">
-        <a href="{{ route('layanan.semua') }}" class="bg-white border border-gray-200 text-blue-700 hover:bg-blue-50 font-medium text-xs sm:text-sm py-2 px-6 sm:py-3 sm:px-8 rounded-full shadow-sm transition flex items-center gap-2">
-            Lihat Semua Layanan <span class="material-symbols-outlined text-sm sm:text-base">arrow_forward</span>
-        </a>
-    </div>
 </div>
 
 <!-- 2. Sektor Pelayanan Publik -->
@@ -122,6 +115,13 @@
             </div>
         </a>
         @endforeach
+    </div>
+
+    <!-- Tombol Lihat Semua Layanan -->
+    <div class="mt-8 sm:mt-12 flex justify-center">
+        <a href="{{ route('layanan.semua') }}" class="bg-white border border-gray-200 text-blue-700 hover:bg-blue-50 font-medium text-xs sm:text-sm py-2 px-6 sm:py-3 sm:px-8 rounded-full shadow-sm transition flex items-center gap-2">
+            Lihat Semua Layanan <span class="material-symbols-outlined text-sm sm:text-base">arrow_forward</span>
+        </a>
     </div>
 </div>
 
