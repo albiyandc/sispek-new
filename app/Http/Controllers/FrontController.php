@@ -94,15 +94,12 @@ class FrontController extends Controller
     public function kecamatan($nama_kecamatan)
     {
         $dummyServices = $this->getDummyServices();
-        $layanans = collect($dummyServices)->map(function ($s) {
-            return (object)[
-                'id_layanan' => $s['id'],
-                'nama_layanan' => $s['judul'],
-                'produk_pelayanan' => $s['deskripsi']
-            ];
-        });
+        $dummy = collect($dummyServices)->first(function ($s) use ($nama_kecamatan) {
+            return str_contains(strtolower($s['kecamatan']), strtolower($nama_kecamatan));
+        }) ?? $dummyServices[0];
 
-        return view('kecamatan', compact('nama_kecamatan', 'layanans'));
+        // Langsung redirect ke detail_layanan (persyaratan)
+        return redirect()->route('layanan.detail', ['id' => $dummy['id']]);
     }
 
     public function detailLayanan($id)
