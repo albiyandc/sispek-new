@@ -93,7 +93,16 @@ class FrontController extends Controller
 
     public function kecamatan($nama_kecamatan)
     {
-        return redirect()->route('layanan.semua', ['q' => $nama_kecamatan]);
+        $dummyServices = $this->getDummyServices();
+        $layanans = collect($dummyServices)->map(function ($s) {
+            return (object)[
+                'id_layanan' => $s['id'],
+                'nama_layanan' => $s['judul'],
+                'produk_pelayanan' => $s['deskripsi']
+            ];
+        });
+
+        return view('kecamatan', compact('nama_kecamatan', 'layanans'));
     }
 
     public function detailLayanan($id)
@@ -150,7 +159,8 @@ class FrontController extends Controller
         $clicks[$id] = ($clicks[$id] ?? 0) + 1;
         session()->put('service_clicks', $clicks);
 
-        return redirect()->route('layanan.detail', ['id' => $id]);
+        // Redirect ke pilihan kecamatan berdasarkan kategori
+        return redirect()->route('kategori.show', ['kategori' => $kategori]);
     }
 
     public function trackClickApi($id)
