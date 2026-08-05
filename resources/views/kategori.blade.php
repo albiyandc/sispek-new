@@ -14,7 +14,7 @@
         </div>
 
         <!-- Header Banner (Mobile Edge-to-Edge) -->
-        <div class="bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 text-white rounded-none sm:rounded-3xl -mx-4 -mt-20 pt-16 px-5 pb-6 sm:mx-0 sm:mt-0 sm:p-12 mb-10 shadow-xl relative overflow-hidden">
+        <div class="bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 text-white rounded-none sm:rounded-3xl -mx-4 -mt-28 pt-28 px-6 pb-8 sm:mx-0 sm:mt-0 sm:p-12 mb-10 shadow-xl relative overflow-hidden">
             <div class="absolute top-0 right-0 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
             <div class="relative z-10 max-w-3xl">
                 <h1 class="text-2xl sm:text-4xl font-extrabold text-white mb-3">Wilayah yang Menyediakan <br><span class="bg-gradient-to-r from-blue-400 to-indigo-300 bg-clip-text text-transparent">{{ $namaLayanan }}</span></h1>
@@ -30,7 +30,7 @@
                         <span class="material-symbols-outlined text-3xl">location_city</span>
                     </div>
                     
-                    <h3 class="font-bold text-slate-900 text-sm sm:text-lg group-hover:text-blue-600 transition-colors mb-1">Kecamatan {{ $kecamatan }}</h3>
+                    <h3 class="font-bold text-slate-900 text-sm sm:text-lg group-hover:text-blue-600 transition-colors leading-snug mb-1">{{ $kecamatan }}</h3>
                     <span class="text-[11px] font-semibold text-slate-400 group-hover:text-blue-500 transition-colors flex items-center gap-1">
                         Pilih Wilayah <span class="material-symbols-outlined text-xs">chevron_right</span>
                     </span>
