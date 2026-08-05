@@ -11,14 +11,14 @@
             <a href="{{ route('layanan.semua') }}" class="hover:text-blue-600 transition-colors">Pelayanan Publik</a> 
             <span>&rsaquo;</span> 
             @if(isset($layanan->nama_kecamatan))
-                <a href="{{ route('kecamatan.show', $layanan->nama_kecamatan) }}" class="hover:text-blue-600 transition-colors">Kecamatan {{ str_replace('Kecamatan ', '', $layanan->nama_kecamatan) }}</a> 
+                <a href="{{ route('kecamatan.show', $layanan->nama_kecamatan) }}" class="hover:text-blue-600 transition-colors">{{ str_starts_with(strtolower(trim($layanan->nama_kecamatan)), 'kecamatan') ? $layanan->nama_kecamatan : 'Kecamatan '.$layanan->nama_kecamatan }}</a> 
                 <span>&rsaquo;</span> 
             @endif
             <span class="font-bold text-slate-800">{{ $layanan->nama_layanan ?? 'Detail Layanan' }}</span>
         </div>
 
         <!-- Header Hero Banner Full Width -->
-        <div class="bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 text-white rounded-none sm:rounded-3xl -mx-4 sm:mx-0 -mt-20 pt-24 sm:mt-0 sm:pt-12 p-6 sm:p-12 mb-8 shadow-xl relative overflow-hidden">
+        <div class="bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 text-white -mx-4 sm:mx-0 -mt-8 sm:mt-0 pt-24 sm:pt-12 p-8 sm:p-12 mb-8 rounded-none sm:rounded-3xl shadow-xl relative overflow-hidden">
             <div class="absolute top-0 right-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
             <div class="relative z-10">
                 <div class="max-w-3xl">
