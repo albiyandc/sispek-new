@@ -65,8 +65,8 @@
 </div>
 
 <!-- 1. Layanan Paling Sering Diakses (Trending) -->
-<div id="daftar-layanan" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 sm:pt-24 pb-12 fade-in-up delay-100 scroll-mt-24">
-    <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-12 gap-4">
+<div id="daftar-layanan" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-12 pb-8 fade-in-up delay-100 scroll-mt-24">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-4 sm:mb-6 gap-4">
         <div>
             <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Layanan Publik Populer</h2>
             <p class="text-xs sm:text-base text-slate-500 mt-1">Daftar layanan administrasi dan informasi publik yang paling sering diakses warga.</p>
