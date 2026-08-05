@@ -101,69 +101,147 @@ class FrontController extends Controller
 
     public function index()
     {
-        $kecamatans = [
-            'Cihideung', 'Cipedes', 'Tawang', 'Indihiang', 
-            'Kawalu', 'Cibeureum', 'Mangkubumi', 'Purbaratu'
-        ];
-
-        $services = $this->getDummyServices();
-        $dbClicks = $this->getGlobalClicks();
-        $sessionClicks = session()->get('service_clicks', []);
-        
-        foreach ($services as &$service) {
-            $id = $service['id'];
-            $service['clicks'] = ($dbClicks[$id] ?? 0) + ($sessionClicks[$id] ?? 0) + Cache::get("service_clicks_{$id}", 0);
+        $kecamatans = Instansi::pluck('nama_instansi')->toArray();
+        if (empty($kecamatans)) {
+            $kecamatans = [
+                'Cihideung', 'Cipedes', 'Tawang', 'Indihiang', 
+                'Kawalu', 'Cibeureum', 'Mangkubumi', 'Purbaratu'
+            ];
         }
 
-        usort($services, function($a, $b) {
-            return $b['clicks'] <=> $a['clicks'];
-        });
-        
-        $sektors = $this->getSektors();
+        $dbLayanans = LayananInstansi::with(['instansi', 'masterLayanan.sektor'])
+            ->where('status_approval', 'disetujui')
+            ->where('status_layanan', 'aktif')
+            ->orderByDesc('view_count')
+            ->get();
+
+        if ($dbLayanans->count() > 0) {
+            $services = $dbLayanans->map(function ($lay) {
+                return [
+                    'id' => $lay->id,
+                    'kecamatan' => $lay->instansi->nama_instansi,
+                    'kategori' => strtoupper($lay->masterLayanan->sektor->nama_sektor ?? 'UMUM'),
+                    'kategori_slug' => $lay->masterLayanan->sektor->slug ?? 'umum',
+                    'judul' => $lay->masterLayanan->nama_layanan,
+                    'deskripsi' => $lay->produk_pelayanan ?? $lay->masterLayanan->nama_layanan,
+                    'clicks' => $lay->view_count,
+                    'icon' => 'badge',
+                    'bg_color' => 'bg-blue-50',
+                    'text_color' => 'text-blue-800'
+                ];
+            })->toArray();
+        } else {
+            $services = $this->getDummyServices();
+        }
+
+        $dbSektors = Sektor::all();
+        if ($dbSektors->count() > 0) {
+            $sektors = $dbSektors->map(function ($s) {
+                return [
+                    'slug' => $s->slug,
+                    'nama' => $s->nama_sektor,
+                    'deskripsi' => "Pengurusan dokumen pelayanan publik sektor {$s->nama_sektor}.",
+                    'icon' => 'badge',
+                    'bg_color' => 'bg-blue-50',
+                    'text_color' => 'text-blue-600',
+                ];
+            })->toArray();
+        } else {
+            $sektors = $this->getSektors();
+        }
 
         return view('home', compact('kecamatans', 'services', 'sektors'));
     }
 
     public function sektor($slug)
     {
-        $sektors = $this->getSektors();
-        $sektor = collect($sektors)->firstWhere('slug', $slug);
+        $dbSektor = Sektor::where('slug', $slug)->first();
 
-        if (!$sektor) {
-            abort(404);
+        if ($dbSektor) {
+            $sektor = [
+                'slug' => $dbSektor->slug,
+                'nama' => $dbSektor->nama_sektor,
+                'deskripsi' => "Daftar layanan publik sektor {$dbSektor->nama_sektor}."
+            ];
+
+            $dbServices = LayananInstansi::with(['instansi', 'masterLayanan.sektor'])
+                ->whereHas('masterLayanan', function ($q) use ($dbSektor) {
+                    $q->where('sektor_id', $dbSektor->id);
+                })
+                ->where('status_approval', 'disetujui')
+                ->where('status_layanan', 'aktif')
+                ->get();
+
+            $services = $dbServices->map(function ($lay) {
+                return [
+                    'id' => $lay->id,
+                    'kecamatan' => $lay->instansi->nama_instansi,
+                    'kategori' => strtoupper($lay->masterLayanan->sektor->nama_sektor ?? 'UMUM'),
+                    'kategori_slug' => $lay->masterLayanan->sektor->slug ?? 'umum',
+                    'judul' => $lay->masterLayanan->nama_layanan,
+                    'deskripsi' => $lay->produk_pelayanan ?? $lay->masterLayanan->nama_layanan,
+                    'icon' => 'badge',
+                    'bg_color' => 'bg-blue-50',
+                    'text_color' => 'text-blue-800'
+                ];
+            })->toArray();
+        } else {
+            $sektors = $this->getSektors();
+            $sektor = collect($sektors)->firstWhere('slug', $slug);
+            if (!$sektor) {
+                abort(404);
+            }
+            $allDummy = $this->getDummyServices();
+            $services = collect($allDummy)->whereIn('id', $sektor['service_ids'])->values()->all();
         }
-
-        $allDummy = $this->getDummyServices();
-        $services = collect($allDummy)->whereIn('id', $sektor['service_ids'])->values()->all();
 
         return view('sektor', compact('sektor', 'services'));
     }
 
     public function semuaLayanan(Request $request)
     {
-        $services = $this->getDummyServices();
-        $dbClicks = $this->getGlobalClicks();
-        $sessionClicks = session()->get('service_clicks', []);
         $query = $request->input('q');
 
-        if ($query) {
-            $queryLower = strtolower($query);
-            $services = array_filter($services, function ($service) use ($queryLower) {
-                return str_contains(strtolower($service['judul']), $queryLower) || 
-                       str_contains(strtolower($service['deskripsi']), $queryLower) ||
-                       str_contains(strtolower($service['kategori']), $queryLower) ||
-                       str_contains(strtolower($service['kecamatan']), $queryLower);
-            });
-        }
+        $dbServices = LayananInstansi::with(['instansi', 'masterLayanan.sektor'])
+            ->where('status_approval', 'disetujui')
+            ->where('status_layanan', 'aktif')
+            ->when($query, function ($q) use ($query) {
+                $q->whereHas('masterLayanan', function ($ml) use ($query) {
+                    $ml->where('nama_layanan', 'like', "%{$query}%");
+                })->orWhereHas('instansi', function ($ins) use ($query) {
+                    $ins->where('nama_instansi', 'like', "%{$query}%");
+                });
+            })
+            ->orderByDesc('view_count')
+            ->get();
 
-        foreach ($services as &$service) {
-            $id = $service['id'];
-            $service['clicks'] = ($dbClicks[$id] ?? 0) + ($sessionClicks[$id] ?? 0) + Cache::get("service_clicks_{$id}", 0);
+        if ($dbServices->count() > 0) {
+            $services = $dbServices->map(function ($lay) {
+                return [
+                    'id' => $lay->id,
+                    'kecamatan' => $lay->instansi->nama_instansi,
+                    'kategori' => strtoupper($lay->masterLayanan->sektor->nama_sektor ?? 'UMUM'),
+                    'kategori_slug' => $lay->masterLayanan->sektor->slug ?? 'umum',
+                    'judul' => $lay->masterLayanan->nama_layanan,
+                    'deskripsi' => $lay->produk_pelayanan ?? $lay->masterLayanan->nama_layanan,
+                    'clicks' => $lay->view_count,
+                    'icon' => 'badge',
+                    'bg_color' => 'bg-blue-50',
+                    'text_color' => 'text-blue-800'
+                ];
+            })->toArray();
+        } else {
+            $services = $this->getDummyServices();
+            if ($query) {
+                $queryLower = strtolower($query);
+                $services = array_filter($services, function ($service) use ($queryLower) {
+                    return str_contains(strtolower($service['judul']), $queryLower) || 
+                           str_contains(strtolower($service['deskripsi']), $queryLower) ||
+                           str_contains(strtolower($service['kategori']), $queryLower) ||
+                           str_contains(strtolower($service['kecamatan']), $queryLower);
+                });
+            }
         }
-
-        usort($services, function($a, $b) {
-            return $b['clicks'] <=> $a['clicks'];
-        });
 
         return view('semua_layanan', compact('services', 'query'));
     }
@@ -173,6 +251,28 @@ class FrontController extends Controller
         $serviceId = $request->input('service_id');
         if ($serviceId) {
             return redirect()->route('layanan.detail', ['id' => $serviceId]);
+        }
+
+        $instansi = Instansi::where('nama_instansi', 'like', "%{$nama_kecamatan}%")->first();
+        if ($instansi) {
+            $dbServices = LayananInstansi::with('masterLayanan')
+                ->where('instansi_id', $instansi->id)
+                ->where('status_approval', 'disetujui')
+                ->where('status_layanan', 'aktif')
+                ->get();
+
+            $layanans = $dbServices->map(function ($lay) {
+                return (object)[
+                    'id_layanan' => $lay->id,
+                    'nama_layanan' => $lay->masterLayanan->nama_layanan,
+                    'produk_pelayanan' => $lay->produk_pelayanan ?? $lay->masterLayanan->nama_layanan
+                ];
+            });
+
+            return view('kecamatan', [
+                'nama_kecamatan' => $instansi->nama_instansi,
+                'layanans' => $layanans
+            ]);
         }
 
         $dummyServices = $this->getDummyServices();
@@ -189,6 +289,46 @@ class FrontController extends Controller
 
     public function detailLayanan($id)
     {
+        $dbLayanan = LayananInstansi::with(['instansi', 'masterLayanan.sektor'])->find($id);
+
+        if ($dbLayanan) {
+            $dbLayanan->increment('view_count');
+
+            $prosedurText = '';
+            if (is_array($dbLayanan->prosedur)) {
+                $prosedurArr = array_map(fn($p) => ($p['urutan'] ?? '') . '. ' . ($p['isi'] ?? ''), $dbLayanan->prosedur);
+                $prosedurText = implode("\n", $prosedurArr);
+            }
+
+            $persyaratanUmumArr = $dbLayanan->masterLayanan->persyaratan_umum ?? [];
+            $persyaratanKhususArr = $dbLayanan->persyaratan_khusus ?? [];
+            $allPersyaratan = array_merge($persyaratanUmumArr, $persyaratanKhususArr);
+            $persyaratanText = implode("\n", $allPersyaratan);
+
+            $layanan = (object)[
+                'id' => $dbLayanan->id,
+                'nama_layanan' => $dbLayanan->masterLayanan->nama_layanan,
+                'produk_pelayanan' => $dbLayanan->produk_pelayanan,
+                'persyaratan' => $persyaratanText,
+                'waktu_penyelesaian' => $dbLayanan->waktu_penyelesaian,
+                'biaya_tarif' => $dbLayanan->biaya_tarif,
+                'prosedur' => $prosedurText,
+                'nama_kecamatan' => $dbLayanan->instansi->nama_instansi,
+                'instansi' => $dbLayanan->instansi,
+                'layanan_master' => $dbLayanan->masterLayanan,
+                'pengaduan_channels' => $dbLayanan->pengaduan_channels,
+            ];
+
+            // Fetch "Layanan serupa tersedia di:" (Other instansis with same Master Layanan)
+            $layananSerupa = LayananInstansi::with('instansi')
+                ->where('master_layanan_id', $dbLayanan->master_layanan_id)
+                ->where('id', '!=', $dbLayanan->id)
+                ->where('status_approval', 'disetujui')
+                ->get();
+
+            return view('detail_layanan', compact('layanan', 'layananSerupa'));
+        }
+
         $dummyServices = $this->getDummyServices();
         $dummy = collect($dummyServices)->firstWhere('id', (int)$id);
 
@@ -199,15 +339,15 @@ class FrontController extends Controller
                 'produk_pelayanan' => $dummy['deskripsi'],
                 'persyaratan' => "Surat pengantar RT/RW setempat.\nFotokopi KTP dan KK.\nDokumen pendukung lainnya yang relevan.",
                 'waktu_penyelesaian' => "1-3 Hari Kerja",
-                'biaya' => "Gratis",
+                'biaya_tarif' => "Gratis (Rp 0)",
                 'prosedur' => "Pemohon datang membawa berkas.\nPetugas memverifikasi kelengkapan berkas.\nDokumen diproses oleh petugas kecamatan.\nPenyerahan dokumen kepada pemohon.",
                 'nama_kecamatan' => $dummy['kecamatan']
             ];
-            return view('detail_layanan', compact('layanan'));
+            $layananSerupa = [];
+            return view('detail_layanan', compact('layanan', 'layananSerupa'));
         }
 
-        $layanan = LayananPublik::findOrFail($id);
-        return view('detail_layanan', compact('layanan'));
+        abort(404);
     }
 
     public function kategori(Request $request, $kategori)
