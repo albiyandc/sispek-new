@@ -28,8 +28,8 @@
 <body class="text-slate-800 antialiased flex flex-col min-h-screen selection:bg-blue-600 selection:text-white">
 
     <!-- Ultra-Modern Floating Glass Navbar -->
-    <header class="sticky top-0 sm:top-3 z-50 px-2 sm:px-4 transition-all duration-300">
-        <nav class="max-w-7xl mx-auto rounded-2xl sm:rounded-full px-3 sm:px-6 py-2.5 transition-all duration-300" 
+    <header class="sticky top-0 sm:top-3 z-50 px-0 sm:px-4 transition-all duration-300">
+        <nav class="max-w-7xl mx-auto rounded-none sm:rounded-full px-3 sm:px-6 py-2.5 transition-all duration-300" 
              x-data="{ openNav: false, isScrolled: false }"
              @scroll.window="isScrolled = (window.pageYOffset > 50)"
              :class="(!isScrolled) ? 'bg-transparent border border-transparent shadow-none' : 'bg-white/90 backdrop-blur-2xl border border-white/80 shadow-[0_10px_35px_rgba(15,23,42,0.08)]'">

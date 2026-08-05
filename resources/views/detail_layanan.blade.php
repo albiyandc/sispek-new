@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="bg-[#F8FAFC] min-h-screen pb-20 pt-8">
+<div class="bg-[#F8FAFC] min-h-screen pb-20 pt-0 sm:pt-8">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 fade-in-up">
         
         <!-- Breadcrumb (Hidden on Mobile) -->
@@ -18,7 +18,7 @@
         </div>
 
         <!-- Header Hero Banner Full Width -->
-        <div class="bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 text-white rounded-none sm:rounded-3xl p-6 sm:p-12 -mx-4 sm:mx-0 -mt-16 pt-20 sm:-mt-24 sm:pt-24 mb-8 shadow-xl relative overflow-hidden">
+        <div class="bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 text-white rounded-none sm:rounded-3xl p-6 sm:p-12 -mx-4 sm:mx-0 -mt-14 pt-16 sm:-mt-24 sm:pt-24 mb-8 shadow-xl relative overflow-hidden">
             <div class="absolute top-0 right-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
             <div class="relative z-10">
                 <div class="max-w-3xl">
