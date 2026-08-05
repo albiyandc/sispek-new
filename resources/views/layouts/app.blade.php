@@ -177,7 +177,7 @@
     </main>
 
     <!-- Dark Midnight Footer -->
-    <footer class="bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 text-slate-400 border-t border-slate-800/80 mt-6 sm:mt-12 pt-10 sm:pt-12 pb-8">
+    <footer class="bg-slate-900 text-slate-400 border-t border-slate-800 mt-0 pt-10 sm:pt-12 pb-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
                 
