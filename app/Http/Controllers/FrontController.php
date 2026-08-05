@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use App\Models\LayananPublik;
 
 class FrontController extends Controller
@@ -28,6 +29,16 @@ class FrontController extends Controller
         ];
     }
 
+    private function getGlobalClicks()
+    {
+        $dbClicks = [];
+        try {
+            $dbClicks = LayananPublik::pluck('jumlah_klik', 'id_layanan')->toArray();
+        } catch (\Throwable $e) {}
+
+        return $dbClicks;
+    }
+
     public function index()
     {
         $kecamatans = [
@@ -36,11 +47,12 @@ class FrontController extends Controller
         ];
 
         $services = $this->getDummyServices();
-
-        $clicks = session()->get('service_clicks', []);
+        $dbClicks = $this->getGlobalClicks();
+        $sessionClicks = session()->get('service_clicks', []);
         
         foreach ($services as &$service) {
-            $service['clicks'] = $clicks[$service['id']] ?? 0;
+            $id = $service['id'];
+            $service['clicks'] = ($dbClicks[$id] ?? 0) + ($sessionClicks[$id] ?? 0) + Cache::get("service_clicks_{$id}", 0);
         }
 
         usort($services, function($a, $b) {
@@ -53,6 +65,8 @@ class FrontController extends Controller
     public function semuaLayanan(Request $request)
     {
         $services = $this->getDummyServices();
+        $dbClicks = $this->getGlobalClicks();
+        $sessionClicks = session()->get('service_clicks', []);
         $query = $request->input('q');
 
         if ($query) {
@@ -65,10 +79,9 @@ class FrontController extends Controller
             });
         }
 
-        $clicks = session()->get('service_clicks', []);
-        
         foreach ($services as &$service) {
-            $service['clicks'] = $clicks[$service['id']] ?? 0;
+            $id = $service['id'];
+            $service['clicks'] = ($dbClicks[$id] ?? 0) + ($sessionClicks[$id] ?? 0) + Cache::get("service_clicks_{$id}", 0);
         }
 
         usort($services, function($a, $b) {
@@ -80,7 +93,6 @@ class FrontController extends Controller
 
     public function kecamatan($nama_kecamatan)
     {
-        // Langsung redirect ke halaman semua layanan dengan filter nama kecamatan
         return redirect()->route('layanan.semua', ['q' => $nama_kecamatan]);
     }
 
@@ -128,20 +140,31 @@ class FrontController extends Controller
 
     public function trackKategori($id, $kategori)
     {
+        try {
+            LayananPublik::where('id_layanan', $id)->increment('jumlah_klik');
+        } catch (\Throwable $e) {}
+
+        Cache::increment("service_clicks_{$id}");
+
         $clicks = session()->get('service_clicks', []);
         $clicks[$id] = ($clicks[$id] ?? 0) + 1;
         session()->put('service_clicks', $clicks);
 
-        // Langsung redirect ke detail_layanan (persyaratan)
         return redirect()->route('layanan.detail', ['id' => $id]);
     }
 
     public function trackClickApi($id)
     {
+        try {
+            LayananPublik::where('id_layanan', $id)->increment('jumlah_klik');
+        } catch (\Throwable $e) {}
+
+        $newClicks = Cache::increment("service_clicks_{$id}");
+
         $clicks = session()->get('service_clicks', []);
         $clicks[$id] = ($clicks[$id] ?? 0) + 1;
         session()->put('service_clicks', $clicks);
 
-        return response()->json(['success' => true, 'clicks' => $clicks[$id]]);
+        return response()->json(['success' => true, 'clicks' => $newClicks]);
     }
 }

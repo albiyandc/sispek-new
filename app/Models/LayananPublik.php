@@ -30,7 +30,8 @@ class LayananPublik extends Model
         'mekanisme_pengaduan_tindak_lanjut',
         'pengaduan_channels',
         'pengaduan_pelayanan',
-        'status_layanan'
+        'status_layanan',
+        'jumlah_klik'
     ];
 
     protected $casts = [

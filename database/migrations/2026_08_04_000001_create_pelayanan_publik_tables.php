@@ -52,6 +52,7 @@ return new class extends Migration
             $table->json('pengaduan_channels')->nullable();
             $table->text('pengaduan_pelayanan')->nullable();
             $table->string('status_layanan', 50)->default('aktif');
+            $table->unsignedBigInteger('jumlah_klik')->default(0);
             $table->timestamps();
 
             $table->foreign('kecamatan_id')->references('id')->on('kecamatans')->onDelete('cascade');
