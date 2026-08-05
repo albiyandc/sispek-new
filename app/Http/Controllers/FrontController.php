@@ -135,4 +135,13 @@ class FrontController extends Controller
         // Langsung redirect ke detail_layanan (persyaratan)
         return redirect()->route('layanan.detail', ['id' => $id]);
     }
+
+    public function trackClickApi($id)
+    {
+        $clicks = session()->get('service_clicks', []);
+        $clicks[$id] = ($clicks[$id] ?? 0) + 1;
+        session()->put('service_clicks', $clicks);
+
+        return response()->json(['success' => true, 'clicks' => $clicks[$id]]);
+    }
 }

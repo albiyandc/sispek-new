@@ -65,28 +65,30 @@
         </div>
     </div>
     
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+    <div id="services-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
         @foreach($services as $service)
-            @if($loop->iteration <= 10)
-                <a href="{{ route('kategori.track', ['id' => $service['id'], 'kategori' => $service['kategori_slug']]) }}" class="group bg-white p-4 sm:p-6 rounded-2xl border border-gray-100 shadow-sm hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
-                    <div class="flex items-start gap-4 sm:gap-5">
-                        <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-xl {{ $service['bg_color'] }} flex items-center justify-center shrink-0">
-                            <span class="material-symbols-outlined {{ $service['text_color'] }}" style="font-variation-settings: 'FILL' 1;">{{ $service['icon'] }}</span>
+            <a href="{{ route('layanan.detail', ['id' => $service['id']]) }}" 
+               data-id="{{ $service['id'] }}" 
+               data-clicks="{{ $service['clicks'] ?? 0 }}" 
+               data-url="{{ route('layanan.detail', ['id' => $service['id']]) }}" 
+               class="service-card group bg-white p-4 sm:p-6 rounded-2xl border border-gray-100 shadow-sm hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
+                <div class="flex items-start gap-4 sm:gap-5">
+                    <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-xl {{ $service['bg_color'] }} flex items-center justify-center shrink-0">
+                        <span class="material-symbols-outlined {{ $service['text_color'] }}" style="font-variation-settings: 'FILL' 1;">{{ $service['icon'] }}</span>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex items-center justify-between mb-1">
+                            <span class="text-[10px] sm:text-xs font-bold text-green-700 uppercase tracking-tight">{{ $service['kecamatan'] }}</span>
+                            <span class="bg-blue-50 text-blue-700 text-[9px] sm:text-[10px] px-2 py-0.5 rounded-full font-bold">{{ $service['kategori'] }}</span>
                         </div>
-                        <div class="flex-1">
-                            <div class="flex items-center justify-between mb-1">
-                                <span class="text-[10px] sm:text-xs font-bold text-green-700 uppercase tracking-tight">{{ $service['kecamatan'] }}</span>
-                                <span class="bg-blue-50 text-blue-700 text-[9px] sm:text-[10px] px-2 py-0.5 rounded-full font-bold">{{ $service['kategori'] }}</span>
-                            </div>
-                            <h4 class="text-sm sm:text-lg font-semibold text-gray-900 mb-1 sm:mb-2">{{ $service['judul'] }}</h4>
-                            <p class="text-xs sm:text-sm text-gray-500 line-clamp-1 mb-3 sm:mb-4">{{ $service['deskripsi'] }}</p>
-                            <div class="text-blue-700 text-xs sm:text-sm font-medium flex items-center gap-1 group-hover:gap-2 transition-all">
-                                Ajukan Layanan <span class="material-symbols-outlined text-xs sm:text-sm">chevron_right</span>
-                            </div>
+                        <h4 class="text-sm sm:text-lg font-semibold text-gray-900 mb-1 sm:mb-2">{{ $service['judul'] }}</h4>
+                        <p class="text-xs sm:text-sm text-gray-500 line-clamp-1 mb-3 sm:mb-4">{{ $service['deskripsi'] }}</p>
+                        <div class="text-blue-700 text-xs sm:text-sm font-medium flex items-center gap-1 group-hover:gap-2 transition-all">
+                            Ajukan Layanan <span class="material-symbols-outlined text-xs sm:text-sm">chevron_right</span>
                         </div>
                     </div>
-                </a>
-            @endif
+                </div>
+            </a>
         @endforeach
     </div>
 
@@ -111,14 +113,78 @@
                 <div class="text-[7px] sm:text-xs font-bold text-gray-500 tracking-wider uppercase">Jenis Layanan</div>
             </div>
             <div class="px-1 sm:px-4">
-                <div class="text-lg sm:text-4xl lg:text-5xl font-light text-[#1e3a8a] mb-0.5 sm:mb-2">24k</div>
-                <div class="text-[7px] sm:text-xs font-bold text-gray-500 tracking-wider uppercase">Pemohon Aktif</div>
+                <div class="text-lg sm:text-4xl lg:text-5xl font-light text-[#1e3a8a] mb-0.5 sm:mb-2">98%</div>
+                <div class="text-[7px] sm:text-xs font-bold text-gray-500 tracking-wider uppercase">Kepuasan Publik</div>
             </div>
             <div class="px-1 sm:px-4">
-                <div class="text-lg sm:text-4xl lg:text-5xl font-light text-[#1e3a8a] mb-0.5 sm:mb-2">98%</div>
-                <div class="text-[7px] sm:text-xs font-bold text-gray-500 tracking-wider uppercase">Indeks Kepuasan</div>
+                <div class="text-lg sm:text-4xl lg:text-5xl font-light text-[#1e3a8a] mb-0.5 sm:mb-2">24/7</div>
+                <div class="text-[7px] sm:text-xs font-bold text-gray-500 tracking-wider uppercase">Akses Online</div>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const container = document.getElementById('services-grid');
+    if (!container) return;
+
+    let localClicks = JSON.parse(localStorage.getItem('service_clicks') || '{}');
+
+    function sortAndRender() {
+        const cards = Array.from(container.querySelectorAll('.service-card'));
+        cards.sort((a, b) => {
+            const idA = a.getAttribute('data-id');
+            const idB = b.getAttribute('data-id');
+            const clicksA = (localClicks[idA] !== undefined) ? localClicks[idA] : parseInt(a.getAttribute('data-clicks') || '0');
+            const clicksB = (localClicks[idB] !== undefined) ? localClicks[idB] : parseInt(b.getAttribute('data-clicks') || '0');
+            return clicksB - clicksA;
+        });
+
+        cards.forEach((card, index) => {
+            container.appendChild(card);
+            if (index < 10) {
+                card.style.display = '';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+
+    sortAndRender();
+
+    window.addEventListener('pageshow', () => {
+        localClicks = JSON.parse(localStorage.getItem('service_clicks') || '{}');
+        sortAndRender();
+    });
+
+    container.addEventListener('click', (e) => {
+        const card = e.target.closest('.service-card');
+        if (!card) return;
+
+        e.preventDefault();
+        const id = card.getAttribute('data-id');
+        const detailUrl = card.getAttribute('data-url');
+
+        const currentClicks = (localClicks[id] !== undefined) ? localClicks[id] : parseInt(card.getAttribute('data-clicks') || '0');
+        localClicks[id] = currentClicks + 1;
+        localStorage.setItem('service_clicks', JSON.stringify(localClicks));
+        card.setAttribute('data-clicks', localClicks[id]);
+
+        sortAndRender();
+
+        fetch('/api/track-click/' + id, {
+            method: 'POST',
+            headers: {
+                'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                'Content-Type': 'application/json'
+            }
+        }).catch(() => {});
+
+        setTimeout(() => {
+            window.location.href = detailUrl;
+        }, 150);
+    });
+});
+</script>
 @endsection
