@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use App\Models\LayananPublik;
+use App\Models\Instansi;
+use App\Models\LayananInstansi;
+use App\Models\MasterLayanan;
+use App\Models\Sektor;
 
 class FrontController extends Controller
 {
