@@ -2,27 +2,27 @@
 
 @section('content')
 <!-- Hero Section dengan Ambient Dark Gradient -->
-<div class="bg-gradient-to-b from-slate-900 via-blue-950 to-slate-900 text-white shadow-2xl relative overflow-hidden -mt-14 pt-16 sm:-mt-24 sm:pt-24">
+<div class="bg-gradient-to-b from-slate-900 via-blue-950 to-slate-900 text-white shadow-2xl relative overflow-hidden -mt-20 pt-20 sm:-mt-24 sm:pt-24">
     <!-- Ambient Glow Effects -->
     <div class="absolute -top-32 -right-32 w-96 h-96 bg-blue-600/30 rounded-full blur-3xl pointer-events-none"></div>
     <div class="absolute bottom-0 -left-32 w-96 h-96 bg-indigo-600/20 rounded-full blur-3xl pointer-events-none"></div>
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20 lg:py-24 relative z-10 fade-in-up">
-        <div class="flex flex-col md:flex-row justify-between items-center gap-8 sm:gap-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-3 pb-8 sm:py-20 lg:py-24 relative z-10 fade-in-up">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-6 sm:gap-12">
             
             <!-- Text Content -->
             <div class="w-full md:w-1/2">
-                <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold text-white leading-tight mb-4 sm:mb-6 tracking-tight">
+                <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold text-white leading-tight mb-3 sm:mb-6 tracking-tight">
                     Layanan Publik <br>
                     <span class="bg-gradient-to-r from-blue-400 via-indigo-300 to-sky-400 bg-clip-text text-transparent">Cepat, Transparan, & Terpadu.</span>
                 </h1>
                 
-                <p class="text-xs sm:text-base text-slate-300 mb-8 max-w-lg leading-relaxed font-normal">
+                <p class="text-xs sm:text-base text-slate-300 mb-4 sm:mb-8 max-w-lg leading-relaxed font-normal">
                     Kemudahan akses informasi dan standar pelayanan administrasi bagi seluruh warga Kota Tasikmalaya dalam satu sistem terintegrasi.
                 </p>
 
-                <!-- Search Bar Hero Glassmorphism -->
-                <form action="{{ route('layanan.semua') }}" method="GET" class="bg-white/10 backdrop-blur-xl p-2 rounded-2xl border border-white/20 flex items-center gap-2 mb-8 shadow-2xl focus-within:bg-white focus-within:text-slate-900 group transition-all duration-300">
+                <!-- Search Bar Hero Glassmorphism (Desktop Only, Mobile uses Navbar Search Bar) -->
+                <form action="{{ route('layanan.semua') }}" method="GET" class="hidden sm:flex bg-white/10 backdrop-blur-xl p-2 rounded-2xl border border-white/20 items-center gap-2 mb-8 shadow-2xl focus-within:bg-white focus-within:text-slate-900 group transition-all duration-300">
                     <div class="pl-3 sm:pl-4 text-blue-400 group-focus-within:text-blue-600 shrink-0 transition-colors">
                         <span class="material-symbols-outlined text-2xl">search</span>
                     </div>
@@ -50,8 +50,8 @@
                 </div>
             </div>
 
-            <!-- Image Content Poster -->
-            <div class="w-full md:w-1/2 flex justify-center md:justify-end">
+            <!-- Image Content Poster (Desktop Only) -->
+            <div class="hidden md:flex w-full md:w-1/2 justify-center md:justify-end">
                 <div class="relative group">
                     <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-3xl blur-xl opacity-30 group-hover:opacity-50 transition duration-500"></div>
                     <img src="{{ asset('images/main-poster.png') }}"
