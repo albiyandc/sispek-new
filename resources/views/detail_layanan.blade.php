@@ -8,10 +8,12 @@
         <div class="text-xs text-slate-400 mb-6 flex items-center gap-1.5 font-medium overflow-x-auto whitespace-nowrap pb-1">
             <a href="{{ route('home') }}" class="hover:text-blue-600 transition-colors">Beranda</a> 
             <span>&rsaquo;</span> 
-            <span>Pelayanan Publik</span> 
+            <a href="{{ route('layanan.semua') }}" class="hover:text-blue-600 transition-colors">Pelayanan Publik</a> 
             <span>&rsaquo;</span> 
-            <span>{{ $layanan->nama_kecamatan ?? 'Cihideung' }}</span> 
-            <span>&rsaquo;</span> 
+            @if(isset($layanan->nama_kecamatan))
+                <a href="{{ route('kecamatan.show', $layanan->nama_kecamatan) }}" class="hover:text-blue-600 transition-colors">Kecamatan {{ $layanan->nama_kecamatan }}</a> 
+                <span>&rsaquo;</span> 
+            @endif
             <span class="font-bold text-slate-800">{{ $layanan->nama_layanan ?? 'Detail Layanan' }}</span>
         </div>
 

@@ -8,7 +8,7 @@
         <div class="text-xs text-slate-400 mb-6 flex items-center gap-1.5 font-medium overflow-x-auto whitespace-nowrap pb-1">
             <a href="{{ route('home') }}" class="hover:text-blue-600 transition-colors">Beranda</a> 
             <span>&rsaquo;</span> 
-            <span>Pelayanan Publik</span> 
+            <a href="{{ route('layanan.semua') }}" class="hover:text-blue-600 transition-colors">Pelayanan Publik</a> 
             <span>&rsaquo;</span> 
             <span class="font-bold text-slate-800">Kecamatan {{ $nama_kecamatan }}</span>
         </div>

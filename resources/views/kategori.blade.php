@@ -8,6 +8,8 @@
         <div class="text-xs text-slate-400 mb-6 flex items-center gap-2 font-medium">
             <a href="{{ route('home') }}" class="hover:text-blue-600 transition-colors">Beranda</a> 
             <span>&rsaquo;</span> 
+            <a href="{{ route('layanan.semua') }}" class="hover:text-blue-600 transition-colors">Pelayanan Publik</a> 
+            <span>&rsaquo;</span> 
             <span class="text-slate-700 font-bold">Layanan: {{ $namaLayanan }}</span>
         </div>
 
