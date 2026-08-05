@@ -52,16 +52,16 @@
 
                 <!-- Right Menu Nav (Desktop) -->
                 <div class="hidden md:flex items-center space-x-2 text-xs sm:text-sm font-bold text-slate-700 shrink-0">
-                    <a href="{{ route('home') }}" class="px-4 py-2 rounded-full transition-all duration-200 {{ request()->routeIs('home') ? 'bg-[#003da5] text-white shadow-md shadow-blue-600/20' : 'hover:bg-slate-100 text-slate-700 hover:text-blue-600' }}">Beranda</a>
-                    <a href="{{ route('sektor.semua') }}" class="px-4 py-2 rounded-full transition-all duration-200 {{ request()->routeIs('sektor.*') ? 'bg-[#003da5] text-white shadow-md shadow-blue-600/20' : 'hover:bg-slate-100 text-slate-700 hover:text-blue-600' }}">Sektor</a>
-                    <a href="{{ route('layanan.semua') }}" class="px-4 py-2 rounded-full transition-all duration-200 {{ request()->routeIs('layanan.semua') ? 'bg-[#003da5] text-white shadow-md shadow-blue-600/20' : 'hover:bg-slate-100 text-slate-700 hover:text-blue-600' }}">Semua Layanan</a>
+                    <a href="{{ route('home') }}" class="px-4 py-2 rounded-full transition-all duration-200 {{ request()->routeIs('home') ? 'text-blue-600 bg-blue-50/80 font-extrabold' : 'hover:bg-slate-100 text-slate-700 hover:text-blue-600' }}">Beranda</a>
+                    <a href="{{ route('sektor.semua') }}" class="px-4 py-2 rounded-full transition-all duration-200 {{ request()->routeIs('sektor.*') ? 'text-blue-600 bg-blue-50/80 font-extrabold' : 'hover:bg-slate-100 text-slate-700 hover:text-blue-600' }}">Sektor</a>
+                    <a href="{{ route('layanan.semua') }}" class="px-4 py-2 rounded-full transition-all duration-200 {{ request()->routeIs('layanan.semua') ? 'text-blue-600 bg-blue-50/80 font-extrabold' : 'hover:bg-slate-100 text-slate-700 hover:text-blue-600' }}">Semua Layanan</a>
                     
                     <!-- Dropdown Kecamatan Grid 2-Kolom -->
                     <div x-data="{ openKecamatan: false }" class="relative" @click.away="openKecamatan = false" @mouseenter="openKecamatan = true" @mouseleave="openKecamatan = false">
                         @php
                             $activeKecName = $nama_kecamatan ?? request()->route('nama_kecamatan') ?? ($layanan->nama_kecamatan ?? null);
                         @endphp
-                        <button class="flex items-center gap-1.5 px-4 py-2 rounded-full transition-all duration-200 outline-none font-bold {{ request()->routeIs('kecamatan.*') || !empty($activeKecName) ? 'bg-[#003da5] text-white shadow-md shadow-blue-600/20' : 'hover:bg-slate-100 text-slate-700 hover:text-blue-600' }}">
+                        <button class="flex items-center gap-1.5 px-4 py-2 rounded-full transition-all duration-200 outline-none font-bold {{ request()->routeIs('kecamatan.*') || !empty($activeKecName) ? 'text-blue-600 bg-blue-50/80 font-extrabold' : 'hover:bg-slate-100 text-slate-700 hover:text-blue-600' }}">
                             <span>Kecamatan</span>
                             <span class="material-symbols-outlined text-lg transition-transform duration-200" :class="{ 'rotate-180 text-blue-600': openKecamatan }">expand_more</span>
                         </button>
@@ -112,12 +112,12 @@
                     </div>
                 </form>
 
-                <a href="{{ route('home') }}" class="block px-4 py-3 rounded-2xl text-xs font-extrabold transition-all {{ request()->routeIs('home') ? 'bg-[#003da5] text-white shadow-md shadow-blue-600/20' : 'text-slate-700 hover:bg-slate-50' }}">Beranda</a>
-                <a href="{{ route('sektor.semua') }}" class="block px-4 py-3 rounded-2xl text-xs font-extrabold transition-all {{ request()->routeIs('sektor.*') ? 'bg-[#003da5] text-white shadow-md shadow-blue-600/20' : 'text-slate-700 hover:bg-slate-50' }}">Sektor Pelayanan</a>
-                <a href="{{ route('layanan.semua') }}" class="block px-4 py-3 rounded-2xl text-xs font-extrabold transition-all {{ request()->routeIs('layanan.semua') ? 'bg-[#003da5] text-white shadow-md shadow-blue-600/20' : 'text-slate-700 hover:bg-slate-50' }}">Semua Layanan</a>
+                <a href="{{ route('home') }}" class="block px-4 py-3 rounded-2xl text-xs font-extrabold transition-all {{ request()->routeIs('home') ? 'text-blue-600 bg-blue-50/80' : 'text-slate-700 hover:bg-slate-50' }}">Beranda</a>
+                <a href="{{ route('sektor.semua') }}" class="block px-4 py-3 rounded-2xl text-xs font-extrabold transition-all {{ request()->routeIs('sektor.*') ? 'text-blue-600 bg-blue-50/80' : 'text-slate-700 hover:bg-slate-50' }}">Sektor Pelayanan</a>
+                <a href="{{ route('layanan.semua') }}" class="block px-4 py-3 rounded-2xl text-xs font-extrabold transition-all {{ request()->routeIs('layanan.semua') ? 'text-blue-600 bg-blue-50/80' : 'text-slate-700 hover:bg-slate-50' }}">Semua Layanan</a>
                 
                 <div x-data="{ openKecamatanMobile: false }">
-                    <button @click="openKecamatanMobile = !openKecamatanMobile" class="w-full text-left flex justify-between items-center px-4 py-3 rounded-2xl text-xs font-extrabold transition-all {{ request()->routeIs('kecamatan.*') || !empty($activeKecName) ? 'bg-[#003da5] text-white shadow-md shadow-blue-600/20' : 'text-slate-700 hover:bg-slate-50' }}">
+                    <button @click="openKecamatanMobile = !openKecamatanMobile" class="w-full text-left flex justify-between items-center px-4 py-3 rounded-2xl text-xs font-extrabold transition-all {{ request()->routeIs('kecamatan.*') || !empty($activeKecName) ? 'text-blue-600 bg-blue-50/80' : 'text-slate-700 hover:bg-slate-50' }}">
                         <span>Pilih Kecamatan</span>
                         <span class="material-symbols-outlined text-base transition-transform duration-200" :class="{ 'rotate-180': openKecamatanMobile }">expand_more</span>
                     </button>
