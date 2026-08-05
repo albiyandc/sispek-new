@@ -29,7 +29,10 @@
 
     <!-- Ultra-Modern Floating Glass Navbar -->
     <header class="sticky top-0 sm:top-3 z-50 px-2 sm:px-4 transition-all duration-300">
-        <nav class="max-w-7xl mx-auto bg-white/90 backdrop-blur-2xl border border-white/80 shadow-[0_10px_35px_rgba(15,23,42,0.08)] rounded-2xl sm:rounded-full px-4 sm:px-6 py-2.5 transition-all duration-300" x-data="{ openNav: false }">
+        <nav class="max-w-7xl mx-auto rounded-2xl sm:rounded-full px-4 sm:px-6 py-2.5 transition-all duration-300" 
+             x-data="{ openNav: false, isScrolled: false, isHome: {{ request()->routeIs('home') ? 'true' : 'false' }} }"
+             @scroll.window="isScrolled = (window.pageYOffset > 50)"
+             :class="(isHome && !isScrolled) ? 'bg-transparent border border-transparent shadow-none' : 'bg-white/90 backdrop-blur-2xl border border-white/80 shadow-[0_10px_35px_rgba(15,23,42,0.08)]'">
             <div class="flex justify-between items-center gap-4 sm:gap-6">
                 
                 <!-- Logo Brand -->
@@ -40,33 +43,43 @@
                 <!-- Search Bar (Desktop) -->
                 <form action="{{ route('layanan.semua') }}" method="GET" class="hidden md:flex flex-1 max-w-md lg:max-w-lg px-2">
                     <div class="relative w-full group">
-                        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-400 group-focus-within:text-blue-600 transition-colors">
+                        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none transition-colors"
+                             :class="(isHome && !isScrolled) ? 'text-slate-300 group-focus-within:text-blue-400' : 'text-slate-400 group-focus-within:text-blue-600'">
                             <span class="material-symbols-outlined text-xl">search</span>
                         </div>
-                        <input type="text" name="q" placeholder="Cari info pelayanan publik, KTP, izin usaha..." class="w-full pl-11 pr-10 py-2.5 bg-slate-100/70 hover:bg-slate-100/90 focus:bg-white border border-slate-200/60 rounded-full text-xs sm:text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-4 focus:ring-blue-500/10 focus:border-blue-600 transition-all shadow-inner font-medium">
+                        <input type="text" name="q" placeholder="Cari info pelayanan publik, KTP, izin usaha..." 
+                               class="w-full pl-11 pr-10 py-2.5 rounded-full text-xs sm:text-sm font-medium focus:outline-none focus:ring-4 transition-all"
+                               :class="(isHome && !isScrolled) ? 'bg-white/10 hover:bg-white/20 border border-white/20 text-white placeholder-slate-300 focus:bg-white focus:text-slate-800 focus:ring-white/20' : 'bg-slate-100/70 hover:bg-slate-100/90 border border-slate-200/60 text-slate-800 placeholder-slate-400 focus:bg-white focus:border-blue-600 focus:ring-blue-500/10 shadow-inner'">
                         <div class="absolute inset-y-0 right-0 pr-3.5 flex items-center pointer-events-none">
-                            <span class="text-[10px] font-bold text-slate-400 bg-white/80 px-1.5 py-0.5 rounded-md border border-slate-200/80 shadow-2xs">⌘K</span>
+                            <span class="text-[10px] font-bold px-1.5 py-0.5 rounded-md border"
+                                  :class="(isHome && !isScrolled) ? 'bg-white/20 text-slate-200 border-white/20' : 'bg-white/80 text-slate-400 border-slate-200/80 shadow-2xs'">⌘K</span>
                         </div>
                     </div>
                 </form>
 
                 <!-- Right Menu Nav (Desktop) -->
-                <div class="hidden md:flex items-center space-x-1 lg:space-x-2 text-xs sm:text-sm font-bold text-slate-700 shrink-0">
-                    <a href="{{ route('home') }}" class="px-4 py-2 rounded-full transition-all duration-200 relative {{ request()->routeIs('home') ? 'text-blue-600 font-extrabold bg-blue-50/70' : 'hover:bg-slate-100/80 text-slate-700 hover:text-blue-600' }}">Beranda</a>
-                    <a href="{{ route('sektor.semua') }}" class="px-4 py-2 rounded-full transition-all duration-200 relative {{ request()->routeIs('sektor.*') ? 'text-blue-600 font-extrabold bg-blue-50/70' : 'hover:bg-slate-100/80 text-slate-700 hover:text-blue-600' }}">Sektor</a>
-                    <a href="{{ route('layanan.semua') }}" class="px-4 py-2 rounded-full transition-all duration-200 relative {{ request()->routeIs('layanan.semua') ? 'text-blue-600 font-extrabold bg-blue-50/70' : 'hover:bg-slate-100/80 text-slate-700 hover:text-blue-600' }}">Semua Layanan</a>
+                <div class="hidden md:flex items-center space-x-1 lg:space-x-2 text-xs sm:text-sm font-bold shrink-0">
+                    <a href="{{ route('home') }}" class="px-4 py-2 rounded-full transition-all duration-200 relative"
+                       :class="(isHome && !isScrolled) ? 'text-blue-300 font-extrabold bg-blue-500/20' : '{{ request()->routeIs('home') ? 'text-blue-600 font-extrabold bg-blue-50/70' : 'hover:bg-slate-100/80 text-slate-700 hover:text-blue-600' }}'">Beranda</a>
+                    
+                    <a href="{{ route('sektor.semua') }}" class="px-4 py-2 rounded-full transition-all duration-200 relative"
+                       :class="(isHome && !isScrolled) ? 'text-slate-200 hover:text-white hover:bg-white/10' : '{{ request()->routeIs('sektor.*') ? 'text-blue-600 font-extrabold bg-blue-50/70' : 'hover:bg-slate-100/80 text-slate-700 hover:text-blue-600' }}'">Sektor</a>
+                    
+                    <a href="{{ route('layanan.semua') }}" class="px-4 py-2 rounded-full transition-all duration-200 relative"
+                       :class="(isHome && !isScrolled) ? 'text-slate-200 hover:text-white hover:bg-white/10' : '{{ request()->routeIs('layanan.semua') ? 'text-blue-600 font-extrabold bg-blue-50/70' : 'hover:bg-slate-100/80 text-slate-700 hover:text-blue-600' }}'">Semua Layanan</a>
                     
                     <!-- Dropdown Kecamatan Grid 2-Kolom -->
                     <div x-data="{ openKecamatan: false }" class="relative" @click.away="openKecamatan = false" @mouseenter="openKecamatan = true" @mouseleave="openKecamatan = false">
                         @php
                             $activeKecName = $nama_kecamatan ?? request()->route('nama_kecamatan') ?? ($layanan->nama_kecamatan ?? null);
                         @endphp
-                        <button class="flex items-center gap-1 px-4 py-2 rounded-full transition-all duration-200 outline-none font-bold {{ request()->routeIs('kecamatan.*') || !empty($activeKecName) ? 'text-blue-600 font-extrabold bg-blue-50/70' : 'hover:bg-slate-100/80 text-slate-700 hover:text-blue-600' }}">
+                        <button class="flex items-center gap-1 px-4 py-2 rounded-full transition-all duration-200 outline-none font-bold"
+                                :class="(isHome && !isScrolled) ? 'text-slate-200 hover:text-white hover:bg-white/10' : '{{ request()->routeIs('kecamatan.*') || !empty($activeKecName) ? 'text-blue-600 font-extrabold bg-blue-50/70' : 'hover:bg-slate-100/80 text-slate-700 hover:text-blue-600' }}'">
                             <span>Kecamatan</span>
                             <span class="material-symbols-outlined text-lg transition-transform duration-200" :class="{ 'rotate-180 text-blue-600': openKecamatan }">expand_more</span>
                         </button>
 
-                        <div x-show="openKecamatan" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 translate-y-2 scale-95" x-transition:enter-end="opacity-100 translate-y-0 scale-100" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0 scale-100" x-transition:leave-end="opacity-0 translate-y-2 scale-95" class="absolute top-full right-0 mt-3 w-80 bg-white/95 backdrop-blur-2xl border border-slate-100 rounded-3xl shadow-2xl p-3 z-50" style="display: none;">
+                        <div x-show="openKecamatan" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 translate-y-2 scale-95" x-transition:enter-end="opacity-100 translate-y-0 scale-100" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0 scale-100" x-transition:leave-end="opacity-0 translate-y-2 scale-95" class="absolute top-full right-0 mt-3 w-80 bg-white/95 backdrop-blur-2xl border border-slate-100 rounded-3xl shadow-2xl p-3 z-50 text-slate-700" style="display: none;">
                             <div class="px-3 py-2 text-[10px] font-extrabold text-slate-400 uppercase tracking-widest border-b border-slate-100 mb-2 flex items-center">
                                 <span>Pilih Kecamatan Resmi</span>
                             </div>
@@ -91,17 +104,21 @@
 
                 <!-- Mobile Menu & Search Button -->
                 <div class="md:hidden flex items-center gap-1.5">
-                    <button @click="openNav = true; $nextTick(() => $refs.mobileSearchInput.focus())" class="text-slate-600 hover:text-blue-600 focus:outline-none p-2 rounded-full bg-slate-100/70 hover:bg-blue-50 transition-colors" aria-label="Cari">
+                    <button @click="openNav = true; $nextTick(() => $refs.mobileSearchInput.focus())" 
+                            class="focus:outline-none p-2 rounded-full transition-colors" 
+                            :class="(isHome && !isScrolled) ? 'text-white bg-white/10 hover:bg-white/20' : 'text-slate-600 bg-slate-100/70 hover:bg-blue-50'" aria-label="Cari">
                         <span class="material-symbols-outlined text-xl">search</span>
                     </button>
-                    <button @click="openNav = !openNav" class="text-slate-600 hover:text-blue-600 focus:outline-none p-2 rounded-full bg-slate-100/70 hover:bg-blue-50 transition-colors" aria-label="Menu">
+                    <button @click="openNav = !openNav" 
+                            class="focus:outline-none p-2 rounded-full transition-colors" 
+                            :class="(isHome && !isScrolled) ? 'text-white bg-white/10 hover:bg-white/20' : 'text-slate-600 bg-slate-100/70 hover:bg-blue-50'" aria-label="Menu">
                         <span class="material-symbols-outlined text-2xl" x-text="openNav ? 'close' : 'menu'">menu</span>
                     </button>
                 </div>
             </div>
 
             <!-- Mobile Menu Dropdown Card -->
-            <div x-show="openNav" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-4 scale-95" x-transition:enter-end="opacity-100 translate-y-0 scale-100" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0 scale-100" x-transition:leave-end="opacity-0 -translate-y-4 scale-95" class="md:hidden bg-white/95 backdrop-blur-2xl border border-slate-100 rounded-3xl mt-3 p-4 shadow-2xl" style="display: none;">
+            <div x-show="openNav" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-4 scale-95" x-transition:enter-end="opacity-100 translate-y-0 scale-100" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0 scale-100" x-transition:leave-end="opacity-0 -translate-y-4 scale-95" class="md:hidden bg-white/95 backdrop-blur-2xl border border-slate-100 rounded-3xl mt-3 p-4 shadow-2xl text-slate-800" style="display: none;">
                 <form action="{{ route('layanan.semua') }}" method="GET" class="mb-3">
                     <div class="relative w-full">
                         <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
