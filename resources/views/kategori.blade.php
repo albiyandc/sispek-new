@@ -24,17 +24,11 @@
                 @foreach($kecamatans as $kecamatan)
                 <a href="{{ route('kecamatan.show', $kecamatan) }}" class="group bg-white rounded-xl py-6 px-4 sm:p-8 text-center flex flex-col items-center justify-center border border-gray-100 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
                     <!-- Icon -->
-                    <div class="bg-blue-50 text-[#1e3a8a] w-12 h-12 sm:w-16 sm:h-16 rounded-full flex items-center justify-center mb-3 sm:mb-5 group-hover:bg-[#1e3a8a] group-hover:text-white transition-all duration-300">
+                    <div class="bg-blue-50 text-[#1e3a8a] w-12 h-12 sm:w-16 sm:h-16 rounded-full flex items-center justify-center mb-3 sm:mb-4 group-hover:bg-[#1e3a8a] group-hover:text-white transition-all duration-300">
                         <span class="material-symbols-outlined text-2xl sm:text-3xl">location_city</span>
                     </div>
                     
-                    <h3 class="font-semibold text-gray-800 text-[12px] sm:text-lg mb-1 leading-tight">{{ $kecamatan }}</h3>
-                    
-                    <p class="hidden sm:block text-sm text-gray-400 mb-4">Tersedia</p>
-                    
-                    <div class="text-blue-600 text-[10px] sm:text-sm font-medium flex items-center gap-1 group-hover:gap-2 transition-all mt-2 sm:mt-0">
-                        Pilih Daerah <span class="material-symbols-outlined text-[14px] sm:text-[18px]">arrow_forward</span>
-                    </div>
+                    <h3 class="font-semibold text-gray-800 text-sm sm:text-lg leading-tight group-hover:text-[#1e3a8a] transition-colors">{{ $kecamatan }}</h3>
                 </a>
                 @endforeach
             </div>
