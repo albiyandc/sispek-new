@@ -53,7 +53,7 @@
                 </div>
                 <h3 class="text-lg sm:text-xl font-bold text-slate-800 mb-2">Tidak Ada Layanan</h3>
                 <p class="text-xs sm:text-sm text-slate-500">Belum ada daftar layanan publik untuk sektor {{ $sektor['nama'] }}.</p>
-                <a href="{{ route('home') }}" class="inline-block mt-6 px-6 py-2.5 bg-blue-600 text-white rounded-full text-xs sm:text-sm font-bold hover:bg-blue-700 transition-colors shadow-md">Kembali ke Beranda</a>
+                <a href="{{ route('home') }}" class="inline-block mt-6 px-7 py-3 bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 text-white rounded-full text-xs sm:text-sm font-bold shadow-md hover:shadow-xl hover:scale-[1.02] transition-all">Kembali ke Beranda</a>
             </div>
         @endif
 

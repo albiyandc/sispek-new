@@ -66,7 +66,7 @@
                 </div>
                 <h3 class="text-lg sm:text-xl font-bold text-slate-800 mb-2">Layanan Tidak Ditemukan</h3>
                 <p class="text-xs sm:text-sm text-slate-500">Tidak ada layanan publik yang cocok dengan kata kunci "{{ $query }}".</p>
-                <a href="{{ route('layanan.semua') }}" class="inline-block mt-6 px-6 py-2.5 bg-blue-600 text-white rounded-full text-xs sm:text-sm font-bold hover:bg-blue-700 transition-colors shadow-md">Tampilkan Semua Layanan</a>
+                <a href="{{ route('layanan.semua') }}" class="inline-block mt-6 px-7 py-3 bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 text-white rounded-full text-xs sm:text-sm font-bold shadow-md hover:shadow-xl hover:scale-[1.02] transition-all">Tampilkan Semua Layanan</a>
             </div>
         @endif
     </div>

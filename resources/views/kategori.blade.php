@@ -30,7 +30,7 @@
                         <span class="material-symbols-outlined text-3xl">location_city</span>
                     </div>
                     
-                    <h3 class="font-bold text-slate-900 text-sm sm:text-lg group-hover:text-blue-600 transition-colors leading-snug mb-1">{{ $kecamatan }}</h3>
+                    <h3 class="font-bold text-slate-900 text-sm sm:text-lg group-hover:text-blue-600 transition-colors mb-1">Kecamatan {{ $kecamatan }}</h3>
                     <span class="text-[11px] font-semibold text-slate-400 group-hover:text-blue-500 transition-colors flex items-center gap-1">
                         Pilih Wilayah <span class="material-symbols-outlined text-xs">chevron_right</span>
                     </span>
@@ -44,7 +44,7 @@
                 </div>
                 <h3 class="text-lg sm:text-xl font-bold text-slate-800 mb-2">Belum Ada Data Wilayah</h3>
                 <p class="text-xs sm:text-sm text-slate-500">Belum ada data kecamatan terdaftar untuk {{ $namaLayanan }}.</p>
-                <a href="{{ route('home') }}" class="inline-block mt-6 px-6 py-2.5 bg-blue-600 text-white rounded-full text-xs sm:text-sm font-bold hover:bg-blue-700 transition-colors shadow-md">Kembali ke Beranda</a>
+                <a href="{{ route('home') }}" class="inline-block mt-6 px-7 py-3 bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 text-white rounded-full text-xs sm:text-sm font-bold shadow-md hover:shadow-xl hover:scale-[1.02] transition-all">Kembali ke Beranda</a>
             </div>
         @endif
 

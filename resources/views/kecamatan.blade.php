@@ -107,7 +107,7 @@
                 <!-- Tombol Tampilkan Lebih Banyak -->
                 @if(count($layanans) > 10)
                 <div class="mt-8 flex justify-center">
-                    <button id="btn-show-more" class="bg-white border border-slate-200 hover:bg-blue-50 text-blue-700 font-bold text-xs py-3 px-8 rounded-full shadow-sm hover:shadow-md transition-all flex items-center gap-2">
+                    <button id="btn-show-more" class="bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 text-white font-bold text-xs py-3.5 px-8 rounded-full shadow-md hover:shadow-xl hover:scale-[1.02] transition-all flex items-center gap-2">
                         <span>Tampilkan Lebih Banyak Layanan</span> 
                         <span class="material-symbols-outlined text-sm">expand_more</span>
                     </button>

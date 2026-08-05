@@ -132,7 +132,7 @@
 
     <!-- Tombol Lihat Semua Sektor -->
     <div class="mt-6 sm:mt-8 flex justify-center">
-        <a href="{{ route('sektor.semua') }}" class="bg-white border border-slate-200 text-blue-700 hover:bg-blue-50 font-bold text-xs sm:text-sm py-3 px-8 rounded-full shadow-sm hover:shadow-md transition-all flex items-center gap-2 group">
+        <a href="{{ route('sektor.semua') }}" class="bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 text-white font-bold text-xs sm:text-sm py-3.5 px-8 rounded-full shadow-md hover:shadow-xl hover:scale-[1.02] transition-all flex items-center gap-2 group">
             <span>Lihat Semua Sektor Pelayanan</span>
             <span class="material-symbols-outlined text-base group-hover:translate-x-1 transition-transform">arrow_forward</span>
         </a>
