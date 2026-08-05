@@ -63,8 +63,7 @@
                             <span class="material-symbols-outlined text-lg transition-transform duration-200" :class="{ 'rotate-180 text-blue-600': openKecamatan }">expand_more</span>
                         </button>
                         <div x-show="openKecamatan" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 translate-y-2 scale-95" x-transition:enter-end="opacity-100 translate-y-0 scale-100" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0 scale-100" x-transition:leave-end="opacity-0 translate-y-2 scale-95" class="absolute top-full right-0 mt-2 w-80 bg-white/95 backdrop-blur-2xl border border-slate-100 rounded-3xl shadow-2xl p-3 z-50" style="display: none;">
-                            <div class="px-3 py-2 text-[10px] font-extrabold text-slate-400 uppercase tracking-widest border-b border-slate-100 mb-2 flex items-center gap-1.5">
-                                <span class="material-symbols-outlined text-sm text-blue-600">location_city</span>
+                            <div class="px-3 py-2 text-[10px] font-extrabold text-slate-400 uppercase tracking-widest border-b border-slate-100 mb-2 flex items-center">
                                 <span>Pilih Kecamatan Resmi</span>
                             </div>
                             <div class="grid grid-cols-2 gap-1">
