@@ -97,13 +97,13 @@
                         @endphp
                         <button class="flex items-center gap-1 px-4 py-2 rounded-full transition-all duration-200 outline-none font-bold"
                                 :class="(!isScrolled && isHome) ? 'text-slate-200 hover:text-white hover:bg-white/10' : '{{ request()->routeIs('kecamatan.*') || !empty($activeKecName) ? 'text-blue-600 font-extrabold bg-blue-50/70' : 'hover:bg-slate-100/80 text-slate-700 hover:text-blue-600' }}'">
-                            <span>Kecamatan</span>
+                            <span>OPD</span>
                             <span class="material-symbols-outlined text-lg transition-transform duration-200" :class="{ 'rotate-180 text-blue-600': openKecamatan }">expand_more</span>
                         </button>
 
                         <div x-show="openKecamatan" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 translate-y-2 scale-95" x-transition:enter-end="opacity-100 translate-y-0 scale-100" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0 scale-100" x-transition:leave-end="opacity-0 translate-y-2 scale-95" class="absolute top-full right-0 mt-3 w-80 bg-white/95 backdrop-blur-2xl border border-slate-100 rounded-3xl shadow-2xl p-3 z-50 text-slate-700" style="display: none;">
                             <div class="px-3 py-2 text-[10px] font-extrabold text-slate-400 uppercase tracking-widest border-b border-slate-100 mb-2 flex items-center">
-                                <span>Pilih Kecamatan Resmi</span>
+                                <span>Pilih OPD</span>
                             </div>
                             <div class="grid grid-cols-2 gap-1">
                                 @php
@@ -150,7 +150,7 @@
                     
                     <div x-data="{ openKecamatanMobile: false }">
                         <button @click="openKecamatanMobile = !openKecamatanMobile" class="w-full text-left flex justify-between items-center px-4 py-3 rounded-2xl text-xs font-extrabold transition-all {{ request()->routeIs('kecamatan.*') || !empty($activeKecName) ? 'text-blue-600 bg-blue-50/80' : 'text-slate-700 hover:bg-slate-50' }}">
-                            <span>Pilih Kecamatan</span>
+                            <span>Pilih OPD</span>
                             <span class="material-symbols-outlined text-base transition-transform duration-200" :class="{ 'rotate-180': openKecamatanMobile }">expand_more</span>
                         </button>
                         <div x-show="openKecamatanMobile" class="pl-3 pr-2 py-2 grid grid-cols-2 gap-1 bg-slate-50/80 rounded-2xl mt-1" style="display: none;">
@@ -177,7 +177,7 @@
     </main>
 
     <!-- Dark Midnight Footer -->
-    <footer class="bg-slate-900 text-slate-400 border-t border-slate-800 mt-10 sm:mt-12 pt-10 sm:pt-12 pb-8">
+    <footer class="bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 text-slate-400 border-t border-slate-800/80 mt-6 sm:mt-12 pt-10 sm:pt-12 pb-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
                 

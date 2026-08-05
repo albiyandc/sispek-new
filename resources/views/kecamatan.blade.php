@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="bg-[#F8FAFC] min-h-screen pb-20 pt-0 sm:pt-8">
+<div class="bg-[#F8FAFC] min-h-screen pb-6 sm:pb-12 pt-0 sm:pt-8">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 fade-in-up">
         
         @php

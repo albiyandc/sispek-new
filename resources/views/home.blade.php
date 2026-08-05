@@ -41,7 +41,7 @@
                     </div>
                     <div class="flex items-center gap-2">
                         <span class="material-symbols-outlined text-emerald-400 text-base">check_circle</span> 
-                        10 Kecamatan Resmi
+                        10 OPD Resmi
                     </div>
                     <div class="flex items-center gap-2">
                         <span class="material-symbols-outlined text-emerald-400 text-base">check_circle</span> 
