@@ -1,0 +1,217 @@
+{
+  "status": "success",
+  "message": "Data Pelayanan Publik Berhasil Diambil (Struktur SISPEK-v2 Updated)",
+  "metadata": {
+    "total_instansi": 2,
+    "total_layanan_master_tersedia": 295,
+    "sektor_list": [
+      {
+        "id": 1,
+        "nama_sektor": "Kependudukan & Catatan Sipil",
+        "slug": "kependudukan-catatan-sipil"
+      },
+      {
+        "id": 2,
+        "nama_sektor": "Kesehatan & Kesejahteraan",
+        "slug": "kesehatan-kesejahteraan"
+      },
+      {
+        "id": 3,
+        "nama_sektor": "Perizinan & Usaha",
+        "slug": "perizinan-usaha"
+      }
+    ]
+  },
+  "data": [
+    {
+      "instansi": {
+        "id": 1,
+        "kode_instansi": "INST-327806",
+        "nama_instansi": "Kecamatan Cibeureum",
+        "jenis": "kecamatan",
+        "subdomain": "kecamatan-cibeureum",
+        "maklumat_pelayanan": {
+          "isi": "Dengan ini kami berjanji akan memberikan pelayanan prima sesuai dengan Standar Pelayanan yang ditetapkan, dan apabila kami tidak menepati janji ini, kami siap menerima sanksi sesuai Peraturan Perundang-undangan yang berlaku.",
+          "penandatangan": "Camat Cibeureum (H. Rahman, S.Sos, M.Si)"
+        },
+        "ikm": {
+          "nilai": "88.35",
+          "kategori": "A (SANGAT BAIK)",
+          "tahun": "2025",
+          "responden": "103 Orang",
+          "periode": "Triwulan III & IV s.d. Oktober 2025 (Semester 2)"
+        },
+        "profil_penyelenggara": {
+          "jam_kerja": "Senin – Kamis: 08.00 – 16.00 WIB | Jumat: 08.00 – 16.30 WIB",
+          "jumlah_pelaksana": "4 (empat) orang petugas loket pelayanan",
+          "penanggung_jawab": "Kasi Tata Pemerintahan dan Pelayanan Publik",
+          "kualifikasi_pelaksana": "• Pendidikan minimum SMA/Sederajat\n• Mampu mengoperasikan komputer\n• Mempunyai kemampuan berkomunikasi yang baik",
+          "alamat": "Jl. KH. Khoer Affandi No. 160, Tasikmalaya (Kode Pos 46196)",
+          "telepon": "081312226045",
+          "email": "kecamatan.cibeureum@tasikmalayakota.go.id"
+        },
+        "mekanisme_pengaduan_global": "• Pengaduan Ringan: Ditanggapi dan diselesaikan langsung oleh petugas loket atau via WhatsApp.\n• Pengaduan Sedang/Berat: Dikoordinasikan dengan Kepala Seksi / Camat dengan batas waktu penyelesaian maksimal 1 (satu) minggu."
+      },
+      "daftar_layanan": [
+        {
+          "layanan_instansi_id": 101,
+          "external_id": "SIMAT-327806-001",
+          "layanan_master": {
+            "id": 12,
+            "nama_layanan": "Registrasi Surat Keterangan Pindah Penduduk WNI Antar Kecamatan Dalam Satu Daerah",
+            "slug": "registrasi-surat-keterangan-pindah-penduduk-wni-antar-kecamatan-dalam-satu-daerah",
+            "sektor": {
+              "id": 1,
+              "nama_sektor": "Kependudukan & Catatan Sipil",
+              "slug": "kependudukan-catatan-sipil"
+            },
+            "persyaratan_umum": [
+              "Fotocopy KTP Pemohon (1 lembar)",
+              "Fotocopy Kartu Keluarga Pemohon (1 lembar)"
+            ]
+          },
+          "status_approval": "disetujui",
+          "status_layanan": "aktif",
+          "view_count": 1420,
+          "catatan_revisi": null,
+          "standar_pelayanan": {
+            "waktu_penyelesaian": "15 – 30 menit (jika berkas lengkap)",
+            "biaya_tarif": "Gratis (Rp 0)",
+            "produk_pelayanan": "Surat Keterangan Pindah Penduduk WNI Antar Kecamatan yang terregister dan ditandatangani",
+            "persyaratan_khusus": [
+              "Surat Keterangan Pindah Penduduk Antar Kecamatan yang telah ditandatangani Pejabat Kelurahan setempat",
+              "Formulir Permohonan Pindah yang telah diisi lengkap"
+            ],
+            "prosedur": [
+              {
+                "urutan": 1,
+                "isi": "Pemohon datang ke loket pelayanan dengan membawa berkas persyaratan."
+              },
+              {
+                "urutan": 2,
+                "isi": "Petugas loket memverifikasi keabsahan dan kelengkapan dokumen."
+              },
+              {
+                "urutan": 3,
+                "isi": "Petugas menginput data registrasi dan memproses cetak dokumen."
+              },
+              {
+                "urutan": 4,
+                "isi": "Pejabat berwenang menandatangani dokumen."
+              },
+              {
+                "urutan": 5,
+                "isi": "Pemohon menerima dokumen Surat Keterangan Pindah."
+              }
+            ],
+            "pengaduan_channels": [
+              {
+                "jenis": "whatsapp",
+                "nilai": "081312226045"
+              },
+              {
+                "jenis": "kotak_pengaduan",
+                "nilai": "Ruang Pelayanan Kantor Kecamatan Cibeureum"
+              }
+            ]
+          },
+          "audit_trail": {
+            "created_by": "Admin Kecamatan Cibeureum",
+            "approved_by": "Verifikator Diskominfo",
+            "created_at": "2026-08-01T08:00:00Z",
+            "updated_at": "2026-08-02T10:15:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "instansi": {
+        "id": 2,
+        "kode_instansi": "INST-327801",
+        "nama_instansi": "Kecamatan Cihideung",
+        "jenis": "kecamatan",
+        "subdomain": "kecamatan-cihideung",
+        "maklumat_pelayanan": {
+          "isi": "Kami berkomitmen melayani masyarakat Kecamatan Cihideung dengan Cepat, Empati, Transparan, dan Tanpa Pungli.",
+          "penandatangan": "Camat Cihideung"
+        },
+        "ikm": {
+          "nilai": "85.20",
+          "kategori": "B (BAIK)",
+          "tahun": "2025",
+          "responden": "85 Orang",
+          "periode": "Semester 2 Tahun 2025"
+        },
+        "profil_penyelenggara": {
+          "jam_kerja": "Senin – Kamis: 08.00 – 16.00 WIB | Jumat: 08.00 – 16.30 WIB",
+          "jumlah_pelaksana": "3 orang petugas loket",
+          "penanggung_jawab": "Kasi Pelayanan Umum",
+          "kualifikasi_pelaksana": "Pendidikan D3/S1, Komputer & Pelayanan Publik",
+          "alamat": "Jl. Cihideung No. 12, Tasikmalaya",
+          "telepon": "(0265) 331234",
+          "email": "kecamatan.cihideung@tasikmalayakota.go.id"
+        },
+        "mekanisme_pengaduan_global": "Pengaduan dapat disampaikan melalui loket pengaduan atau email resmi kecamatan."
+      },
+      "daftar_layanan": [
+        {
+          "layanan_instansi_id": 102,
+          "external_id": "SIMAT-327801-002",
+          "layanan_master": {
+            "id": 45,
+            "nama_layanan": "Pengurusan Surat Keterangan Usaha (SKU)",
+            "slug": "pengurusan-surat-keterangan-usaha-sku",
+            "sektor": {
+              "id": 3,
+              "nama_sektor": "Perizinan & Usaha",
+              "slug": "perizinan-usaha"
+            },
+            "persyaratan_umum": [
+              "Fotocopy KTP Pemohon",
+              "Fotocopy Kartu Keluarga"
+            ]
+          },
+          "status_approval": "disetujui",
+          "status_layanan": "aktif",
+          "view_count": 980,
+          "catatan_revisi": null,
+          "standar_pelayanan": {
+            "waktu_penyelesaian": "1 Hari Kerja",
+            "biaya_tarif": "Gratis (Rp 0)",
+            "produk_pelayanan": "Surat Keterangan Usaha (SKU)",
+            "persyaratan_khusus": [
+              "Surat Pengantar Usaha dari Kelurahan setempat",
+              "Foto lokasi/tempat usaha (1 lembar)"
+            ],
+            "prosedur": [
+              {
+                "urutan": 1,
+                "isi": "Pemohon menyerahkan dokumen persyaratan ke loket."
+              },
+              {
+                "urutan": 2,
+                "isi": "Petugas memverifikasi lokasi & kelengkapan administrasi."
+              },
+              {
+                "urutan": 3,
+                "isi": "Penerbitan Surat Keterangan Usaha (SKU)."
+              }
+            ],
+            "pengaduan_channels": [
+              {
+                "jenis": "email",
+                "nilai": "pengaduan.cihideung@tasikmalayakota.go.id"
+              }
+            ]
+          },
+          "audit_trail": {
+            "created_by": "Admin Kecamatan Cihideung",
+            "approved_by": "Verifikator Diskominfo",
+            "created_at": "2026-08-03T09:00:00Z",
+            "updated_at": "2026-08-03T14:20:00Z"
+          }
+        }
+      ]
+    }
+  ]
+}
