@@ -86,7 +86,7 @@
                            data-title="{{ $layanan->nama_layanan }}" 
                            data-desc="{{ $layanan->produk_pelayanan }}" 
                            class="service-item {{ $isExtra ? 'extra-service-item hidden' : '' }} group bg-white rounded-3xl p-5 flex flex-col justify-between border border-slate-100 shadow-sm hover:shadow-xl hover:border-blue-200 hover:-translate-y-1 transition-all duration-200">
-                            <div class="flex items-start gap-3.5 mb-3">
+                            <div class="flex items-center gap-3.5 mb-3">
                                 <div class="{{ $color['bg'] }} {{ $color['text'] }} w-11 h-11 rounded-2xl flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform shadow-sm">
                                     <span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">{{ $icon }}</span>
                                 </div>
@@ -139,22 +139,22 @@
                 </div>
 
                 <!-- Informasi Kontak Card -->
-                <div class="bg-white rounded-3xl p-6 border border-slate-100 shadow-sm space-y-4">
-                    <h3 class="font-bold text-slate-900 text-sm sm:text-base flex items-center gap-2 pb-2 border-b border-slate-100">
+                <div class="bg-gradient-to-br from-blue-50/90 to-indigo-50/60 rounded-3xl p-6 border border-blue-100/60 shadow-sm space-y-4">
+                    <h3 class="font-bold text-slate-900 text-sm sm:text-base flex items-center gap-2 pb-2 border-b border-blue-100/80">
                         <span class="material-symbols-outlined text-blue-600 text-lg">info</span>
                         Informasi Kontak & Jam Kerja
                     </h3>
                     
                     <div class="space-y-3 text-xs text-slate-600">
-                        <div class="flex items-start gap-3 p-3 rounded-2xl bg-slate-50">
+                        <div class="flex items-start gap-3 p-3 rounded-2xl bg-white/90 border border-slate-100/60 shadow-2xs">
                             <span class="material-symbols-outlined text-blue-600 text-lg shrink-0 mt-0.5">location_on</span>
                             <span>Jl. Letnan Harun No.1, Kec. {{ $nama_kecamatan }}, Tasikmalaya 46151</span>
                         </div>
-                        <div class="flex items-start gap-3 p-3 rounded-2xl bg-slate-50">
+                        <div class="flex items-start gap-3 p-3 rounded-2xl bg-white/90 border border-slate-100/60 shadow-2xs">
                             <span class="material-symbols-outlined text-blue-600 text-lg shrink-0 mt-0.5">mail</span>
                             <span class="break-all font-medium">kec.{{ strtolower(str_replace(' ', '', $nama_kecamatan)) }}@tasikmalayakota.go.id</span>
                         </div>
-                        <div class="flex items-start gap-3 p-3 rounded-2xl bg-slate-50">
+                        <div class="flex items-start gap-3 p-3 rounded-2xl bg-white/90 border border-slate-100/60 shadow-2xs">
                             <span class="material-symbols-outlined text-blue-600 text-lg shrink-0 mt-0.5">schedule</span>
                             <span>Senin - Jumat: <br><strong class="text-slate-800">08.00 - 16.00 WIB</strong></span>
                         </div>
