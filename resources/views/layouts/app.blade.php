@@ -27,45 +27,46 @@
 </head>
 <body class="text-slate-800 antialiased flex flex-col min-h-screen selection:bg-blue-600 selection:text-white">
 
-    <!-- Modern Glassmorphism Navbar -->
-    <nav class="glass-nav border-b border-slate-200/60 sticky top-0 z-50 transition-all duration-300 shadow-sm" x-data="{ openNav: false }">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20 gap-4 sm:gap-8">
+    <!-- Ultra-Modern Floating Glass Navbar -->
+    <header class="sticky top-0 sm:top-3 z-50 px-2 sm:px-4 transition-all duration-300">
+        <nav class="max-w-7xl mx-auto bg-white/90 backdrop-blur-2xl border border-white/80 shadow-[0_10px_35px_rgba(15,23,42,0.08)] rounded-2xl sm:rounded-full px-4 sm:px-6 py-2.5 transition-all duration-300" x-data="{ openNav: false }">
+            <div class="flex justify-between items-center gap-4 sm:gap-6">
                 
                 <!-- Logo Brand -->
-                <div class="flex items-center gap-3 cursor-pointer shrink-0 group" onclick="window.location.href='{{ route('home') }}'">
-                    <img src="{{ asset('images/logo_sispek_tasikmalaya.png') }}" alt="SISPEK Tasikmalaya" class="h-10 sm:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105">
+                <div class="flex items-center gap-3 cursor-pointer shrink-0 group py-1" onclick="window.location.href='{{ route('home') }}'">
+                    <img src="{{ asset('images/logo_sispek_tasikmalaya.png') }}" alt="SISPEK Tasikmalaya" class="h-9 sm:h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-105">
                 </div>
 
                 <!-- Search Bar (Desktop) -->
-                <form action="{{ route('layanan.semua') }}" method="GET" class="hidden md:flex flex-1 max-w-xl pl-6">
+                <form action="{{ route('layanan.semua') }}" method="GET" class="hidden md:flex flex-1 max-w-md lg:max-w-lg px-2">
                     <div class="relative w-full group">
                         <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-400 group-focus-within:text-blue-600 transition-colors">
                             <span class="material-symbols-outlined text-xl">search</span>
                         </div>
-                        <input type="text" name="q" placeholder="Cari info pelayanan publik, KTP, izin usaha..." class="w-full pl-11 pr-10 py-2.5 bg-slate-100/70 border border-slate-200/80 rounded-full text-xs sm:text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-4 focus:ring-blue-500/10 focus:border-blue-600 focus:bg-white transition-all shadow-inner font-medium">
-                        <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-                            <span class="text-[10px] font-bold text-slate-400 bg-slate-200/60 px-1.5 py-0.5 rounded border border-slate-300/40">/</span>
+                        <input type="text" name="q" placeholder="Cari info pelayanan publik, KTP, izin usaha..." class="w-full pl-11 pr-10 py-2.5 bg-slate-100/70 hover:bg-slate-100/90 focus:bg-white border border-slate-200/60 rounded-full text-xs sm:text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-4 focus:ring-blue-500/10 focus:border-blue-600 transition-all shadow-inner font-medium">
+                        <div class="absolute inset-y-0 right-0 pr-3.5 flex items-center pointer-events-none">
+                            <span class="text-[10px] font-bold text-slate-400 bg-white/80 px-1.5 py-0.5 rounded-md border border-slate-200/80 shadow-2xs">⌘K</span>
                         </div>
                     </div>
                 </form>
 
                 <!-- Right Menu Nav (Desktop) -->
-                <div class="hidden md:flex items-center space-x-2 text-xs sm:text-sm font-bold text-slate-700 shrink-0">
-                    <a href="{{ route('home') }}" class="px-4 py-2 rounded-full transition-all duration-200 {{ request()->routeIs('home') ? 'text-blue-600 bg-blue-50/80 font-extrabold' : 'hover:bg-slate-100 text-slate-700 hover:text-blue-600' }}">Beranda</a>
-                    <a href="{{ route('sektor.semua') }}" class="px-4 py-2 rounded-full transition-all duration-200 {{ request()->routeIs('sektor.*') ? 'text-blue-600 bg-blue-50/80 font-extrabold' : 'hover:bg-slate-100 text-slate-700 hover:text-blue-600' }}">Sektor</a>
-                    <a href="{{ route('layanan.semua') }}" class="px-4 py-2 rounded-full transition-all duration-200 {{ request()->routeIs('layanan.semua') ? 'text-blue-600 bg-blue-50/80 font-extrabold' : 'hover:bg-slate-100 text-slate-700 hover:text-blue-600' }}">Semua Layanan</a>
+                <div class="hidden md:flex items-center space-x-1 lg:space-x-2 text-xs sm:text-sm font-bold text-slate-700 shrink-0">
+                    <a href="{{ route('home') }}" class="px-4 py-2 rounded-full transition-all duration-200 relative {{ request()->routeIs('home') ? 'text-blue-600 font-extrabold bg-blue-50/70' : 'hover:bg-slate-100/80 text-slate-700 hover:text-blue-600' }}">Beranda</a>
+                    <a href="{{ route('sektor.semua') }}" class="px-4 py-2 rounded-full transition-all duration-200 relative {{ request()->routeIs('sektor.*') ? 'text-blue-600 font-extrabold bg-blue-50/70' : 'hover:bg-slate-100/80 text-slate-700 hover:text-blue-600' }}">Sektor</a>
+                    <a href="{{ route('layanan.semua') }}" class="px-4 py-2 rounded-full transition-all duration-200 relative {{ request()->routeIs('layanan.semua') ? 'text-blue-600 font-extrabold bg-blue-50/70' : 'hover:bg-slate-100/80 text-slate-700 hover:text-blue-600' }}">Semua Layanan</a>
                     
                     <!-- Dropdown Kecamatan Grid 2-Kolom -->
                     <div x-data="{ openKecamatan: false }" class="relative" @click.away="openKecamatan = false" @mouseenter="openKecamatan = true" @mouseleave="openKecamatan = false">
                         @php
                             $activeKecName = $nama_kecamatan ?? request()->route('nama_kecamatan') ?? ($layanan->nama_kecamatan ?? null);
                         @endphp
-                        <button class="flex items-center gap-1.5 px-4 py-2 rounded-full transition-all duration-200 outline-none font-bold {{ request()->routeIs('kecamatan.*') || !empty($activeKecName) ? 'text-blue-600 bg-blue-50/80 font-extrabold' : 'hover:bg-slate-100 text-slate-700 hover:text-blue-600' }}">
+                        <button class="flex items-center gap-1 px-4 py-2 rounded-full transition-all duration-200 outline-none font-bold {{ request()->routeIs('kecamatan.*') || !empty($activeKecName) ? 'text-blue-600 font-extrabold bg-blue-50/70' : 'hover:bg-slate-100/80 text-slate-700 hover:text-blue-600' }}">
                             <span>Kecamatan</span>
                             <span class="material-symbols-outlined text-lg transition-transform duration-200" :class="{ 'rotate-180 text-blue-600': openKecamatan }">expand_more</span>
                         </button>
-                        <div x-show="openKecamatan" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 translate-y-2 scale-95" x-transition:enter-end="opacity-100 translate-y-0 scale-100" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0 scale-100" x-transition:leave-end="opacity-0 translate-y-2 scale-95" class="absolute top-full right-0 mt-2 w-80 bg-white/95 backdrop-blur-2xl border border-slate-100 rounded-3xl shadow-2xl p-3 z-50" style="display: none;">
+
+                        <div x-show="openKecamatan" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 translate-y-2 scale-95" x-transition:enter-end="opacity-100 translate-y-0 scale-100" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0 scale-100" x-transition:leave-end="opacity-0 translate-y-2 scale-95" class="absolute top-full right-0 mt-3 w-80 bg-white/95 backdrop-blur-2xl border border-slate-100 rounded-3xl shadow-2xl p-3 z-50" style="display: none;">
                             <div class="px-3 py-2 text-[10px] font-extrabold text-slate-400 uppercase tracking-widest border-b border-slate-100 mb-2 flex items-center">
                                 <span>Pilih Kecamatan Resmi</span>
                             </div>
@@ -78,7 +79,7 @@
                                     @php
                                         $isCurKec = !empty($activeKecName) && strtolower(trim($activeKecName)) == strtolower(trim($kec));
                                     @endphp
-                                    <a href="{{ route('kecamatan.show', $kec) }}" class="flex items-center gap-2 px-3 py-2 rounded-xl text-xs transition-all group/item {{ $isCurKec ? 'bg-blue-50 text-blue-600 font-extrabold shadow-sm' : 'font-semibold text-slate-700 hover:bg-blue-50 hover:text-blue-700' }}">
+                                    <a href="{{ route('kecamatan.show', $kec) }}" class="flex items-center gap-2 px-3 py-2 rounded-xl text-xs transition-all group/item {{ $isCurKec ? 'bg-blue-50 text-blue-600 font-extrabold shadow-2xs' : 'font-semibold text-slate-700 hover:bg-blue-50/70 hover:text-blue-700' }}">
                                         <span class="w-2 h-2 rounded-full transition-colors {{ $isCurKec ? 'bg-blue-600 shadow-sm' : 'bg-blue-500/30 group-hover/item:bg-blue-600' }}"></span>
                                         {{ $kec }}
                                     </a>
@@ -89,20 +90,18 @@
                 </div>
 
                 <!-- Mobile Menu & Search Button -->
-                <div class="md:hidden flex items-center gap-2">
-                    <button @click="openNav = true; $nextTick(() => $refs.mobileSearchInput.focus())" class="text-slate-600 hover:text-blue-600 focus:outline-none p-2 rounded-2xl bg-slate-100/70 hover:bg-blue-50 transition-colors" aria-label="Cari">
+                <div class="md:hidden flex items-center gap-1.5">
+                    <button @click="openNav = true; $nextTick(() => $refs.mobileSearchInput.focus())" class="text-slate-600 hover:text-blue-600 focus:outline-none p-2 rounded-full bg-slate-100/70 hover:bg-blue-50 transition-colors" aria-label="Cari">
                         <span class="material-symbols-outlined text-xl">search</span>
                     </button>
-                    <button @click="openNav = !openNav" class="text-slate-600 hover:text-blue-600 focus:outline-none p-2 rounded-2xl bg-slate-100/70 hover:bg-blue-50 transition-colors" aria-label="Menu">
+                    <button @click="openNav = !openNav" class="text-slate-600 hover:text-blue-600 focus:outline-none p-2 rounded-full bg-slate-100/70 hover:bg-blue-50 transition-colors" aria-label="Menu">
                         <span class="material-symbols-outlined text-2xl" x-text="openNav ? 'close' : 'menu'">menu</span>
                     </button>
                 </div>
             </div>
-        </div>
 
-        <!-- Mobile Menu Dropdown -->
-        <div x-show="openNav" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-4" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 -translate-y-4" class="md:hidden bg-white/95 backdrop-blur-2xl border-t border-slate-100 shadow-2xl" style="display: none;">
-            <div class="px-4 pt-4 pb-6 space-y-3">
+            <!-- Mobile Menu Dropdown Card -->
+            <div x-show="openNav" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-4 scale-95" x-transition:enter-end="opacity-100 translate-y-0 scale-100" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0 scale-100" x-transition:leave-end="opacity-0 -translate-y-4 scale-95" class="md:hidden bg-white/95 backdrop-blur-2xl border border-slate-100 rounded-3xl mt-3 p-4 shadow-2xl" style="display: none;">
                 <form action="{{ route('layanan.semua') }}" method="GET" class="mb-3">
                     <div class="relative w-full">
                         <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
@@ -112,31 +111,33 @@
                     </div>
                 </form>
 
-                <a href="{{ route('home') }}" class="block px-4 py-3 rounded-2xl text-xs font-extrabold transition-all {{ request()->routeIs('home') ? 'text-blue-600 bg-blue-50/80' : 'text-slate-700 hover:bg-slate-50' }}">Beranda</a>
-                <a href="{{ route('sektor.semua') }}" class="block px-4 py-3 rounded-2xl text-xs font-extrabold transition-all {{ request()->routeIs('sektor.*') ? 'text-blue-600 bg-blue-50/80' : 'text-slate-700 hover:bg-slate-50' }}">Sektor Pelayanan</a>
-                <a href="{{ route('layanan.semua') }}" class="block px-4 py-3 rounded-2xl text-xs font-extrabold transition-all {{ request()->routeIs('layanan.semua') ? 'text-blue-600 bg-blue-50/80' : 'text-slate-700 hover:bg-slate-50' }}">Semua Layanan</a>
-                
-                <div x-data="{ openKecamatanMobile: false }">
-                    <button @click="openKecamatanMobile = !openKecamatanMobile" class="w-full text-left flex justify-between items-center px-4 py-3 rounded-2xl text-xs font-extrabold transition-all {{ request()->routeIs('kecamatan.*') || !empty($activeKecName) ? 'text-blue-600 bg-blue-50/80' : 'text-slate-700 hover:bg-slate-50' }}">
-                        <span>Pilih Kecamatan</span>
-                        <span class="material-symbols-outlined text-base transition-transform duration-200" :class="{ 'rotate-180': openKecamatanMobile }">expand_more</span>
-                    </button>
-                    <div x-show="openKecamatanMobile" class="pl-4 pr-2 py-2 grid grid-cols-2 gap-1 bg-slate-50 rounded-2xl mt-1" style="display: none;">
-                        @php
-                            $menuKecamatans = ['Cihideung', 'Cipedes', 'Tawang', 'Indihiang', 'Kawalu', 'Cibeureum', 'Mangkubumi', 'Purbaratu', 'Bungursari', 'Tamansari'];
-                            sort($menuKecamatans);
-                        @endphp
-                        @foreach($menuKecamatans as $kec)
+                <div class="space-y-1.5">
+                    <a href="{{ route('home') }}" class="block px-4 py-3 rounded-2xl text-xs font-extrabold transition-all {{ request()->routeIs('home') ? 'text-blue-600 bg-blue-50/80' : 'text-slate-700 hover:bg-slate-50' }}">Beranda</a>
+                    <a href="{{ route('sektor.semua') }}" class="block px-4 py-3 rounded-2xl text-xs font-extrabold transition-all {{ request()->routeIs('sektor.*') ? 'text-blue-600 bg-blue-50/80' : 'text-slate-700 hover:bg-slate-50' }}">Sektor Pelayanan</a>
+                    <a href="{{ route('layanan.semua') }}" class="block px-4 py-3 rounded-2xl text-xs font-extrabold transition-all {{ request()->routeIs('layanan.semua') ? 'text-blue-600 bg-blue-50/80' : 'text-slate-700 hover:bg-slate-50' }}">Semua Layanan</a>
+                    
+                    <div x-data="{ openKecamatanMobile: false }">
+                        <button @click="openKecamatanMobile = !openKecamatanMobile" class="w-full text-left flex justify-between items-center px-4 py-3 rounded-2xl text-xs font-extrabold transition-all {{ request()->routeIs('kecamatan.*') || !empty($activeKecName) ? 'text-blue-600 bg-blue-50/80' : 'text-slate-700 hover:bg-slate-50' }}">
+                            <span>Pilih Kecamatan</span>
+                            <span class="material-symbols-outlined text-base transition-transform duration-200" :class="{ 'rotate-180': openKecamatanMobile }">expand_more</span>
+                        </button>
+                        <div x-show="openKecamatanMobile" class="pl-3 pr-2 py-2 grid grid-cols-2 gap-1 bg-slate-50/80 rounded-2xl mt-1" style="display: none;">
                             @php
-                                $isCurKecMob = !empty($activeKecName) && strtolower(trim($activeKecName)) == strtolower(trim($kec));
+                                $menuKecamatans = ['Cihideung', 'Cipedes', 'Tawang', 'Indihiang', 'Kawalu', 'Cibeureum', 'Mangkubumi', 'Purbaratu', 'Bungursari', 'Tamansari'];
+                                sort($menuKecamatans);
                             @endphp
-                            <a href="{{ route('kecamatan.show', $kec) }}" class="block px-3 py-2 rounded-xl text-xs transition-colors {{ $isCurKecMob ? 'font-extrabold text-blue-700 bg-blue-100/70' : 'font-semibold text-slate-600 hover:text-blue-700 hover:bg-blue-100/50' }}">{{ $kec }}</a>
-                        @endforeach
+                            @foreach($menuKecamatans as $kec)
+                                @php
+                                    $isCurKecMob = !empty($activeKecName) && strtolower(trim($activeKecName)) == strtolower(trim($kec));
+                                @endphp
+                                <a href="{{ route('kecamatan.show', $kec) }}" class="block px-3 py-2 rounded-xl text-xs transition-colors {{ $isCurKecMob ? 'font-extrabold text-blue-700 bg-blue-100/70' : 'font-semibold text-slate-600 hover:text-blue-700 hover:bg-blue-100/50' }}">{{ $kec }}</a>
+                            @endforeach
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </nav>
+        </nav>
+    </header>
 
     <!-- Main Content -->
     <main class="flex-grow">
