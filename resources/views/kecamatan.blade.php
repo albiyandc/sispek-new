@@ -91,7 +91,7 @@
                                     <span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">{{ $icon }}</span>
                                 </div>
                                 <div class="min-w-0 flex-1">
-                                    <h3 class="font-bold text-xs sm:text-sm text-slate-900 group-hover:text-blue-600 transition-colors mb-1 line-clamp-1">{{ $layanan->nama_layanan }}</h3>
+                                    <h3 class="font-bold text-xs sm:text-sm text-slate-900 group-hover:text-blue-600 transition-colors mb-1 leading-snug">{{ $layanan->nama_layanan }}</h3>
                                     <p class="text-slate-500 text-[11px] line-clamp-2 leading-relaxed">{{ $layanan->produk_pelayanan }}</p>
                                 </div>
                             </div>

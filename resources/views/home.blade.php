@@ -89,7 +89,7 @@
                             <span class="text-[10px] font-extrabold text-blue-700 bg-blue-50 px-2.5 py-0.5 rounded-full uppercase tracking-wider truncate">{{ str_replace(['Kecamatan ', 'kecamatan ', 'KECAMATAN '], '', $service['kecamatan']) }}</span>
                             <span class="text-[10px] font-bold text-slate-400 bg-slate-100 px-2 py-0.5 rounded-full">{{ $service['kategori'] }}</span>
                         </div>
-                        <h3 class="text-sm sm:text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors line-clamp-1 mb-1">{{ $service['judul'] }}</h3>
+                        <h3 class="text-sm sm:text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors leading-snug mb-1">{{ $service['judul'] }}</h3>
                         <p class="text-xs sm:text-sm text-slate-500 line-clamp-2 leading-relaxed">{{ $service['deskripsi'] }}</p>
                     </div>
                 </div>
@@ -119,7 +119,7 @@
                 <span class="material-symbols-outlined {{ $sektor['text_color'] }} text-3xl" style="font-variation-settings: 'FILL' 1;">{{ $sektor['icon'] }}</span>
             </div>
             <div class="flex-1 min-w-0">
-                <h3 class="text-base sm:text-lg font-bold text-slate-900 mb-1.5 group-hover:text-blue-600 transition-colors line-clamp-1">{{ $sektor['nama'] }}</h3>
+                <h3 class="text-base sm:text-lg font-bold text-slate-900 mb-1.5 group-hover:text-blue-600 transition-colors leading-snug">{{ $sektor['nama'] }}</h3>
                 <p class="text-xs text-slate-500 line-clamp-2 leading-relaxed mb-4">{{ $sektor['deskripsi'] }}</p>
                 <div class="text-blue-600 text-xs font-bold flex items-center gap-1 group-hover:gap-2 transition-all">
                     <span>Jelajahi Sektor</span>

@@ -38,7 +38,7 @@
                         <span class="material-symbols-outlined {{ $sektor['text_color'] }} text-3xl" style="font-variation-settings: 'FILL' 1;">{{ $sektor['icon'] }}</span>
                     </div>
                     <div class="flex-1 min-w-0">
-                        <h3 class="text-base sm:text-lg font-bold text-slate-900 mb-1.5 group-hover:text-blue-600 transition-colors line-clamp-1">{{ $sektor['nama'] }}</h3>
+                        <h3 class="text-base sm:text-lg font-bold text-slate-900 mb-1.5 group-hover:text-blue-600 transition-colors leading-snug">{{ $sektor['nama'] }}</h3>
                         <p class="text-xs text-slate-500 line-clamp-2 leading-relaxed mb-4">{{ $sektor['deskripsi'] }}</p>
                         <div class="text-blue-600 text-xs font-bold flex items-center gap-1 group-hover:gap-2 transition-all">
                             <span>Jelajahi Sektor</span>

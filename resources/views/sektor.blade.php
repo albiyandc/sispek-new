@@ -35,7 +35,7 @@
                                 <span class="text-[10px] font-extrabold text-blue-700 bg-blue-50 px-2.5 py-0.5 rounded-full uppercase tracking-wider truncate">{{ str_replace(['Kecamatan ', 'kecamatan ', 'KECAMATAN '], '', $service['kecamatan']) }}</span>
                                 <span class="text-[10px] font-bold text-slate-400 bg-slate-100 px-2 py-0.5 rounded-full">{{ $service['kategori'] }}</span>
                             </div>
-                            <h3 class="text-sm sm:text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors line-clamp-1 mb-1">{{ $service['judul'] }}</h3>
+                            <h3 class="text-sm sm:text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors leading-snug mb-1">{{ $service['judul'] }}</h3>
                             <p class="text-xs sm:text-sm text-slate-500 line-clamp-2 leading-relaxed">{{ $service['deskripsi'] }}</p>
                         </div>
                     </div>
