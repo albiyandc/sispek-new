@@ -2,7 +2,7 @@
 
 @section('content')
 <!-- Hero Section dengan Ambient Dark Gradient -->
-<div class="bg-gradient-to-b from-slate-900 via-blue-950 to-slate-900 text-white rounded-b-[40px] sm:rounded-b-[60px] shadow-2xl relative overflow-hidden">
+<div class="bg-gradient-to-b from-slate-900 via-blue-950 to-slate-900 text-white shadow-2xl relative overflow-hidden">
     <!-- Ambient Glow Effects -->
     <div class="absolute -top-32 -right-32 w-96 h-96 bg-blue-600/30 rounded-full blur-3xl pointer-events-none"></div>
     <div class="absolute bottom-0 -left-32 w-96 h-96 bg-indigo-600/20 rounded-full blur-3xl pointer-events-none"></div>
