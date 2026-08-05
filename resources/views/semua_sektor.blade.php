@@ -1,18 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="bg-[#F8FAFC] min-h-screen pb-20 pt-0 sm:pt-8">
+<div class="bg-[#F8FAFC] min-h-screen pb-20 pt-8">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 fade-in-up">
         
-        <!-- Breadcrumb (Hidden on Mobile) -->
+        <!-- Breadcrumb (Desktop Only) -->
         <div class="hidden sm:flex text-xs text-slate-400 mb-6 items-center gap-2 font-medium">
             <a href="{{ route('home') }}" class="hover:text-blue-600 transition-colors">Beranda</a> 
             <span>&rsaquo;</span> 
             <span class="text-slate-700 font-bold">Semua Sektor Pelayanan</span>
         </div>
 
-        <!-- Header Banner -->
-        <div class="bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 text-white rounded-none sm:rounded-3xl p-6 sm:p-12 -mx-4 sm:mx-0 -mt-14 pt-16 sm:-mt-24 sm:pt-24 mb-10 shadow-xl relative overflow-hidden">
+        <!-- Header Banner (Mobile Edge-to-Edge) -->
+        <div class="bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 text-white rounded-none sm:rounded-3xl -mx-4 -mt-20 pt-20 px-6 pb-8 sm:mx-0 sm:mt-0 sm:p-12 mb-10 shadow-xl relative overflow-hidden">
             <div class="absolute top-0 right-0 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
             <div class="relative z-10 max-w-3xl">
                 <h1 class="text-2xl sm:text-4xl font-extrabold text-white mb-3">Sektor Pelayanan Publik</h1>
