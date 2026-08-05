@@ -18,7 +18,7 @@
         </div>
 
         <!-- Banner Blue Ambient Full Width (Mobile Edge-to-Edge) -->
-        <div class="bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 text-white rounded-none sm:rounded-3xl -mx-4 -mt-20 pt-16 px-5 pb-6 sm:mx-0 sm:mt-0 sm:p-10 mb-8 shadow-xl relative overflow-hidden">
+        <div class="bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 text-white rounded-none sm:rounded-3xl -mx-4 -mt-28 pt-28 px-6 pb-8 sm:mx-0 sm:mt-0 sm:p-10 mb-4 sm:mb-8 shadow-xl relative overflow-hidden">
             <div class="absolute top-0 right-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
             <div class="relative z-10 max-w-3xl">
                 <h1 class="text-2xl sm:text-4xl font-extrabold mb-3 tracking-tight">Pelayanan Publik Kecamatan {{ $cleanKec }}</h1>
@@ -29,7 +29,7 @@
         </div>
 
         <!-- Maklumat Pelayanan Card (Selalu di atas IKM) -->
-        <div class="bg-white rounded-3xl p-6 sm:p-8 mb-8 relative overflow-hidden border border-slate-100 shadow-sm">
+        <div class="bg-white rounded-3xl p-4 sm:p-8 mb-4 sm:mb-8 relative overflow-hidden border border-slate-100 shadow-sm">
             <div class="absolute top-2 right-4 text-slate-100 text-8xl font-serif select-none pointer-events-none">”</div>
             <div class="relative z-10">
                 <div class="text-[10px] font-extrabold text-blue-600 tracking-widest uppercase mb-2">MAKLUMAT PELAYANAN</div>
@@ -49,10 +49,10 @@
         </div>
 
         <!-- 2-Column Grid Layout (Wide Desktop) -->
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-8">
             
             <!-- Left Column: Search & Service Cards (2 Cols) -->
-            <div class="lg:col-span-2 space-y-6 order-2 lg:order-1">
+            <div class="lg:col-span-2 space-y-4 sm:space-y-6 order-2 lg:order-1">
 
                 <!-- Search Bar -->
                 <div class="relative">

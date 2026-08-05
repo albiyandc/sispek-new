@@ -115,10 +115,10 @@
                     </div>
                 </div>
 
-                <!-- Mobile Hamburger Menu Button (Clean Icon Without Background Box) -->
+                <!-- Mobile Hamburger Menu Button -->
                 <button @click="openNav = !openNav" 
-                        class="md:hidden focus:outline-none p-1.5 transition-colors shrink-0" 
-                        :class="!isScrolled ? 'text-white hover:text-blue-300' : 'text-slate-700 hover:text-blue-600'" aria-label="Menu">
+                        class="md:hidden focus:outline-none p-1.5 rounded-full transition-colors shrink-0" 
+                        :class="!isScrolled ? 'text-white' : 'text-slate-700'" aria-label="Menu">
                     <span class="material-symbols-outlined text-2xl" x-text="openNav ? 'close' : 'menu'">menu</span>
                 </button>
             </div>

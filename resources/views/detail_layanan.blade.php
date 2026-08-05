@@ -21,7 +21,7 @@
         </div>
 
         <!-- Header Hero Banner Full Width (Mobile Edge-to-Edge) -->
-        <div class="bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 text-white rounded-none sm:rounded-3xl -mx-4 -mt-20 pt-16 px-5 pb-6 sm:mx-0 sm:mt-0 sm:p-12 mb-8 shadow-xl relative overflow-hidden">
+        <div class="bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 text-white rounded-none sm:rounded-3xl -mx-4 -mt-28 pt-28 px-6 pb-8 sm:mx-0 sm:mt-0 sm:p-12 mb-4 sm:mb-8 shadow-xl relative overflow-hidden">
             <div class="absolute top-0 right-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
             <div class="relative z-10">
                 <div class="max-w-3xl">
@@ -36,13 +36,13 @@
         </div>
 
         <!-- 2-Column Grid Layout (Wide Desktop) -->
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-8">
             
             <!-- Left Main Content Column (2 Cols) -->
-            <div class="lg:col-span-2 space-y-8">
+            <div class="lg:col-span-2 space-y-4 sm:space-y-8">
                 
                 <!-- 1. Persyaratan Layanan Card -->
-                <div class="bg-white rounded-3xl shadow-sm border border-slate-100 p-6 sm:p-8 relative overflow-hidden">
+                <div class="bg-white rounded-3xl shadow-sm border border-slate-100 p-4 sm:p-8 relative overflow-hidden">
                     <div class="flex items-center justify-between mb-6">
                         <div>
                             <h2 class="font-extrabold text-slate-900 text-base sm:text-lg">Persyaratan Berkas</h2>
