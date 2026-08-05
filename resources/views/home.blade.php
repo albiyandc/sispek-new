@@ -162,4 +162,22 @@
         </div>
     </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.service-card').forEach(function (card) {
+        card.addEventListener('click', function (e) {
+            const id = card.dataset.id;
+            if (!id) return;
+            // Fire-and-forget: track click then navigate
+            const dest = card.getAttribute('href');
+            e.preventDefault();
+            fetch(`/api/track-click/${id}`, { method: 'POST', headers: { 'X-Requested-With': 'XMLHttpRequest', 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.content ?? '' } })
+                .finally(function () {
+                    window.location.href = dest;
+                });
+        });
+    });
+});
+</script>
 @endsection
