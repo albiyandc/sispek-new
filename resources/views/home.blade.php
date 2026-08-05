@@ -84,7 +84,7 @@
     </div>
     
     <div id="services-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-        @foreach($services as $service)
+        @foreach(array_slice($services, 0, 10) as $service)
             <a href="{{ route('layanan.detail', ['id' => $service['id']]) }}" 
                data-id="{{ $service['id'] }}" 
                data-clicks="{{ $service['clicks'] ?? 0 }}" 

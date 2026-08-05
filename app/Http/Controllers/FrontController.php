@@ -123,6 +123,8 @@ class FrontController extends Controller
             return $b['clicks'] <=> $a['clicks'];
         });
         
+        $services = array_slice($services, 0, 10);
+
         $sektors = $this->getSektors();
 
         return view('home', compact('kecamatans', 'services', 'sektors'));
