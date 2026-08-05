@@ -18,7 +18,7 @@
         <!-- Header Hero Banner Full Width -->
         <div class="bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 text-white rounded-3xl p-8 sm:p-12 mb-8 shadow-xl relative overflow-hidden">
             <div class="absolute top-0 right-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
-            <div class="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+            <div class="relative z-10">
                 <div class="max-w-3xl">
                     <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-400/10 border border-blue-400/20 text-blue-300 text-[11px] font-bold uppercase tracking-wider mb-3">
                         {{ $layanan->nama_kecamatan ?? 'Kecamatan Cihideung' }}
@@ -29,10 +29,6 @@
                     <p class="text-xs sm:text-base text-slate-300 leading-relaxed max-w-2xl">
                         {{ $layanan->produk_pelayanan ?? 'Layanan penerbitan dokumen Kartu Keluarga baru karena perubahan data, pecah KK, atau hilang/rusak bagi warga di wilayah Kota Tasikmalaya.' }}
                     </p>
-                </div>
-                
-                <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 text-blue-300 flex items-center justify-center shrink-0 shadow-lg hidden md:flex">
-                    <span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">badge</span>
                 </div>
             </div>
         </div>
@@ -46,14 +42,9 @@
                 <!-- 1. Persyaratan Layanan Card -->
                 <div class="bg-white rounded-3xl shadow-sm border border-slate-100 p-6 sm:p-8 relative overflow-hidden">
                     <div class="flex items-center justify-between mb-6">
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center shrink-0">
-                                <span class="material-symbols-outlined text-2xl">assignment_turned_in</span>
-                            </div>
-                            <div>
-                                <h2 class="font-extrabold text-slate-900 text-base sm:text-lg">Persyaratan Berkas</h2>
-                                <p class="text-xs text-slate-400">Dokumen yang wajib disiapkan sebelum pengajuan</p>
-                            </div>
+                        <div>
+                            <h2 class="font-extrabold text-slate-900 text-base sm:text-lg">Persyaratan Berkas</h2>
+                            <p class="text-xs text-slate-400">Dokumen yang wajib disiapkan sebelum pengajuan</p>
                         </div>
                         <span class="text-[10px] font-bold text-blue-700 bg-blue-50 px-3 py-1 rounded-full uppercase tracking-wider hidden sm:inline-block">Wajib Dipenuhi</span>
                     </div>
@@ -85,14 +76,9 @@
 
                 <!-- 2. Prosedur & Alur Pengajuan Card -->
                 <div class="bg-white rounded-3xl shadow-sm border border-slate-100 p-6 sm:p-8 relative overflow-hidden">
-                    <div class="flex items-center gap-3 mb-6">
-                        <div class="w-10 h-10 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
-                            <span class="material-symbols-outlined text-2xl">account_tree</span>
-                        </div>
-                        <div>
-                            <h2 class="font-extrabold text-slate-900 text-base sm:text-lg">Prosedur & Alur Pelayanan</h2>
-                            <p class="text-xs text-slate-400">Tahapan proses penyelesaian dokumen dari awal hingga selesai</p>
-                        </div>
+                    <div class="mb-6">
+                        <h2 class="font-extrabold text-slate-900 text-base sm:text-lg">Prosedur & Alur Pelayanan</h2>
+                        <p class="text-xs text-slate-400">Tahapan proses penyelesaian dokumen dari awal hingga selesai</p>
                     </div>
 
                     <!-- Timeline Vertikal Modern -->

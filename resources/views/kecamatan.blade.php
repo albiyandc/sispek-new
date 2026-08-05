@@ -126,14 +126,9 @@
                 
                 <!-- Indeks Kepuasan Masyarakat (IKM) Card -->
                 <div class="bg-gradient-to-br from-blue-50/90 to-indigo-50/60 rounded-3xl p-6 border border-blue-100/60 shadow-sm space-y-4">
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-2xl bg-blue-600 text-white flex items-center justify-center shrink-0 shadow-md">
-                            <span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">sentiment_satisfied</span>
-                        </div>
-                        <div>
-                            <div class="font-bold text-slate-900 text-xs sm:text-sm">Indeks Kepuasan (IKM)</div>
-                            <div class="text-[10px] text-slate-500">Mutu pelayanan publik warga</div>
-                        </div>
+                    <div>
+                        <div class="font-bold text-slate-900 text-xs sm:text-sm">Indeks Kepuasan (IKM)</div>
+                        <div class="text-[10px] text-slate-500">Mutu pelayanan publik warga</div>
                     </div>
 
                     <div class="flex items-center gap-3 bg-white p-4 rounded-2xl border border-slate-100 shadow-sm justify-around">
