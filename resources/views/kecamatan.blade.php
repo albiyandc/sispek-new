@@ -97,11 +97,11 @@
             <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-gray-400">
                 <span class="material-symbols-outlined text-lg">search</span>
             </div>
-            <input type="text" placeholder="Cari jenis layanan (contoh: Kartu Keluarga, IMB...)" class="w-full bg-[#f0f4fc] border-none rounded-2xl py-3.5 pl-11 pr-4 text-xs sm:text-sm text-gray-700 placeholder-gray-400 focus:ring-2 focus:ring-blue-200 outline-none">
+            <input id="search-service-input" type="text" placeholder="Cari jenis layanan (contoh: Kartu Keluarga, IMB...)" class="w-full bg-[#f0f4fc] border-none rounded-2xl py-3.5 pl-11 pr-4 text-xs sm:text-sm text-gray-700 placeholder-gray-400 focus:ring-2 focus:ring-blue-200 outline-none">
         </div>
 
         <!-- Daftar Layanan -->
-        <div class="space-y-3">
+        <div id="service-list-container" class="space-y-3">
             @php
                 $icons = ['badge', 'family_restroom', 'location_city', 'home_work', 'storefront'];
                 $colors = [
@@ -117,9 +117,13 @@
                 @php
                     $color = $colors[$index % count($colors)];
                     $icon = $icons[$index % count($icons)];
+                    $isExtra = $index >= 10;
                 @endphp
                 
-                <a href="{{ route('layanan.detail', $layanan->id_layanan) }}" class="group bg-white rounded-2xl p-4 sm:p-5 flex items-center justify-between border border-gray-100 shadow-sm hover:shadow-md transition-all duration-200">
+                <a href="{{ route('layanan.detail', $layanan->id_layanan) }}" 
+                   data-title="{{ $layanan->nama_layanan }}" 
+                   data-desc="{{ $layanan->produk_pelayanan }}" 
+                   class="service-item {{ $isExtra ? 'extra-service-item hidden' : '' }} group bg-white rounded-2xl p-4 sm:p-5 flex items-center justify-between border border-gray-100 shadow-sm hover:shadow-md transition-all duration-200">
                     <div class="flex items-center gap-4">
                         <div class="{{ $color['bg'] }} {{ $color['text'] }} w-11 h-11 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center shrink-0">
                             <span class="material-symbols-outlined text-xl sm:text-2xl" style="font-variation-settings: 'FILL' 1;">{{ $icon }}</span>
@@ -138,13 +142,49 @@
         </div>
 
         <!-- Tombol Tampilkan Lebih Banyak -->
+        @if(count($layanans) > 10)
         <div class="mt-8 flex justify-center">
-            <button class="bg-[#eef2ff] hover:bg-blue-100 text-[#0b53c8] font-semibold text-xs py-2.5 px-6 rounded-full transition flex items-center gap-1.5">
+            <button id="btn-show-more" class="bg-[#eef2ff] hover:bg-blue-100 text-[#0b53c8] font-semibold text-xs py-2.5 px-6 rounded-full transition flex items-center gap-1.5">
                 Tampilkan Lebih Banyak 
                 <span class="material-symbols-outlined text-sm">expand_more</span>
             </button>
         </div>
+        @endif
         
     </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const btnShowMore = document.getElementById('btn-show-more');
+    const searchInput = document.getElementById('search-service-input');
+    const items = document.querySelectorAll('.service-item');
+
+    if (btnShowMore) {
+        btnShowMore.addEventListener('click', () => {
+            const extraItems = document.querySelectorAll('.extra-service-item');
+            extraItems.forEach(item => item.classList.remove('hidden'));
+            btnShowMore.classList.add('hidden');
+        });
+    }
+
+    if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase().trim();
+            items.forEach(item => {
+                const title = (item.getAttribute('data-title') || '').toLowerCase();
+                const desc = (item.getAttribute('data-desc') || '').toLowerCase();
+                if (title.includes(query) || desc.includes(query)) {
+                    item.classList.remove('hidden');
+                } else {
+                    item.classList.add('hidden');
+                }
+            });
+            if (query !== '' && btnShowMore) {
+                btnShowMore.classList.add('hidden');
+            }
+        });
+    }
+});
+</script>
 @endsection
