@@ -67,10 +67,9 @@
     
     <div id="services-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
         @foreach($services as $service)
-            <a href="{{ route('layanan.detail', ['id' => $service['id']]) }}" 
+            <a href="{{ route('kategori.track', ['id' => $service['id'], 'kategori' => $service['kategori_slug']]) }}" 
                data-id="{{ $service['id'] }}" 
                data-clicks="{{ $service['clicks'] ?? 0 }}" 
-               data-url="{{ route('layanan.detail', ['id' => $service['id']]) }}" 
                class="service-card group bg-white p-4 sm:p-6 rounded-2xl border border-gray-100 shadow-sm hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
                 <div class="flex items-start gap-4 sm:gap-5">
                     <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-xl {{ $service['bg_color'] }} flex items-center justify-center shrink-0">
@@ -164,7 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         e.preventDefault();
         const id = card.getAttribute('data-id');
-        const detailUrl = card.getAttribute('data-url');
+        const targetUrl = card.getAttribute('href');
 
         const currentClicks = (localClicks[id] !== undefined) ? localClicks[id] : parseInt(card.getAttribute('data-clicks') || '0');
         localClicks[id] = currentClicks + 1;
@@ -173,16 +172,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         sortAndRender();
 
-        fetch('/api/track-click/' + id, {
-            method: 'POST',
-            headers: {
-                'X-CSRF-TOKEN': '{{ csrf_token() }}',
-                'Content-Type': 'application/json'
-            }
-        }).catch(() => {});
-
         setTimeout(() => {
-            window.location.href = detailUrl;
+            window.location.href = targetUrl;
         }, 150);
     });
 });
