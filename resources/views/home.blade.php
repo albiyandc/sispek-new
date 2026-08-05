@@ -104,8 +104,8 @@
 </div>
 
 <!-- 2. Sektor Pelayanan Publik -->
-<div id="sektor-layanan" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 fade-in-up delay-150 scroll-mt-24 border-t border-slate-200/60">
-    <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-12 gap-4">
+<div id="sektor-layanan" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 fade-in-up delay-150 scroll-mt-24 border-t border-slate-200/60">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-4 sm:mb-6 gap-4">
         <div>
             <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Sektor Pelayanan Publik</h2>
             <p class="text-xs sm:text-base text-slate-500 mt-1">Pilih sektor pelayanan untuk melihat daftar layanan dan daerah penyelenggaranya.</p>
@@ -131,7 +131,7 @@
     </div>
 
     <!-- Tombol Lihat Semua Sektor -->
-    <div class="mt-12 flex justify-center">
+    <div class="mt-6 sm:mt-8 flex justify-center">
         <a href="{{ route('sektor.semua') }}" class="bg-white border border-slate-200 text-blue-700 hover:bg-blue-50 font-bold text-xs sm:text-sm py-3 px-8 rounded-full shadow-sm hover:shadow-md transition-all flex items-center gap-2 group">
             <span>Lihat Semua Sektor Pelayanan</span>
             <span class="material-symbols-outlined text-base group-hover:translate-x-1 transition-transform">arrow_forward</span>
@@ -140,8 +140,8 @@
 </div>
 
 <!-- Stats Section -->
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20 fade-in-up delay-200">
-    <div class="bg-white rounded-3xl border border-slate-100 shadow-sm p-8 sm:p-12">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-10 sm:pb-12 fade-in-up delay-200">
+    <div class="bg-white rounded-3xl border border-slate-100 shadow-sm p-6 sm:p-8">
         <div class="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 divide-x-0 md:divide-x divide-slate-100 text-center">
             <div class="p-2">
                 <div class="text-3xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 mb-1">10</div>
